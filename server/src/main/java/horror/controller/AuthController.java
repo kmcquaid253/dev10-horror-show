@@ -1,35 +1,24 @@
 package horror.controller;
 
-<<<<<<< HEAD
-=======
 import org.springframework.dao.DuplicateKeyException;
->>>>>>> 2dfd4f4650428989b3d4b1b2ad882b4591d1d3a0
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-<<<<<<< HEAD
-=======
 import org.springframework.security.core.userdetails.User;
->>>>>>> 2dfd4f4650428989b3d4b1b2ad882b4591d1d3a0
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-<<<<<<< HEAD
 import java.util.HashMap;
-=======
 import javax.validation.ValidationException;
 import java.util.HashMap;
 import java.util.List;
->>>>>>> 2dfd4f4650428989b3d4b1b2ad882b4591d1d3a0
 import java.util.Map;
 
 @RestController
 public class AuthController {
-<<<<<<< HEAD
     // The `AuthenticationManager` interface defines a single method `authenticate()`
     // that processes an Authentication request.
     private final AuthenticationManager authenticationManager;
@@ -62,6 +51,4 @@ public class AuthController {
 
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-=======
->>>>>>> 2dfd4f4650428989b3d4b1b2ad882b4591d1d3a0
 }
