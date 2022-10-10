@@ -70,6 +70,22 @@ function App() {
         {/* <NavBar/> */}
         <Switch>
           <Route path="/login">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            {!user ? <Login/> : <Redirect to="/" />}
+            </Route>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+=======
+>>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
+>>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
+>>>>>>> c44e44a575977356df6580831d5a250f0c980b51
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/">
@@ -81,6 +97,16 @@ function App() {
             <Login/>
           </Route>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> dc71961b4d4626ce9d36e55f098f330b3db9c805
+>>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
+>>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
+>>>>>>> c44e44a575977356df6580831d5a250f0c980b51
         </Switch>
       </Router>
     </AuthContext.Provider>
