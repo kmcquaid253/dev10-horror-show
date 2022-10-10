@@ -1,9 +1,11 @@
 import './App.css';
-import AuthContext from './Context/AuthContext';
+import AuthContext from './AuthContext/AuthContext';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
 import jwtDecode from "jwt-decode";
+import Home from './Home/Home';
+import Login from './Login/Login';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -11,12 +13,9 @@ const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
   const [user, setUser] = useState(null);
-  //define a state variable to track if restore login attempt has completed
+
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
-
-  // define useEffect hook callback function to attempt to restore the user's token
-  // from localStorage
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -26,13 +25,10 @@ function App() {
   }, []);
 
   const login = (token) => {
-    //set token in localStorage
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
-    //decode the token
     const { sub: username, authorities: authoritiesString } = jwtDecode(token);
 
-    //split authorities string into an array of roles
     const roles = authoritiesString.split(',');
 
     const user = {
@@ -44,13 +40,10 @@ function App() {
       }
     }
 
-    // log user for debugging purposes
     console.log(user);
 
-    //update user state
     setUser(user);
 
-    //return use to caller
     return user;
   };
 
@@ -65,8 +58,6 @@ function App() {
     logout
   };
 
-  // if we haven't attempted to restore the login yet,
-  // then don't render the App component
   if (!restoreLoginAttemptCompleted) {
     return null;
   }
@@ -75,8 +66,29 @@ function App() {
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        <div><h2>Horror Moviez</h2></div>
+        {/* <NavBar/> */}
+        <Switch>
+          <Route path="/login">
+<<<<<<< HEAD
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
 
+          {/* manually testing if login works via this path */}
+          <Route path="/login">
+            <Login />
+          </Route>
+
+=======
+            {!user ? <Login/> : <Redirect to="/" />}
+            </Route>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+>>>>>>> 7ad729c778127f44355518ba571cd91b81a9a09e
+        </Switch>
       </Router>
     </AuthContext.Provider>
 

@@ -23,11 +23,6 @@ create table subgenre (
   name varchar(50) null
 );
 
-create table watchlist (
-  watchlistId int primary key auto_increment,
-  watchlistMovie varchar(750) null
-);
-
   -- security
   
   create table app_role (
@@ -41,11 +36,7 @@ create table watchlist (
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
     disabled bit not null default(0),
-    watchlistId int not null,
     app_role_id int not null,
-constraint fk_app_user_watchlist
-	foreign key (watchlistId)
-	references watchlist(watchlistId),
 constraint fk_app_user_app_role_id
 	foreign key (app_role_id)
     references app_role(app_role_id)
@@ -97,13 +88,13 @@ constraint fk_review_movieId
 );
 
 create table watchlist_movie (
-	watchlistId int not null,
     movieId int not null,
+    app_user_id int not null,
 constraint pk_watchlist_movie_id
-	primary key (watchlistId, movieId),
-constraint fk_watchlist_movie_watchlistId
-	foreign key (watchlistId)
-    references watchlist(watchlistId),
+	primary key (movieId, app_user_id),
+constraint fk_watchlist_movie_app_user_id
+	foreign key (app_user_id)
+    references app_user(app_user_id),
 constraint fk_watchlist_movie_movieId
 	foreign key (movieId)
     references movie(movieId)

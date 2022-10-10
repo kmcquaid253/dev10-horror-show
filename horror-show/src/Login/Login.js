@@ -1,11 +1,12 @@
 
 import React, {useContext, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../AuthContext/AuthContext";
 
-import Error from "./Error";
+import Error from "../Error/Error";
 
-export default function Login() {
+
+function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -17,7 +18,7 @@ export default function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        //call api to authenticate and get token
+
 
         const response = await fetch("http://localhost:8080/authenticate", {
             method: "POST",
@@ -30,7 +31,7 @@ export default function Login() {
             }),
         });
         
-        //executes if request is successful
+
         if(response.status === 200) {
             const {jwt_token} = await response.json();
             console.log(jwt_token);
@@ -52,7 +53,7 @@ export default function Login() {
             ))}
             <form onSubmit={handleSubmit}>
                 <div>
-                    {/* Includes for/id attributes for basic HTML accessibility ♿. */}
+                
                     <label htmlFor="username">Username</label>
                     <input
                         type="text"
@@ -75,3 +76,5 @@ export default function Login() {
         </div>
     );
 }
+
+export default Login;
