@@ -89,7 +89,6 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-
         </Switch >
       </Router >
     </AuthContext.Provider >
