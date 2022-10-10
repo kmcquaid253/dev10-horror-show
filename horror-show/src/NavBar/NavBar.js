@@ -1,18 +1,45 @@
-import {Link, useHistory} from 'react-router-dom';
-import {useContext} from 'react';
-import AuthContext from '../AuthContext';
+import {useContext} from "react";
+import { Link } from "react-router-dom";
 
-function NavBar(props) {
+import AuthContext from "../AuthContext/AuthContext";
 
-    const loginInfo = useContext(AuthContext);
-    const history = useHistory();
+function NavBar() {
+// grab value attribute from AuthContext.Provider
+  const auth = useContext(AuthContext);
 
-    function logoutHandler() {
-        props.setLoginInfo(null);
-        history.push("/");
-    }
+  // if we have an auth.user, render an add link,
+  // user's username, and logout button
+  // if we don't, render "Login" and "Register" navigation
 
-    return (
-        
-    )
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        {auth.user ? (
+        <li>
+          <Link to="/add">Add</Link>
+        </li>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>
+      )}
+      </ul>
+      {auth.user && (
+        <div>
+          Welcome {auth.user.username}!
+          <button onClick={() => auth.logout()}>Logout</button>
+        </div>
+      )}
+    </nav>
+  );
 }
+
+export default NavBar;
