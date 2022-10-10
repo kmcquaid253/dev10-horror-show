@@ -1,11 +1,8 @@
 package horror.controller;
 
-<<<<<<< HEAD
-=======
 import horror.models.AppUser;
 import horror.security.AppUserService;
 import horror.security.JwtConverter;
->>>>>>> af2bfab8b5dca07454d758228e186513a7be3f4b
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +11,15 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
->>>>>>> af2bfab8b5dca07454d758228e186513a7be3f4b
 import javax.validation.ValidationException;
 import java.util.HashMap;
 import java.util.List;
@@ -34,14 +28,11 @@ import java.util.Map;
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
 public class AuthController {
-<<<<<<< HEAD
+
     // The `AuthenticationManager` interface defines a single method `authenticate()`
     // that processes an Authentication request.
     private final AuthenticationManager authenticationManager;
-=======
->>>>>>> af2bfab8b5dca07454d758228e186513a7be3f4b
 
-    private final AuthenticationManager authenticationManager;
     private final JwtConverter converter;
     private final AppUserService appUserService;
 
@@ -75,9 +66,8 @@ public class AuthController {
 
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-<<<<<<< HEAD
-}
-=======
+
+
 
     @PostMapping("/refresh_token")
     public ResponseEntity<Map<String, String>> refreshToken(UsernamePasswordAuthenticationToken principal) {
@@ -113,4 +103,3 @@ public class AuthController {
         return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 }
->>>>>>> af2bfab8b5dca07454d758228e186513a7be3f4b
