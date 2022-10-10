@@ -8,7 +8,7 @@ function NavBar(props) {
     const history = useHistory();
 
     function logoutHandler() {
-        prrops.setLoginInfo(null);
+        props.setLoginInfo(null);
         history.push("/");
     }
 
