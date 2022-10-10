@@ -1,6 +1,6 @@
 import {Link, useHistory} from 'react-router-dom';
 import {useContext} from 'react';
-import AuthContext from '../AuthContext';
+import AuthContext from '../AuthContext/AuthContext';
 
 function NavBar(props) {
 
@@ -13,6 +13,22 @@ function NavBar(props) {
     }
 
     return (
-        
+        <nav className="navbar">
+            <div className="navbar" type="button">
+                <ul className="">
+                    {loginInfo ?
+                    <li className="">
+                        <Link className="" to="">Movie Lists</Link>
+                    </li>
+                    : null 
+                    }
+                </ul>
+                {loginInfo ? <button onClock={logoutHandler} className="btn">Logout {loginInfo.claims.sub}</button> :
+                <Link className="" to="/login">Login</Link>}
+            </div>
+        </nav>
+
     )
 }
+
+export default NavBar;

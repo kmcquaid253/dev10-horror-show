@@ -6,6 +6,7 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 import Home from './Home/Home';
 import Login from './Login/Login';
+import NavBar from './NavBar/NavBar';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -69,6 +70,19 @@ function App() {
         {/* <NavBar/> */}
         <Switch>
           <Route path="/login">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            {!user ? <Login/> : <Redirect to="/" />}
+            </Route>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+=======
+>>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
+>>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/">
@@ -80,6 +94,13 @@ function App() {
             <Login />
           </Route>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> dc71961b4d4626ce9d36e55f098f330b3db9c805
+>>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
+>>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
         </Switch>
       </Router>
     </AuthContext.Provider>
