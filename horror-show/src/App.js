@@ -67,24 +67,20 @@ function App() {
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        {/* <NavBar/> */}
+        <NavBar />
         <Switch>
           <Route path="/login">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            {!user ? <Login/> : <Redirect to="/" />}
-            </Route>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-=======
->>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
->>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
+
+          <Route exact path="/">
+            <Home />
+          </Route>
+
+          <Route>
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          
           <Route exact path="/">
             <Home />
           </Route>
@@ -94,17 +90,9 @@ function App() {
             <Login />
           </Route>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> dc71961b4d4626ce9d36e55f098f330b3db9c805
->>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
->>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
-        </Switch>
-      </Router>
-    </AuthContext.Provider>
-
+        </Switch >
+      </Router >
+    </AuthContext.Provider >
   );
 }
 
