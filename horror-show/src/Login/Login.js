@@ -3,7 +3,7 @@ import React, {useContext, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../AuthContext/AuthContext";
 
-import Error from "./Error";
+import Error from "../Error/Error";
 
 export default function Login() {
     const [username, setUsername] = useState("");

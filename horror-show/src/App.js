@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import jwtDecode from "jwt-decode";
 import Home from './Home/Home';
+import Login from './Login/Login';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
