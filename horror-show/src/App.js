@@ -7,16 +7,10 @@ import jwtDecode from "jwt-decode";
 import Home from './Home/Home';
 import Login from './Login/Login';
 import NavBar from './NavBar/NavBar';
-
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
-
-
-
 function App() {
   const [user, setUser] = useState(null);
-
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
-
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -24,14 +18,10 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-
   const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-
     const { sub: username, authorities: authoritiesString } = jwtDecode(token);
-
     const roles = authoritiesString.split(',');
-
     const user = {
       username,
       roles,
@@ -40,78 +30,46 @@ function App() {
         return this.roles.includes(role);
       }
     }
-
     console.log(user);
-
     setUser(user);
-
     return user;
   };
-
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
-
   const auth = {
     user: user ? { ...user } : null,
     login,
     logout
   };
-
   if (!restoreLoginAttemptCompleted) {
     return null;
   }
-
-
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        {/* <NavBar/> */}
+        <NavBar />
         <Switch>
           <Route path="/login">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-            {!user ? <Login/> : <Redirect to="/" />}
-            </Route>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-=======
->>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
->>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
->>>>>>> c44e44a575977356df6580831d5a250f0c980b51
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/">
-            <Home/>
+            <Home />
           </Route>
-
+          <Route>
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
           {/* manually testing if login works via this path */}
           <Route path="/login">
-            <Login/>
+            <Login />
           </Route>
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> dc71961b4d4626ce9d36e55f098f330b3db9c805
->>>>>>> 11736428af7dcf6cbd093c14f1605be513df6436
->>>>>>> 205cd0877b77d5137cc00f4db76d77a48934356f
->>>>>>> c44e44a575977356df6580831d5a250f0c980b51
-        </Switch>
-      </Router>
-    </AuthContext.Provider>
-
+        </Switch >
+      </Router >
+    </AuthContext.Provider >
   );
 }
-
 export default App;
