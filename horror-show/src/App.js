@@ -69,7 +69,7 @@ function App() {
         {/* <NavBar/> */}
         <Switch>
           <Route path="/login">
-            {!user ? <Login /> : <Redirect to="/" />}
+            {!user ? <Login/> : <Redirect to="/" />}
             </Route>
             <Route exact path="/">
               <Home/>
