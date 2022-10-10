@@ -70,10 +70,16 @@ function App() {
         <Switch>
           <Route path="/login">
             {!user ? <Login /> : <Redirect to="/" />}
-            </Route>
-            <Route exact path="/">
-              <Home/>
-            </Route>
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+
+          {/* manually testing if login works via this path */}
+          <Route path="/login">
+            <Login />
+          </Route>
+
         </Switch>
       </Router>
     </AuthContext.Provider>
