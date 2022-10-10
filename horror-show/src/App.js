@@ -57,6 +57,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+
           <Route>
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
