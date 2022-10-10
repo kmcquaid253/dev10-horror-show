@@ -69,11 +69,25 @@ function App() {
         {/* <NavBar/> */}
         <Switch>
           <Route path="/login">
+<<<<<<< HEAD
             {!user ? <Login/> : <Redirect to="/" />}
             </Route>
             <Route exact path="/">
               <Home/>
             </Route>
+=======
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+
+          {/* manually testing if login works via this path */}
+          <Route path="/login">
+            <Login />
+          </Route>
+
+>>>>>>> dc71961b4d4626ce9d36e55f098f330b3db9c805
         </Switch>
       </Router>
     </AuthContext.Provider>
