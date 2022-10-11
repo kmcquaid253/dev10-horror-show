@@ -25,7 +25,9 @@ public class ReviewJdbcRepository implements ReviewRepository{
     @Override
     public List<Review> findAll() throws DataAccessException {
         final String sql = "select reviewId, userReview, app_user_id, movieId "
-                + "from review limit 1000;";
+                + "from review "
+                + "inner join app_user on app_user.app_user_id = review.app_user_id"
+                + "inner join movie on movie.movieId = review.movieId;";
         return jdbcTemplate.query(sql, new ReviewMapper());
     }
 
