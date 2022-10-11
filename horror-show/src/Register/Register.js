@@ -1,7 +1,9 @@
-import { toHaveErrorMessage } from "@testing-library/jest-dom/dist/matchers";
+import Error from "../Error/Error";
 import FormInput from "../FormInput/FormInput";
 
 function Register() {
+
+    const [error, setError] = useState([]);
 
     return (
         <div className="container">

@@ -8,6 +8,7 @@ import Home from './Home/Home';
 import Login from './Login/Login';
 import NotFound from './NotFound/NotFound';
 import NavBar from './NavBar/NavBar';
+import Error from './Error/Error';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
