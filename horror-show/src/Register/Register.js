@@ -36,8 +36,8 @@ function Register() {
         //         passwordConfirm,
         //     )
         // };
-        // fetch("http://localhost:8080/authenticate/", init)
-        // .then async response => {
+        // fetch("http://localhost:8080/create_account/", init)
+        // .then response => {
         //     if (response.status === 201) {
         //         history.push("/authenticate");
         //     } else if (response.status === 400) {
