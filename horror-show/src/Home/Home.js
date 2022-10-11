@@ -2,8 +2,11 @@ import './Home.css';
 
 function Home() {
     return (
+        
         <main>
-            <h1>Welcome to Horror Show</h1>
+            <div className="container">
+                <h1>Welcome to Horror Show</h1>
+            </div>
         </main>
     );
 }
