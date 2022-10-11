@@ -1,4 +1,3 @@
-
 import React, {useContext, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../AuthContext/AuthContext";
@@ -17,8 +16,6 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-
 
         const response = await fetch("http://localhost:8080/authenticate", {
             method: "POST",
