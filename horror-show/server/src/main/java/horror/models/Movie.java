@@ -71,11 +71,11 @@ public class Movie {
         this.scoreNum = scoreNum;
     }
 
-    public int getActorId() {
+    public List<Actor> getActorId() {
         return actorId;
     }
 
-    public void setActorId(int actorId) {
+    public void setActorId(List<Actor> actorId) {
         this.actorId = actorId;
     }
 
