@@ -8,7 +8,10 @@ import Home from './Home/Home';
 import Login from './Login/Login';
 import NotFound from './NotFound/NotFound';
 import NavBar from './NavBar/NavBar';
+import Error from "./Error/Error";
+
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
+
 function App() {
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -53,6 +56,11 @@ function App() {
         <NavBar />
 
         <Switch>
+
+        <Route path="/error">
+          <Error/>
+        </Route>
+
           <Route path="/login">
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
@@ -61,9 +69,9 @@ function App() {
             <Home />
           </Route>
 
-          <Route>
+          {/* <Route>
             {!user ? <Login /> : <Redirect to="/" />}
-          </Route>
+          </Route> */}
 
           {/* manually testing if login works via this path */}
           <Route path="/login">
