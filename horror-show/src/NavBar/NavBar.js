@@ -9,17 +9,16 @@ function NavBar() {
   // user's username, and logout button
   // if we don't, render "Login" and "Register" navigation
   return (
-    
     <nav className="navbar">
       <div className="container">
       <ul className="navbar-list">
-        <li className="navbar-item"><a className="navbar-link" href="#home"><Link to="/">Home</Link></a></li>
+        <li className="navbar-item navbar-link"><Link to="/">Home</Link></li>
         {auth.user ? (
-        <li className="navbar-item"><a className="navbar-link" href="#add"><Link to="/add">Add</Link></a></li>
+        <li className="navbar-item navbar-link"><Link to="/add">Add</Link></li>
       ) : (
         <>
-          <li className="u-pull-right"><a className="navbar-link" href="#login"><Link to="/login">Login</Link></a></li>
-          <li className="navbar-item"><a className="navbar-link" href="#register"><Link to="/register">Register</Link></a></li>
+          <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
+          <li className="navbar-item navbar-link"><Link to="/register">Register</Link></li>
         </>
       )}
       </ul>
