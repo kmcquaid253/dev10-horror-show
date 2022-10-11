@@ -7,16 +7,10 @@ import jwtDecode from "jwt-decode";
 import Home from './Home/Home';
 import Login from './Login/Login';
 import NavBar from './NavBar/NavBar';
-
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
-
-
-
 function App() {
   const [user, setUser] = useState(null);
-
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
-
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -24,14 +18,10 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-
   const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-
     const { sub: username, authorities: authoritiesString } = jwtDecode(token);
-
     const roles = authoritiesString.split(',');
-
     const user = {
       username,
       roles,
@@ -40,30 +30,22 @@ function App() {
         return this.roles.includes(role);
       }
     }
-
     console.log(user);
-
     setUser(user);
-
     return user;
   };
-
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
-
   const auth = {
     user: user ? { ...user } : null,
     login,
     logout
   };
-
   if (!restoreLoginAttemptCompleted) {
     return null;
   }
-
-
   return (
     <AuthContext.Provider value={auth}>
       <Router>
@@ -72,7 +54,6 @@ function App() {
           <Route path="/login">
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
-
           <Route exact path="/">
             <Home />
           </Route>
@@ -80,11 +61,9 @@ function App() {
           <Route>
             {!user ? <Login /> : <Redirect to="/" />}
           </Route>
-          
           <Route exact path="/">
             <Home />
           </Route>
-
           {/* manually testing if login works via this path */}
           <Route path="/login">
             <Login />
@@ -94,5 +73,4 @@ function App() {
     </AuthContext.Provider >
   );
 }
-
 export default App;
