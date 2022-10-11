@@ -9,6 +9,7 @@ import Login from './Login/Login';
 import NotFound from './NotFound/NotFound';
 import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
+import Register from './Register/Register';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -76,6 +77,10 @@ function App() {
           {/* manually testing if login works via this path */}
           <Route path="/login">
             <Login />
+          </Route>
+
+          <Route path="/register">
+            <Register/>
           </Route>
 
           <Route>

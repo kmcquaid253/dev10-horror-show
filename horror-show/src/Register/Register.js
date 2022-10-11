@@ -1,13 +1,47 @@
 import Error from "../Error/Error";
 import FormInput from "../FormInput/FormInput";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function Register() {
 
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [passwordConfirm, setPasswordConfirm] = useState(null);
+
+
     const [error, setError] = useState([]);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
+    const inputChangeHandler = (e) => {
+
+        const {id , value} = e.target;
+        if(id === "firstName") {
+            setFirstName(value);
+        }
+        if(id === "lastName") {
+            setLastName(value);
+        }
+        if(id === "email") {
+            setEmail(value);
+        }
+        if(id === "password") {
+            setPassword(value);
+        }
+        if(id === "passwordConfirm") {
+            setPasswordConfirm(value);
+        }
+
+    }
 
     return (
         <div className="container">
-            {errors.length > 0 ? <Error error={error}/> : null}
+            {error.length > 0 ? <Error error={error}/> : null}
             <form onSubmit={handleSubmit}>
                 <FormInput
                 inputType={"text"}
@@ -32,15 +66,15 @@ function Register() {
 
                 <FormInput
                 inputType={"text"}
-                identifier={"username"}
-                labelText={"Username"}
+                identifier={"password"}
+                labelText={"Password"}
                 onChangeHandler={"inputChangeHandler"}
                 />
 
                 <FormInput
                 inputType={"text"}
-                identifier={"password"}
-                labelText={"Password"}
+                identifier={"passwordConfirm"}
+                labelText={"Confirm Password"}
                 onChangeHandler={"inputChangeHandler"}
                 />
 
