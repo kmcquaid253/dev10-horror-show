@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -56,10 +57,18 @@ public class ReviewJdbcRepository implements ReviewRepository{
 
     @Override
     public boolean update(Review review) throws DataAccessException {
-        throw new UnsupportedOperationException();
+
+        final String sql = "update review set "
+                + "userReview = ? "
+                + "where reviewId = ?;";
+
+        return jdbcTemplate.update(sql,
+                review.getUserReview(),
+                review.getReviewId()) > 0;
     }
 
     @Override
+    @Transactional
     public boolean deleteById(int id) throws DataAccessException {
         throw new UnsupportedOperationException();
     }
