@@ -22,47 +22,25 @@ function Register() {
     const handleSubmit =  async (event) => {
         event.preventDefault();
 
-        // const init = {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify(
-        //         firstName,
-        //         lastName,
-        //         userName,
-        //         password,
-        //         passwordConfirm,
-        //     )
-        // };
-        // fetch("http://localhost:8080/create_account/", init)
-        // .then response => {
-        //     if (response.status === 201) {
-        //         history.push("/authenticate");
-        //     } else if (response.status === 400) {
 
-        //     }
-        // }
-        // }
 
-        const response = await fetch("http://localhost:8080/authenticate", {
+        const response = await fetch("http://localhost:8080/create_account", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                firstName,
+                lastName,
                 username,
                 password,
+                passwordConfirm,
             }),
         });
-        if(response.status === 200) {
-            const {jwt_token} = await response.json();
-            console.log(jwt_token);
-            auth.login(jwt_token);
-            history.push("/");
+        if(response.status === 201) {
+            history.push("/login");
         } else if (response.status === 403){
-            setErrors(["Login Failed."]);
+            setErrors(["Registration Failed."]);
         } else {
             setErrors(["Unknown error"]);
         }
@@ -77,7 +55,7 @@ function Register() {
         (
             <Error key={i} msg={error} />
         ))}
-        <form onSubmit={handleSubmit}>
+        <form id="registerForm" onSubmit={handleSubmit}>
         <div>
             
             <label htmlFor="firstName">First Name</label>
@@ -129,56 +107,6 @@ function Register() {
         </form>
     </div>
 
-
-
-
-        // <div className="container">
-        //     <h2>Register</h2>
-        //     {errors.map((error, i) => 
-        //     (
-        //         <Error key={i} msg={error} />
-        //     ))}
-        //     <form onSubmit={handleSubmit}>
-        //         <FormInput
-        //         inputType={"text"}
-        //         identifier={"firstName"}
-        //         labelText={"First Name"}
-        //         onChangeHandler={"inputChangeHandler"}
-        //         />
-
-        //         <FormInput
-        //         inputType={"text"}
-        //         identifier={"lastName"}
-        //         labelText={"Last Name"}
-        //         onChangeHandler={"inputChangeHandler"}
-        //         />
-
-        //         <FormInput
-        //         inputType={"text"}
-        //         identifier={"username"}
-        //         labelText={"Username"}
-        //         onChangeHandler={"inputChangeHandler"}
-        //         />
-
-        //         <FormInput
-        //         inputType={"text"}
-        //         identifier={"password"}
-        //         labelText={"Password"}
-        //         onChangeHandler={"inputChangeHandler"}
-        //         />
-
-        //         <FormInput
-        //         inputType={"text"}
-        //         identifier={"passwordConfirm"}
-        //         labelText={"Confirm Password"}
-        //         onChangeHandler={"inputChangeHandler"}
-        //         />
-
-        //         <button className="btn" id="registerButton">Register</button>
-        //         <Link to="/" className="btn" id="cancelButton">Cancel</Link>
-
-        //     </form>
-        // </div>
     );
 }
 
