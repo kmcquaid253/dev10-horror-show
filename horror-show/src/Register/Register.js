@@ -12,7 +12,7 @@ function Register() {
     const [passwordConfirm, setPasswordConfirm] = useState(null);
 
 
-    const [error, setError] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -41,7 +41,11 @@ function Register() {
 
     return (
         <div className="container">
-            {error.length > 0 ? <Error error={error}/> : null}
+            <h2>Register</h2>
+            {errors.map((error, i) => 
+            (
+                <Error key={i} msg={error} />
+            ))}
             <form onSubmit={handleSubmit}>
                 <FormInput
                 inputType={"text"}
