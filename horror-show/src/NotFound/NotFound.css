@@ -1,0 +1,31 @@
+.img-ghost{
+    width: 300px;
+
+}
+
+#four{
+    background-color: white;
+}
+
+#titleOne {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+#titleTwo{
+    font-family:fantasy;
+    text-align: center;
+}
+
+#titleThree{
+    font-family:fantasy;
+    text-align: center;
+}
+
+#ghostPic{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 350px;
+}

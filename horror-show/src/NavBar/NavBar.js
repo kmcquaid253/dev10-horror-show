@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../AuthContext/AuthContext";
+import "./NavBar.css";
 function NavBar() {
 // grab value attribute from AuthContext.Provider
   const auth = useContext(AuthContext);
@@ -8,23 +9,17 @@ function NavBar() {
   // user's username, and logout button
   // if we don't, render "Login" and "Register" navigation
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+    
+    <nav className="navbar">
+      <div className="container">
+      <ul className="navbar-list">
+        <li className="navbar-item"><a className="navbar-link" href="#home"><Link to="/">Home</Link></a></li>
         {auth.user ? (
-        <li>
-          <Link to="/add">Add</Link>
-        </li>
+        <li className="navbar-item"><a className="navbar-link" href="#add"><Link to="/add">Add</Link></a></li>
       ) : (
         <>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
+          <li className="u-pull-right"><a className="navbar-link" href="#login"><Link to="/login">Login</Link></a></li>
+          <li className="navbar-item"><a className="navbar-link" href="#register"><Link to="/register">Register</Link></a></li>
         </>
       )}
       </ul>
@@ -34,6 +29,7 @@ function NavBar() {
           <button onClick={() => auth.logout()}>Logout</button>
         </div>
       )}
+      </div>
     </nav>
   );
 }
