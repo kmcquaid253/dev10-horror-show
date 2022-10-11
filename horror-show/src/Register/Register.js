@@ -22,7 +22,7 @@ function Register() {
     const handleSubmit =  async (event) => {
         event.preventDefault();
 
-        const response = await fetch("http://localhost:8080/authenticate", {
+        const response = await fetch("http://localhost:8080/create_account", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -98,7 +98,6 @@ function Register() {
             </form>
         </div>
     );
-
 }
 
 export default Register;

@@ -70,7 +70,6 @@ function App() {
             <Home />
           </Route>
 
-
           {/* manually testing if login works via this path */}
           <Route path="/login">
             <Login />
