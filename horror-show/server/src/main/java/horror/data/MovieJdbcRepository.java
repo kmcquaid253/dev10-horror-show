@@ -15,7 +15,7 @@ public class MovieJdbcRepository implements MovieRepository {
     public MovieJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
     @Override
     public List<Movie> findAll() {
         throw new UnsupportedOperationException();

@@ -1,6 +1,7 @@
 package horror.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Movie {
 
@@ -16,7 +17,7 @@ public class Movie {
 
     private int scoreNum;
 
-    private int actorId;
+    private List<Actor> actorId;
 
     private int directorId;
 
