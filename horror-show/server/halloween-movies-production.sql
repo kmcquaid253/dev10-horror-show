@@ -71,7 +71,6 @@ create table movie (
   rating varchar(50) null,
   releaseDate date null,
   scoreNum int null,
-  actorId int null,
   directorId int null,
   subgenreId int null,
 constraint fk_movie_directorId

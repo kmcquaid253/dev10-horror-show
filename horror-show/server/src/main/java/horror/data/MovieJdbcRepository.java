@@ -20,7 +20,7 @@ public class MovieJdbcRepository implements MovieRepository {
     @Override
     public List<Movie> findAll() {
 
-            final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, actorId, director.directorId, subgenre.subgenreId "
+            final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId "
                     + "from movie "
                     + "inner join director on director.directorId = movie.directorId"
                     + "inner join subgenre on subgenre.subgenreId = movie.subgenreId";
