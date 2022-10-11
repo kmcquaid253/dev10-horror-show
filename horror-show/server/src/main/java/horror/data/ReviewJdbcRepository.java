@@ -70,6 +70,6 @@ public class ReviewJdbcRepository implements ReviewRepository{
     @Override
     @Transactional
     public boolean deleteById(int id) throws DataAccessException {
-        throw new UnsupportedOperationException();
+        return jdbcTemplate.update("delete from review where reviewId = ?", id) > 0;
     }
 }
