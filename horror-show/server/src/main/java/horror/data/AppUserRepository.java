@@ -1,6 +1,6 @@
 package horror.data;
 
-import horror.data.AppUserMapper;
+import horror.data.mappers.AppUserMapper;
 import horror.models.AppUser;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

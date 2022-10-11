@@ -1,4 +1,4 @@
-package horror.data;
+package horror.data.mappers;
 
 import horror.models.AppUser;
 import org.springframework.jdbc.core.RowMapper;

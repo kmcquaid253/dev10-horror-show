@@ -1,11 +1,11 @@
 package horror.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @CrossOrigin(origins = {"http://localhost:8080"})
-@RequestMapping("/api/watchlist")
-public class WatchlistController {
+@RequestMapping("/api/friend")
+public class FriendController {
 }
