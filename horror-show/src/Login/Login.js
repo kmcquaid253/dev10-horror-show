@@ -20,7 +20,7 @@ function Login() {
 
 
 
-        const response = await fetch("http://localhost:8080/authenticate", {
+        const response = await fetch("http://localhost:3306/authenticate", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +30,6 @@ function Login() {
                 password,
             }),
         });
-        
 
         if(response.status === 200) {
             const {jwt_token} = await response.json();

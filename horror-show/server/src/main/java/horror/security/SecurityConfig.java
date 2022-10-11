@@ -29,17 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // new...
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
-                .antMatchers(HttpMethod.GET,
-                        "/order").permitAll()
-                .antMatchers(HttpMethod.GET,
-                        "/sighting", "/sighting/*").permitAll()
-                .antMatchers(HttpMethod.POST,
-                        "/sighting").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.PUT,
-                        "/sighting/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE,
-                        "/sighting/*").hasAnyRole("ADMIN")
-                .antMatchers("/**").denyAll()
+//                .antMatchers(HttpMethod.GET,
+//                        "/order").permitAll()
+//                .antMatchers(HttpMethod.GET,
+//                        "/sighting", "/sighting/*").permitAll()
+//                .antMatchers(HttpMethod.POST,
+//                        "/sighting").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.PUT,
+//                        "/sighting/*").hasAnyRole("USER", "ADMIN")
+//                .antMatchers(HttpMethod.DELETE,
+//                        "/sighting/*").hasAnyRole("ADMIN")
+//                .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(), converter))
                 .sessionManagement()
