@@ -18,9 +18,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-
-
-        const response = await fetch("http://localhost:3306/authenticate", {
+        const response = await fetch("http://localhost:8080/authenticate", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

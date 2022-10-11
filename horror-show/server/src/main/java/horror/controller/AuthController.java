@@ -16,17 +16,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.ValidationException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3306"})
+@CrossOrigin(origins = {"http://localhost:8080"})
 public class AuthController {
 
     // The `AuthenticationManager` interface defines a single method `authenticate()`
