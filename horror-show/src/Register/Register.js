@@ -1,47 +1,61 @@
 import Error from "../Error/Error";
+import AuthContext from "../AuthContext/AuthContext";
 import FormInput from "../FormInput/FormInput";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import React, {useState, useContext} from "react";
+import {Link, useHistory} from "react-router-dom";
 
 function Register() {
 
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
     const [passwordConfirm, setPasswordConfirm] = useState(null);
 
 
-    const [error, setError] = useState([]);
+    const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (event) => {
+    const auth = useContext(AuthContext);
+
+    const history = useHistory();
+
+    const handleSubmit =  async (event) => {
         event.preventDefault();
-    }
 
-    const inputChangeHandler = (e) => {
+        const response = await fetch("http://localhost:8080/authenticate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                username,
+                password,
+                passwordConfirm,
+            }),
+        });
+        if(response.status === 200) {
+            const {jwt_token} = await response.json();
+            console.log(jwt_token);
+            auth.login(jwt_token);
+            history.push("/");
+        } else if (response.status === 403){
+            setErrors(["Registration Failed."]);
+        } else {
+            setErrors(["Unknown error"]);
+        }
+    };
 
-        const {id , value} = e.target;
-        if(id === "firstName") {
-            setFirstName(value);
-        }
-        if(id === "lastName") {
-            setLastName(value);
-        }
-        if(id === "email") {
-            setEmail(value);
-        }
-        if(id === "password") {
-            setPassword(value);
-        }
-        if(id === "passwordConfirm") {
-            setPasswordConfirm(value);
-        }
-
-    }
+    
 
     return (
         <div className="container">
-            {error.length > 0 ? <Error error={error}/> : null}
+            <h2>Register</h2>
+            {errors.map((error, i) => 
+            (
+                <Error key={i} msg={error} />
+            ))}
             <form onSubmit={handleSubmit}>
                 <FormInput
                 inputType={"text"}
@@ -59,8 +73,8 @@ function Register() {
 
                 <FormInput
                 inputType={"text"}
-                identifier={"email"}
-                labelText={"Email"}
+                identifier={"username"}
+                labelText={"Username"}
                 onChangeHandler={"inputChangeHandler"}
                 />
 

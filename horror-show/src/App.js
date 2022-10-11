@@ -70,9 +70,6 @@ function App() {
             <Home />
           </Route>
 
-          <Route>
-            {!user ? <Login /> : <Redirect to="/" />}
-          </Route>
 
           {/* manually testing if login works via this path */}
           <Route path="/login">
