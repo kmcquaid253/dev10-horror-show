@@ -180,7 +180,6 @@ function Register() {
         //     </form>
         // </div>
     );
-
 }
 
 export default Register;
