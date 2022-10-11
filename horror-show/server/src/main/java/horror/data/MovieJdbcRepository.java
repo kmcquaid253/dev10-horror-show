@@ -25,9 +25,4 @@ public class MovieJdbcRepository implements MovieRepository {
     public Movie findById(int id) throws DataAccessException {
         throw new UnsupportedOperationException();
     }
-
-    @Override
-    public Movie findFriendById(int id) throws DataAccessException {
-        throw new UnsupportedOperationException();
-    }
 }
