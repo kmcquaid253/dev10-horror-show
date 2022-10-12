@@ -25,7 +25,7 @@ function AddReview(){
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("URL GOES HERE",{
+        fetch("http://localhost:8080/api/review/reviewId",{
             method: "POST",
             body: JSON.stringify(review),
             headers: {
@@ -76,6 +76,7 @@ return(
                     labelText={"Movie Title"}
                     currVal={review.movieId} 
                     onChangeHandler={inputChangeHandler}/>
+                
                 <FormInput 
                     inputType={"text"} 
                     identifier={"userReview"} 
@@ -83,6 +84,7 @@ return(
                     currVal={review.userReview} 
                     onChangeHandler={inputChangeHandler}
                     />
+                    
 
                 <button type='submit'>Add</button>
                 <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
