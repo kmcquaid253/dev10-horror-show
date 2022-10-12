@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,26 +27,49 @@ public class MovieJdbcTemplateRepositoryTests {
     }
 
 
-    // have not hard - coded test data yet
     @Test
     void shouldFindAll() {
         List<Movie> movies = repository.findAll();
         assertNotNull(movies);
 
-        assertTrue(movies.size() >= 4);
+        assertTrue(movies.size() > 0);
     }
 
 
     @Test
     void shouldFindMovieOfId1() {
+
+        LocalDate release = LocalDate.parse("1976-11-03");
+
         Movie movie = repository.findById(1);
         assertEquals(1, movie.getMovieId());
-        assertEquals("Title", movie.getTitle());
-        assertEquals("Runtime", movie.getRuntime());
-        assertEquals("Rating", movie.getRating());
-        assertEquals(01-01-2000, movie.getReleaseDate());
+        assertEquals("Carrie", movie.getTitle());
+        assertEquals(98, movie.getRuntime());
+        assertEquals("R", movie.getRating());
+        assertEquals(release, movie.getReleaseDate());
         assertEquals(10, movie.getScoreNum());
         assertEquals(1, movie.getDirectorId());
         assertEquals(1, movie.getSubgenreId());
+    }
+
+    @Test
+    void shouldCreate() {
+        Movie movie = makeMovie();
+        Movie actual = repository.create(movie);
+        assertNotNull(actual);
+    }
+
+    private Movie makeMovie() {
+        LocalDate release = LocalDate.parse("2014-05-17");
+
+        Movie movie = new Movie();
+        movie.setTitle("It Follows");
+        movie.setRuntime(100);
+        movie.setRating("R");
+        movie.setReleaseDate(release);
+        movie.setScoreNum(10);
+        movie.setDirectorId(1);
+        movie.setSubgenreId(1);
+        return movie;
     }
 }

@@ -1,6 +1,6 @@
-drop database if exists dbHorrorShow;
-create schema if not exists dbHorrorShow;
-use dbHorrorShow;
+drop database if exists dbHorrorShowTest;
+create schema if not exists dbHorrorShowTest;
+use dbHorrorShowTest;
 
 -- non-security
 
@@ -135,3 +135,24 @@ insert into app_user_role
 	values
 	(1,1),
     (2,2);
+    
+    delimiter //
+create procedure set_known_good_state()
+begin
+
+	insert into subgenre (name)
+		values
+        ("Horror");
+
+	insert into director (firstName, lastName, nationality)
+		values
+		("Brian", "De Palma", "American");
+
+	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
+		values
+		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
+        
+   
+
+end //
+delimiter ;
