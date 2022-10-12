@@ -13,7 +13,6 @@ import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './MovieDisplay/MovieDisplay';
 
-
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
