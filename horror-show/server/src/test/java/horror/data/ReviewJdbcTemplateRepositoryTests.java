@@ -29,7 +29,7 @@ public class ReviewJdbcTemplateRepositoryTests {
         List<Review> reviews = repository.findAll();
         assertNotNull(reviews);
 
-        assertTrue(reviews.size() >= 1);
+        assertTrue(reviews.size() > 0);
     }
 
     @Test

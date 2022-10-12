@@ -58,7 +58,7 @@ public class ReviewService {
         return repository.deleteById(reviewId);
     }
 
-    private Result<Review> validate(Review review){
+    private Result<Review> validate(Review review) {
         Result<Review> result = new Result<>();
         if (review == null) {
             result.addMessage("Review cannot be null", ResultType.INVALID);

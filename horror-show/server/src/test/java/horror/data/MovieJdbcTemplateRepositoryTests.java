@@ -70,8 +70,8 @@ public class MovieJdbcTemplateRepositoryTests {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById(5));
-        assertFalse(repository.deleteById(5));
+        assertTrue(repository.deleteById(3));
+        assertFalse(repository.deleteById(3));
     }
 
     private Movie makeMovie() {
