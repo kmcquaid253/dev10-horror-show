@@ -8,18 +8,20 @@ const MovieDisplay = () => {
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        const fetchMovies = async() => {
-            const {data} = await TMDB.get("tv/popular")
-            setMovies(data.results)
-        }
-        fetchMovies();
+        fetch("https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&with_genres=27", 
+            {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        });
     },[])
 
-    return <div className="className">
+    return (<div className="className">
         {movies.map((movie,index)=>{
             return <MovieCard key={index} {...movie} />
         })}
-    </div>
+    </div>)
 }
 
 
