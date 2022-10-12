@@ -17,7 +17,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
   useEffect(() => {
-    const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+    //const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+    const token = null;
     if (token) {
       login(token);
     }

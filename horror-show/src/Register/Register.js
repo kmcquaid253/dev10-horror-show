@@ -3,6 +3,7 @@ import AuthContext from "../AuthContext/AuthContext";
 import FormInput from "../FormInput/FormInput";
 import React, {useState, useContext} from "react";
 import {Link, useHistory} from "react-router-dom";
+import './Register.css';
 
 function Register() {
 
@@ -19,6 +20,12 @@ function Register() {
 
     const history = useHistory();
 
+    function showErrors( listOfErrorMessages ){
+        const messageContainer = document.getElementById("messages");
+        
+        messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + "💀 " + m + " 💀" + "</p>" ).reduce( (prev, curr) => prev + curr );
+    }
+
     const handleSubmit =  async (event) => {
         event.preventDefault();
 
@@ -34,27 +41,36 @@ function Register() {
                 password,
                 passwordConfirm,
             }),
+        })
+        .then(async response => {
+            if(response.status === 201){
+                history.push("/login")
+            }else if(response.status === 403){
+                return Promise.reject(["Registration failed."]);
+            } else if( response.status === 400 ){
+                return Promise.reject( await response.json());
+            }
+        })
+        .catch(errorList => {
+            if(errorList instanceof TypeError){
+                showErrors(["Could not connect to the api."]);
+            } else{
+                showErrors(errorList);
+            }
         });
-        if(response.status === 201) {
-            history.push("/login");
-        } else if (response.status === 403){
-            setErrors(["Registration Failed."]);
-        } else {
-            setErrors(["Unknown error"]);
-        }
-    };
-
-    
+    }
 
     return (
         <div>
-        <h2>Login</h2>
+        <h2>Register</h2>
         {errors.map((error, i) => 
         (
             <Error key={i} msg={error} />
         ))}
         <form id="registerForm" onSubmit={handleSubmit}>
         <div>
+
+        <h6 id="error-messages"><div id="messages" role="alert"></div></h6>
             
             <label htmlFor="firstName">First Name</label>
             <input
