@@ -6,7 +6,6 @@ function TMDB(){
                 Accept: "application/json"
             }
         });
-    }
-            
+    } 
 
 export default TMDB;

@@ -5,13 +5,14 @@ import TMDB from "./TMDB";
 
 
 const MovieDisplay = () => {
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState([])
 
     useEffect(() => {
         const fetchMovies = async() => {
-            const {data} = await TMDB.get()
+            const {data} = await TMDB.get("tv/popular")
             setMovies(data.results)
         }
+        fetchMovies();
     },[])
 
     return <div className="className">
