@@ -19,5 +19,7 @@ public class ReviewService {
         return repository.findAll();
     }
 
-
+    public boolean deleteById(int reviewId) {
+        return repository.deleteById(reviewId);
+    }
 }
