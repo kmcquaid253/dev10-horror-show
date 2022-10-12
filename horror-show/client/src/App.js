@@ -10,6 +10,7 @@ import NotFound from './NotFound/NotFound';
 import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
+import AddReview from './AddReview/AddReview';
 import MovieDisplay from './MovieDisplay/MovieDisplay';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
