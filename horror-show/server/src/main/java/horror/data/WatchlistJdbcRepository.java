@@ -1,5 +1,6 @@
 package horror.data;
 
+import horror.data.mappers.WatchlistMapper;
 import horror.models.Review;
 import horror.models.Watchlist;
 import org.springframework.dao.DataAccessException;
@@ -7,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -23,7 +25,11 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
-        return null;
+        final String sql = "select movie.movieId, app_user.app_user_id "
+                + "from watchlist_movie "
+                + "inner join movie on movie.movieId = watchlist_movie.movieId "
+                + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
+        return jdbcTemplate.query(sql, new WatchlistMapper());
     }
 
     @Override
@@ -48,11 +54,12 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public boolean update(Review watchlist) throws DataAccessException {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
+    @Transactional
     public boolean deleteById(int id) throws DataAccessException {
-        return false;
+        return jdbcTemplate.update("delete from watchlist_movie where movieId = ?", id) > 0;
     }
 }
