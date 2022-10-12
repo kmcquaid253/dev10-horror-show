@@ -59,6 +59,21 @@ public class MovieJdbcTemplateRepositoryTests {
         assertNotNull(actual);
     }
 
+    @Test
+    void shouldUpdate() {
+        Movie movie = makeMovie();
+        movie.setMovieId(3);
+        assertTrue(repository.update(movie));
+        movie.setMovieId(20);
+        assertFalse(repository.update(movie));
+    }
+
+    @Test
+    void shouldDelete() {
+        assertTrue(repository.deleteById(5));
+        assertFalse(repository.deleteById(5));
+    }
+
     private Movie makeMovie() {
         LocalDate release = LocalDate.parse("2014-05-17");
 
