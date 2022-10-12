@@ -34,7 +34,7 @@ function Login() {
             auth.login(jwt_token);
             history.push("/");
         } else if (response.status === 403) {
-            setErrors(["Login failed."]);
+            setErrors(["incorrect password/username."]);
         } else {
             setErrors(["Unknown error."]);
         }

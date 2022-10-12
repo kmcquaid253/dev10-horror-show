@@ -19,6 +19,7 @@ function App() {
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+    //const token = null;
     if (token) {
       login(token);
     }
@@ -86,6 +87,10 @@ function App() {
 
           <Route path="/register">
             <Register/>
+          </Route>
+
+          <Route path="/add">
+            <AddReview/>
           </Route>
 
           <Route>
