@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -69,5 +70,35 @@ public class MovieJdbcRepository implements MovieRepository {
 
         movie.setMovieId(keyHolder.getKey().intValue());
         return movie;
+    }
+
+    @Override
+    public boolean update(Movie movie) {
+
+        final String sql = "update movie set "
+                + "title = ?, "
+                + "runtime = ?, "
+                + "rating = ?, "
+                + "releaseDate = ?, "
+                + "scoreNum = ?, "
+                + "directorId = ?, "
+                + "subgenreId = ? "
+                + "where movieId = ?";
+
+        return jdbcTemplate.update(sql,
+                movie.getTitle(),
+                movie.getRuntime(),
+                movie.getRating(),
+                movie.getReleaseDate(),
+                movie.getScoreNum(),
+                movie.getDirectorId(),
+                movie.getSubgenreId(),
+                movie.getMovieId()) > 0;
+    }
+
+    @Override
+    @Transactional
+    public boolean deleteById(int movieId) {
+        return jdbcTemplate.update("delete from movie where movieId = ?", movieId) > 0;
     }
 }
