@@ -140,17 +140,19 @@ insert into app_user_role
 create procedure set_known_good_state()
 begin
 
-	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
+	insert into subgenre (name)
 		values
-		('Carrie', 98, 'R', 1976-11-03, 10, 1, 1);
-        
+        ("Horror");
+
 	insert into director (firstName, lastName, nationality)
 		values
 		("Brian", "De Palma", "American");
-    
-    insert into subgenre (name)
+
+	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
 		values
-        ("Horror");
+		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
+        
+   
 
 end //
 delimiter ;
