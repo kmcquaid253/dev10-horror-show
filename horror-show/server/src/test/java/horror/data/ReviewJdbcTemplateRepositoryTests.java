@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 public class ReviewJdbcTemplateRepositoryTests {
 
     static final int NEXT_ID = 6;
