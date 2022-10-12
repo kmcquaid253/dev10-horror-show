@@ -39,4 +39,9 @@ public class MovieJdbcRepository implements MovieRepository {
         return jdbcTemplate.query(sql, new MovieMapper(), id).stream()
                 .findFirst().orElse(null);
     }
+
+    @Override
+    public Movie create(Movie movie){
+        throw new UnsupportedOperationException();
+    }
 }

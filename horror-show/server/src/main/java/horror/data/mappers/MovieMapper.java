@@ -18,8 +18,6 @@ public class MovieMapper implements RowMapper<Movie> {
             movie.setReleaseDate(resultSet.getDate("releaseDate").toLocalDate());
         }
         movie.setScoreNum(resultSet.getInt("scoreNum"));
-        //actor is List<> in Movie model.
-//        movie.setActorId(resultSet.getObject("actorId"));
         movie.setDirectorId(resultSet.getInt("directorId"));
         movie.setSubgenreId(resultSet.getInt("subgenreId"));
         return movie;

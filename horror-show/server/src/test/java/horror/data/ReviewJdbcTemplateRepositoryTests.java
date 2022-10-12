@@ -12,8 +12,6 @@ import java.util.List;
 @SpringBootTest
 public class ReviewJdbcTemplateRepositoryTests {
 
-    static final int NEXT_ID = 6;
-
     @Autowired
     ReviewJdbcRepository repository;
 
@@ -31,7 +29,7 @@ public class ReviewJdbcTemplateRepositoryTests {
         List<Review> reviews = repository.findAll();
         assertNotNull(reviews);
 
-        assertTrue(reviews.size() >= 2);
+        assertTrue(reviews.size() >= 1);
     }
 
     @Test
@@ -39,7 +37,6 @@ public class ReviewJdbcTemplateRepositoryTests {
         Review review = makeReview();
         Review actual = repository.create(review);
         assertNotNull(actual);
-        assertEquals(NEXT_ID, actual.getReviewId());
     }
 
     @Test
@@ -53,8 +50,8 @@ public class ReviewJdbcTemplateRepositoryTests {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById(5));
-        assertFalse(repository.deleteById(5));
+        assertTrue(repository.deleteById(1));
+        assertFalse(repository.deleteById(1));
     }
 
     private Review makeReview() {

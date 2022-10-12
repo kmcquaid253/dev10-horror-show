@@ -25,10 +25,10 @@ public class ReviewJdbcRepository implements ReviewRepository{
 
     @Override
     public List<Review> findAll() throws DataAccessException {
-        final String sql = "select reviewId, userReview, app_user_id, movieId "
+        final String sql = "select reviewId, userReview, app_user.app_user_id, movie.movieId "
                 + "from review "
-                + "inner join app_user on app_user.app_user_id = review.app_user_id"
-                + "inner join movie on movie.movieId = review.movieId;";
+                + "inner join app_user on app_user.app_user_id = review.app_user_id "
+                + "inner join movie on movie.movieId = review.movieId";
         return jdbcTemplate.query(sql, new ReviewMapper());
     }
 
@@ -36,7 +36,7 @@ public class ReviewJdbcRepository implements ReviewRepository{
     public Review create(Review review) throws DataAccessException {
 
         final String sql = "insert into review (userReview, app_user_id, movieId) "
-                + " values (?,?,?);";
+                + " values (?,?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
@@ -62,7 +62,7 @@ public class ReviewJdbcRepository implements ReviewRepository{
                 + "userReview = ? "
                 + "app_user_id = ? "
                 + "movieId = ? "
-                + "where reviewId = ?;";
+                + "where reviewId = ?";
 
         return jdbcTemplate.update(sql,
                 review.getUserReview(),
