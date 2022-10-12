@@ -109,7 +109,7 @@ function Register() {
             
                 <label htmlFor="passwordConfirm">Confirm Password</label>
                 <input
-                    type="text"
+                    type="password"
                     onChange={(event) => setPasswordConfirm(event.target.value)}
                     id="confirmPassword"
                 />
