@@ -51,4 +51,25 @@ public class MovieJdbcTemplateRepositoryTests {
         assertEquals(1, movie.getDirectorId());
         assertEquals(1, movie.getSubgenreId());
     }
+
+    @Test
+    void shouldCreate() {
+        Movie movie = makeMovie();
+        Movie actual = repository.create(movie);
+        assertNotNull(actual);
+    }
+
+    private Movie makeMovie() {
+        LocalDate release = LocalDate.parse("2014-05-17");
+
+        Movie movie = new Movie();
+        movie.setTitle("It Follows");
+        movie.setRuntime(100);
+        movie.setRating("R");
+        movie.setReleaseDate(release);
+        movie.setScoreNum(10);
+        movie.setDirectorId(1);
+        movie.setSubgenreId(1);
+        return movie;
+    }
 }

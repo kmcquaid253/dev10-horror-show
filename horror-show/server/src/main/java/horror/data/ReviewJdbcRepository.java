@@ -59,8 +59,8 @@ public class ReviewJdbcRepository implements ReviewRepository{
     public boolean update(Review review) throws DataAccessException {
 
         final String sql = "update review set "
-                + "userReview = ? "
-                + "app_user_id = ? "
+                + "userReview = ?, "
+                + "app_user_id = ?, "
                 + "movieId = ? "
                 + "where reviewId = ?";
 
