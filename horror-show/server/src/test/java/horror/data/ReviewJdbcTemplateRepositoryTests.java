@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class ReviewJdbcRepositoryTests {
+public class ReviewJdbcTemplateRepositoryTests {
 
-    static final int NEXT_ID = 1;
+    static final int NEXT_ID = 6;
 
     @Autowired
     ReviewJdbcRepository repository;
@@ -40,6 +40,21 @@ public class ReviewJdbcRepositoryTests {
         Review actual = repository.create(review);
         assertNotNull(actual);
         assertEquals(NEXT_ID, actual.getReviewId());
+    }
+
+    @Test
+    void shouldUpdate() {
+        Review review = makeReview();
+        review.setReviewId(3);
+        assertTrue(repository.update(review));
+        review.setReviewId(15);
+        assertFalse(repository.update(review));
+    }
+
+    @Test
+    void shouldDelete() {
+        assertTrue(repository.deleteById(5));
+        assertFalse(repository.deleteById(5));
     }
 
     private Review makeReview() {

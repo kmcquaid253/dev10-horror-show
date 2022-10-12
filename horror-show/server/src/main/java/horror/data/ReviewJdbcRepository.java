@@ -60,10 +60,14 @@ public class ReviewJdbcRepository implements ReviewRepository{
 
         final String sql = "update review set "
                 + "userReview = ? "
+                + "app_user_id = ? "
+                + "movieId = ? "
                 + "where reviewId = ?;";
 
         return jdbcTemplate.update(sql,
                 review.getUserReview(),
+                review.getAppUserId(),
+                review.getMovieId(),
                 review.getReviewId()) > 0;
     }
 
