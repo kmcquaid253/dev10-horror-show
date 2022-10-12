@@ -10,12 +10,10 @@ function Movie({ title, poster_path, release_date, overview }) {
 
     return (
         <div className="card">
-            <div className="card-header">
-                <h3>{title}</h3>
-                <h4>Release Date: {release_date}</h4>
-                <p>{overview}</p>
-            </div>
             <div className="card-body">
+                <h6>{title}</h6>
+                <h6>Release Date: {release_date}</h6>
+                {/* <p>{overview}</p> */}
                 <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview}></img>
             </div>
         </div>

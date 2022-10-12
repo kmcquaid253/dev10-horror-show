@@ -9,3 +9,29 @@ h1{
     font-family: nosifer;
     color: #AF3A08;
 }
+
+.card{
+    display: inline-block;
+    width: 25%;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #870101;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin-top: 10px;
+    /* background-color: #b9acac; */
+    text-align: center;
+    /* margin-left: 3px; */
+    /* border: 1px solid #8F1C34; */
+}
+/* 
+.card-img{
+    width: 95%;
+} */
+
+
