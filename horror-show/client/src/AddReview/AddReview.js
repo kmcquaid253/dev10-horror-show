@@ -25,7 +25,7 @@ function AddReview(){
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("URL GOES HERE",{
+        fetch("http://localhost:8080/api/review/reviewId",{
             method: "POST",
             body: JSON.stringify(review),
             headers: {

@@ -22,4 +22,8 @@ public class ReviewService {
     public boolean deleteById(int reviewId) {
         return repository.deleteById(reviewId);
     }
+
+    public Result<Review> add(Review review) {
+        throw new UnsupportedOperationException();
+    }
 }

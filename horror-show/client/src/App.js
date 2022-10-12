@@ -11,6 +11,7 @@ import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
 import MovieDisplay from './MovieDisplay/MovieDisplay';
+import AddReview from './AddReview/AddReview';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
