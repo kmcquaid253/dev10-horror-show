@@ -1,15 +1,20 @@
-function Movie(props) {
+import React from 'react';
 
-    const API_KEY ="api_key=afceef8d4ccab842b5c75f90eb06de9f";
-    const BASE_URL ="https://api.themoviedb.org/4"
+function Movie({title, poster_path, release_date, overview}) {
+
+    const API_IMG="https://image.tmdb.org/t/p/w500/";
 
     return (
         <div className="card">
-             <img src="images/post.jpg" className="poster"></img>
-             <div className="box">
-                <h4 className="original_title">Title</h4>
-             </div>
+            <div className="card-header">
+            <h3>{title}</h3>
+        <h4>Release Date: {release_date}</h4>
+        <p>{overview}</p>
             </div>
+        <div className="card-body">
+        <img className="card-img" src={API_IMG + poster_path}></img>
+        </div>
+        </div>
     )
 }
 
