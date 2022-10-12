@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,12 +38,15 @@ public class MovieJdbcTemplateRepositoryTests {
 
     @Test
     void shouldFindMovieOfId1() {
+
+        LocalDate release = LocalDate.parse("1976-11-03");
+
         Movie movie = repository.findById(1);
         assertEquals(1, movie.getMovieId());
-        assertEquals("Title", movie.getTitle());
-        assertEquals("Runtime", movie.getRuntime());
-        assertEquals("Rating", movie.getRating());
-        assertEquals(01-01-2000, movie.getReleaseDate());
+        assertEquals("Carrie", movie.getTitle());
+        assertEquals(98, movie.getRuntime());
+        assertEquals("R", movie.getRating());
+        assertEquals(release, movie.getReleaseDate());
         assertEquals(10, movie.getScoreNum());
         assertEquals(1, movie.getDirectorId());
         assertEquals(1, movie.getSubgenreId());

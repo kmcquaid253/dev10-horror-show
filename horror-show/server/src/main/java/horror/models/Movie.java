@@ -9,7 +9,7 @@ public class Movie {
 
     private String title;
 
-    private String runtime;
+    private int runtime;
 
     private String rating;
 
@@ -40,11 +40,11 @@ public class Movie {
         this.title = title;
     }
 
-    public String getRuntime() {
+    public int getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
 

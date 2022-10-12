@@ -32,9 +32,9 @@ public class MovieJdbcRepository implements MovieRepository {
     public Movie findById(int id) throws DataAccessException {
         final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId "
         + "from movie "
-        + "inner join director on director.directorId = movie.directorId"
-        + "inner join subgenre on subgenre.subgenreId = movie.subgenreId"
-        + "where movieId = '1'";
+        + "inner join director on director.directorId = movie.directorId "
+        + "inner join subgenre on subgenre.subgenreId = movie.subgenreId "
+        + "where movieId = ?";
 
         return jdbcTemplate.query(sql, new MovieMapper(), id).stream()
                 .findFirst().orElse(null);
