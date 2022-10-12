@@ -1,6 +1,5 @@
 import Error from "../Error/Error";
 import AuthContext from "../AuthContext/AuthContext";
-import FormInput from "../FormInput/FormInput";
 import React, {useState, useContext} from "react";
 import {Link, useHistory} from "react-router-dom";
 import './Register.css';
