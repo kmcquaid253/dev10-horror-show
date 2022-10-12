@@ -10,6 +10,7 @@ import NotFound from './NotFound/NotFound';
 import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
+import AddReview from './AddReview/AddReview';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -18,6 +19,7 @@ function App() {
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+    //const token = null;
     if (token) {
       login(token);
     }
@@ -81,6 +83,10 @@ function App() {
 
           <Route path="/register">
             <Register/>
+          </Route>
+
+          <Route path="/add">
+            <AddReview/>
           </Route>
 
           <Route>
