@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class MovieJdbcRepositoryTests {
+public class MovieJdbcTemplateRepositoryTests {
 
     @Autowired
     MovieJdbcRepository repository;
