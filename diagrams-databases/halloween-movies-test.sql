@@ -139,11 +139,10 @@ insert into app_user_role
     delimiter //
 create procedure set_known_good_state()
 begin
-	truncate table movie;
 
-	insert into movie (movieId, title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
+	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
 		values
-		('Carrie', 98, 'R', 1976, 10, 1, 1);
+		('Carrie', 98, 'R', 1976-11-03, 10, 1, 1);
         
 	insert into director (firstName, lastName, nationality)
 		values

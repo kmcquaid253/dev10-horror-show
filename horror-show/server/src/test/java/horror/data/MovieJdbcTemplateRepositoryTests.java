@@ -26,13 +26,12 @@ public class MovieJdbcTemplateRepositoryTests {
     }
 
 
-    // have not hard - coded test data yet
     @Test
     void shouldFindAll() {
         List<Movie> movies = repository.findAll();
         assertNotNull(movies);
 
-        assertTrue(movies.size() >= 4);
+        assertTrue(movies.size() > 0);
     }
 
 

@@ -22,7 +22,7 @@ public class MovieJdbcRepository implements MovieRepository {
 
             final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId "
                     + "from movie "
-                    + "inner join director on director.directorId = movie.directorId"
+                    + "inner join director on director.directorId = movie.directorId "
                     + "inner join subgenre on subgenre.subgenreId = movie.subgenreId";
 
             return jdbcTemplate.query(sql, new MovieMapper());
