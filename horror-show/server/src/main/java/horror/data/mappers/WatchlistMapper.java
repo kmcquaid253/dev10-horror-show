@@ -16,8 +16,8 @@ public class WatchlistMapper implements RowMapper<Watchlist> {
         MovieMapper movieMapper = new MovieMapper();
         watchlist.setMovie(movieMapper.mapRow(resultSet, i));
 
-//        AppUserMapper appUserMapper = new AppUserMapper();
-//        watchlist.setAppUser(appUserMapper.mapRow(resultSet, i));
+        AppUserMapper appUserMapper = new AppUserMapper();
+        watchlist.setAppUser(appUserMapper.mapRow(resultSet, i));
 
         return watchlist;
     }
