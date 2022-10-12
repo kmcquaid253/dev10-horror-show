@@ -11,15 +11,10 @@ function AddReview(){
         movieId: ""
     };
 
+    const [errors, setErrors] = useState([]);
     const[review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
 
     const history = useHistory();
-
-    function showErrors( listOfErrorMessages ){
-        const messageContainer = document.getElementById("messages");
-
-        messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + m + "</p>" ).reduce( (prev, curr) => prev + curr ); //reduce into one big string
-    }
 
     function handleSubmit(event){//take in an event to prevent it from posting
         event.preventDefault();
@@ -47,12 +42,13 @@ function AddReview(){
         .then(addedReview =>  history.push("/home"))
         .catch(error => {
             if(error instanceof TypeError){
-                showErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
+                setErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
             } else{
-                showErrors(error);
+                setErrors(error);
             }
         });
     }
+
 
     function inputChangeHandler(inputChangedEvent){
         const propertyName = inputChangedEvent.target.name;//We are using the property name to update the value
@@ -65,13 +61,14 @@ function AddReview(){
         setReview(reviewCopy);
     }
 
-
+    //movieId had to be an int and it's getting a string on the form atm resulting in an error.
+    //what variable from the database should we use to lookup a movie?
     return(
         <div className='container'>
                 <h4>Add Review:</h4>
                 <form onSubmit={handleSubmit}>
                     <FormInput 
-                        inputType={"search"} 
+                        inputType={"text"} 
                         identifier={"movieId"} 
                         labelText={"Movie Title"}
                         currVal={review.movieId} 
