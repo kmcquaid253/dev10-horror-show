@@ -15,13 +15,6 @@ public class WatchlistMapper implements RowMapper<Watchlist> {
     }
 
 
-    private final List<String> roles;
-
-    public WatchlistMapper(List<String> roles) {
-        this.roles = roles;
-    }
-
-
     @Override
     public Watchlist mapRow(ResultSet resultSet, int i) throws SQLException {
 
