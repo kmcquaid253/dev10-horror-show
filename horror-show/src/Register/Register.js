@@ -22,8 +22,6 @@ function Register() {
     const handleSubmit =  async (event) => {
         event.preventDefault();
 
-
-
         const response = await fetch("http://localhost:8080/create_account", {
             method: "POST",
             headers: {
