@@ -30,7 +30,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
 
-        //TODO figure out Watchlist Mapper input
+        //TODO figure out watchlist mapper input
         throw new UnsupportedOperationException();
 //        return jdbcTemplate.query(sql, new WatchlistMapper());
     }
