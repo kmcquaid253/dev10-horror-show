@@ -73,7 +73,7 @@ public class AppUserService implements UserDetailsService {
         }
 
         if (digits == 0 || letters == 0 || others == 0) {
-            throw new ValidationException("password must contain a digit, a letter, and a non-digit/non-letter");
+            throw new ValidationException("password must contain a digit, a letter, and a special character");
         }
     }
 }

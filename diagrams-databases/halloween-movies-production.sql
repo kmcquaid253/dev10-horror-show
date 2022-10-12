@@ -1,6 +1,6 @@
-drop database if exists mydb;
-create schema if not exists mydb;
-use mydb;
+drop database if exists dbHorrowShow;
+create schema if not exists dbHorrowShow;
+use dbHorrowShow;
 
 -- non-security
 

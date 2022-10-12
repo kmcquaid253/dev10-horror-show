@@ -17,7 +17,8 @@ public class Movie {
 
     private int scoreNum;
 
-    private List<Actor> actorId;
+    private List<Actor> actorId; // subject to change based on bridge table?
+    // going to focus on this when we list out movies from external api
 
     private int directorId;
 
