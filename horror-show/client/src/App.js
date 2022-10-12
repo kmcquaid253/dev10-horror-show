@@ -18,10 +18,6 @@ function App() {
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
-<<<<<<< HEAD:horror-show/src/App.js
-    // const token = null;
-=======
->>>>>>> 0ac25f7e7a0f91d2a1cebeea0653b2e7cc8fe021:horror-show/client/src/App.js
     if (token) {
       login(token);
     }
