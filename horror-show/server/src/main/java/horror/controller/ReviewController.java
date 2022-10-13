@@ -32,7 +32,7 @@ public class ReviewController {
 
 
     @PostMapping
-    public ResponseEntity<Object> add(@RequestBody Review review) {
+    public ResponseEntity<Object> create(@RequestBody Review review) {
         Result<Review> result = service.add(review);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
