@@ -5,7 +5,7 @@ import MovieDisplay from '../MovieDisplay/MovieDisplay';
 
 function Movie({ title, poster_path, release_date, overview }) {
 
-    const movieUrl = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US";
+    const movieUrl = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US";
 
     const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
