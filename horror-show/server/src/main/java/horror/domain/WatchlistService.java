@@ -20,11 +20,33 @@ public class WatchlistService {
     }
 
     public Result<Watchlist> create(Watchlist watchlist){
-        throw new UnsupportedOperationException();
+        Result<Watchlist> result = validate(watchlist);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        watchlist = repository.create(watchlist);
+        result.setPayload(watchlist);
+        return result;
     }
 
-    public Result<Watchlist> update() {
-        throw new UnsupportedOperationException();
+    public Result<Watchlist> update(Watchlist watchlist) {
+        Result<Watchlist> result = validate(watchlist);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        if (watchlist.getMovie().getMovieId() <= 0) {
+            result.addMessage("movieId must be set for 'update' operation", ResultType.INVALID);
+            return result;
+        }
+
+        if (watchlist.getAppUser().getAppUserId() <= 0) {
+            result.addMessage("Invalid user ID", ResultType.INVALID);
+            return result;
+        }
+
+        return result;
     }
 
     public boolean deleteById(int movieId) {

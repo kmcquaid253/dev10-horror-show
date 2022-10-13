@@ -1,7 +1,5 @@
 package horror.data;
 
-import horror.data.mappers.WatchlistMapper;
-import horror.models.Review;
 import horror.models.Watchlist;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -56,15 +54,15 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
     }
 
     @Override
-    public boolean update(Review watchlist) throws DataAccessException {
+    public boolean update(Watchlist watchlist) throws DataAccessException {
 
         final String sql = "update watchlist_movie set "
                 + "where movieId = ?, "
                 + "where app_user_id = ?";
 
         return jdbcTemplate.update(sql,
-                watchlist.getMovieId() > 0,
-                watchlist.getAppUserId()) > 0;
+                watchlist.getMovie().getMovieId() > 0,
+                watchlist.getAppUser().getAppUserId()) > 0;
     }
 
     @Override

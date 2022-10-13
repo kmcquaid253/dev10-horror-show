@@ -14,7 +14,8 @@ public interface WatchlistRepository {
     List<Watchlist> findAll() throws DataAccessException;
     Watchlist create(Watchlist watchlist) throws DataAccessException;
 
-    boolean update(Review watchlist) throws DataAccessException;
+
+    boolean update(Watchlist watchlist) throws DataAccessException;
 
     boolean deleteById(int id) throws DataAccessException;
 }
