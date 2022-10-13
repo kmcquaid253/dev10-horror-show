@@ -36,14 +36,14 @@ function AddReview(){
             if(response.status === 201){
                 //Invoking this hook returns an object
                 //if successful...
-                history.push("/home");
+                history.push("/reviewlist");
             }
             return Promise.reject(await response.json());
             
         })
         //when response.json happens...
         //returns hydrated reviews
-        .then(addedReview =>  history.push("/home"))
+        .then(addedReview =>  history.push("/reviewlist"))
         .catch(error => {
             if(error instanceof TypeError){
                 setErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
