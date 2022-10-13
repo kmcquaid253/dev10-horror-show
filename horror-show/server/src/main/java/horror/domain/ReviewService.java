@@ -26,4 +26,12 @@ public class ReviewService {
     public Result<Review> add(Review review) {
         throw new UnsupportedOperationException();
     }
+
+    public Result<Review> update(Review review) {
+        throw new UnsupportedOperationException();
+    }
+
+    private Result<Review> validate(Review review) {
+        throw new UnsupportedOperationException();
+    }
 }

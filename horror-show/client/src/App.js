@@ -82,6 +82,7 @@ function App() {
             <Login />
           </Route>
 
+          {/* separate movie display other than home */}
           <Route path="/movieDisplay">
             <MovieDisplay/>
           </Route>

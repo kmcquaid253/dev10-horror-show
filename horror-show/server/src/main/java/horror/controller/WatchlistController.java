@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:8080"})
 @RequestMapping("/api/watchlist")
 public class WatchlistController {
+    //todo:
 }
