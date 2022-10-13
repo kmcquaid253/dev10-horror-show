@@ -22,6 +22,15 @@ public class MovieServiceTests {
     MovieRepository repository;
 
     @Test
+    void shouldFindHereditary() {
+        Movie movie = makeMovie();
+        movie.setMovieId(1);
+        when(repository.findById(1)).thenReturn(movie);
+        Movie actual = service.findById(1);
+        assertEquals(movie, actual);
+    }
+
+    @Test
     void shouldCreate(){
         Movie movie = makeMovie();
         Movie mockOut = makeMovie();

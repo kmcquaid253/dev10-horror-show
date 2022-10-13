@@ -19,6 +19,10 @@ public class ReviewService {
         return repository.findAll();
     }
 
+    public Review findById(int reviewId) {
+        return repository.findById(reviewId);
+    }
+
     public Result<Review> add(Review review) {
         Result<Review> result = validate(review);
         if (!result.isSuccess()) {
