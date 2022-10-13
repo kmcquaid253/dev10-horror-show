@@ -62,7 +62,7 @@ public class MovieJdbcTemplateRepositoryTests {
     @Test
     void shouldUpdate() {
         Movie movie = makeMovie();
-        movie.setMovieId(3);
+        movie.setMovieId(2);
         assertTrue(repository.update(movie));
         movie.setMovieId(20);
         assertFalse(repository.update(movie));
