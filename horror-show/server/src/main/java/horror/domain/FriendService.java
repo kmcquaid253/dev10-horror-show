@@ -1,9 +1,7 @@
 package horror.domain;
 
 import horror.data.FriendRepository;
-import horror.data.MovieRepository;
 import horror.models.Friend;
-import horror.models.Movie;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

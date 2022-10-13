@@ -21,7 +21,7 @@ private final MovieService service;
     @GetMapping
     public List<Movie> findAll() { return service.findAll(); }
 
-    @GetMapping("/{agentId}")
+    @GetMapping("/{movieId}")
     public Movie findById(@PathVariable int movieId) {
         return service.findById(movieId);
     }

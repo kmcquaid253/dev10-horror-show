@@ -1,7 +1,6 @@
 package horror.data.mappers;
 
 import horror.models.Friend;
-import horror.models.Movie;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

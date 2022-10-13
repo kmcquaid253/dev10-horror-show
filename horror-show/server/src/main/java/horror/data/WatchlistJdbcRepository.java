@@ -1,6 +1,5 @@
 package horror.data;
 
-import horror.data.mappers.WatchlistMapper;
 import horror.models.Review;
 import horror.models.Watchlist;
 import org.springframework.dao.DataAccessException;

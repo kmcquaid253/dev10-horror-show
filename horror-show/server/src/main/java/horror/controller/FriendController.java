@@ -2,7 +2,6 @@ package horror.controller;
 
 import horror.domain.FriendService;
 import horror.models.Friend;
-import horror.models.Movie;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
