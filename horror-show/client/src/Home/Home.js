@@ -9,6 +9,7 @@ function Home() {
     const API_IMG = "https://image.tmdb.org/t/p/w500/"
 
     const [movies, setMovies] = useState([]);
+    
 
     useEffect(() => {
         fetch(url)
@@ -20,7 +21,6 @@ function Home() {
     }, []);
 
 
-
     return (
         
         <main>
@@ -29,6 +29,7 @@ function Home() {
                 <div className="grid" href="/movieDisplay/{movie}">
                     {movies.map((movie) =>
                     <Movie key ={movie.id} {...movie}/>)}
+                
                 </div>
             </div>
       </main>
