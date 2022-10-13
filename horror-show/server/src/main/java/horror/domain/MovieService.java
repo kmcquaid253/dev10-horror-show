@@ -41,7 +41,22 @@ public class MovieService {
     }
 
     public Result<Movie> update(Movie movie) {
-        throw new UnsupportedOperationException();
+        Result<Movie> result = validate(movie);
+        if (!result.isSuccess()) {
+            return result;
+        }
+        
+        if (movie.getMovieId() <= 0) {
+            result.addMessage("MovieId must be set for 'update' operation", ResultType.INVALID);
+            return result;
+        }
+        
+        if (!repository.update(movie)) {
+            String msg = String.format("MovieId: %s not found.", movie.getMovieId());
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        return result;
     }
 
     public boolean deleteById(int movieId) {
