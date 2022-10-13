@@ -59,7 +59,21 @@ public class ReviewServiceTests {
 
     @Test
     void shouldNotUpdateWhenInvalid() {
-        throw new UnsupportedOperationException();
+        Review review = makeReview();
+        Result<Review> actual = service.update(review);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        review = makeReview();
+        review.setReviewId(1);
+        review.setUserReview(" ");
+        actual = service.update(review);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        review = makeReview();
+        review.setReviewId(1);
+        review.setUserReview(null);
+        actual = service.update(review);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     Review makeReview() {

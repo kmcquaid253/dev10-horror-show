@@ -4,9 +4,11 @@ import horror.data.mappers.FriendMapper;
 import horror.models.Friend;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class FriendJdbcRepository implements FriendRepository {
 
     private final JdbcTemplate jdbcTemplate;
