@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
+
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class MovieServiceTests {
@@ -20,27 +23,54 @@ public class MovieServiceTests {
 
     @Test
     void shouldCreate(){
-        throw new UnsupportedOperationException();
+        Movie movie = makeMovie();
+        Movie mockOut = makeMovie();
+        mockOut.setMovieId(1);
+
+        when(repository.create(movie)).thenReturn(mockOut);
+
+        Result<Movie> actual = service.create(movie);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
     }
 
     @Test
     void shouldNotCreateWhenInvalid(){
-        throw new UnsupportedOperationException();
+        Movie movie = makeMovie();
+        movie.setTitle("  ");
+
+        Result<Movie> actual = service.create(movie);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     @Test
     void shouldUpdate(){
-        throw new UnsupportedOperationException();
+        Movie movie = makeMovie();
+        movie.setMovieId(1);
+
+        when(repository.update(movie)).thenReturn(true);
+
+        Result<Movie> actual = service.update(movie);
+        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
     @Test
     void shouldNotUpdateWhenInvalid() {
-        throw new UnsupportedOperationException();
-    }
+        Movie movie = makeMovie();
+        Result<Movie> actual = service.update(movie);
+        assertEquals(ResultType.INVALID, actual.getType());
 
-    @Test
-    void shouldDelete(){
-        throw new UnsupportedOperationException();
+        movie = makeMovie();
+        movie.setMovieId(1);
+        movie.setTitle("");
+        actual = service.update(movie);
+        assertEquals(ResultType.INVALID, actual.getType());
+
+        movie = makeMovie();
+        movie.setMovieId(1);
+        movie.setTitle(null);
+        actual = service.update(movie);
+        assertEquals(ResultType.INVALID, actual.getType());
     }
 
     Movie makeMovie() {
