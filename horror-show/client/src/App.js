@@ -12,6 +12,7 @@ import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './MovieDisplay/MovieDisplay';
+import MovieReview from './MovieReview/MovieReview';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -89,6 +90,10 @@ function App() {
 
           <Route path="/register">
             <Register/>
+          </Route>
+
+          <Route path="/reviewlist">
+            <MovieReview/>
           </Route>
 
           <Route path="/review">

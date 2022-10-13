@@ -1,8 +1,9 @@
 import FormInput from "../FormInput/FormInput";
-import {Link, useHistory } from "react-router-dom";
-import {useState} from 'react';
+import {useParams, Link, useHistory } from "react-router-dom";
+import {useEffect, useState} from 'react';
 import './AddReview.css';
-import Movie from "../Movie/MovieAddReview";
+import AddReviewTile from "../Movie/AddReviewTile";
+
 const API_SEARCH="https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
 function AddReview(){
@@ -20,15 +21,25 @@ function AddReview(){
 
     const history = useHistory();
 
+
+    function handleMovieSelect (movieId) {
+        const reviewCopy = {...review};
+        reviewCopy.movieId = movieId;
+        setReview(reviewCopy);
+    } 
+    //can change styling based on if it matches on selected
+
+
     function handleSubmit(event){//take in an event to prevent it from posting
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review/reviewId",{
+        fetch("http://localhost:8080/api/review",{
             method: "POST",
             body: JSON.stringify(review),
             headers: {
                 "Content-Type": "application/json"
+                //add token for user auth
             }
         })
         //fetch returns a response
@@ -36,14 +47,11 @@ function AddReview(){
             if(response.status === 201){
                 //Invoking this hook returns an object
                 //if successful...
-                history.push("/home");
+                history.push("/reviewlist");
             }
             return Promise.reject(await response.json());
             
         })
-        //when response.json happens...
-        //returns hydrated reviews
-        .then(addedReview =>  history.push("/home"))
         .catch(error => {
             if(error instanceof TypeError){
                 setErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
@@ -80,6 +88,7 @@ function AddReview(){
           console.log(e);
         }
       }
+
     
       const changeHandler=(e)=>{
         setQuery(e.target.value);
@@ -107,7 +116,7 @@ function AddReview(){
 
                     <div className="grid">
                     {movies.map((movie) =>
-                    <Movie key ={movie.id} {...movie}/>)}
+                    <AddReviewTile key ={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId}/>)}
                 </div>
 
                 </form>     
@@ -130,7 +139,7 @@ function AddReview(){
                         
 
                     <button type='submit'>Add</button>
-                    <button><Link to="/home" className="btn" id="cancelButton">Cancel</Link></button>
+                    <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
 
                     <div id="messages" className="alert alert-danger" role="alert"></div>
                 </form> 

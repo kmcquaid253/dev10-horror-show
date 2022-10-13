@@ -12,6 +12,10 @@
     transform: scale(1.03);
 }
 
+.movies-container-selected {
+    border: 9px solid #AF2708;
+}
+
 .movies-container,
 .movies-container * {
     box-sizing: border-box;
@@ -65,5 +69,3 @@
 img{
     width: 160px;
 }
-
-
