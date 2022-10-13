@@ -26,19 +26,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/authenticate").permitAll()
-                // new...
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
-//                .antMatchers(HttpMethod.GET,
-//                        "/order").permitAll()
-//                .antMatchers(HttpMethod.GET,
-//                        "/sighting", "/sighting/*").permitAll()
-//                .antMatchers(HttpMethod.POST,
-//                        "/sighting").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.PUT,
-//                        "/sighting/*").hasAnyRole("USER", "ADMIN")
-//                .antMatchers(HttpMethod.DELETE,
-//                        "/sighting/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.GET,
+                        "/api/movie", "/api/movie/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/review", "/api/review/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/actor", "/api/actor/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/director", "/api/director/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/subgenre", "/api/subgenre/*").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/friend", "/api/friend/*").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST,
+                        "/api/movie").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST,
+                        "/api/review").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.PUT,
+                        "/api/movie/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,
+                        "/api/review").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE,
+                        "/api/movie/*").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,
+                        "/api/review").hasAnyRole("USER", "ADMIN")
 //                .antMatchers("/**").denyAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(), converter))
