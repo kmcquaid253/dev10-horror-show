@@ -15,9 +15,11 @@ h1{
     width: 25%;
     font-family: Georgia, serif;
     font-size: 15px;
+    color: #FFF;
+    text-shadow: 0 0 2px #EB1037, 0 0 2px #EB1037, 0 0 2px #EB1037, 0 0 4px #BC0D2C, 0 0 4px #BC0D2C, 0 0 4px #BC0D2C, 0 0 5px #BC0D2C, 0 0 7px #BC0D2C;
     letter-spacing: 2px;
     word-spacing: 2px;
-    color: #870101;
+    color: #0b0707;
     font-weight: 400;
     text-decoration: none;
     font-style: normal;
@@ -30,6 +32,13 @@ h1{
     margin-right: 40px;
     /* border: 1px solid #8F1C34; */
 }
+
+p {
+    margin-top:0;
+    color: snow;
+   }
+   
+
 /* 
 .card-img{
     width: 95%;
