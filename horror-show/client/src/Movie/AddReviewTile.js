@@ -20,7 +20,7 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
             <div className="card-body">
             <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview + " " + id}></img>
                 <h2 className='title'>{title}</h2>
-                <h6 className='description'>Release Date: {release_date}</h6>
+                <h6 className='description'>Release Date:<br/> {release_date}</h6>
                 <h6 className='info'>Movie Id: {id}</h6>
                 {/* <p>{overview}</p> */}
                 
