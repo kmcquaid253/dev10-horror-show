@@ -31,7 +31,7 @@ public class ReviewController {
     }
 
 
-    @PostMapping("/{reviewId}")
+    @PostMapping
     public ResponseEntity<Object> add(@RequestBody Review review) {
         Result<Review> result = service.add(review);
         if (result.isSuccess()) {
