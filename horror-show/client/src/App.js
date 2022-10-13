@@ -90,7 +90,7 @@ function App() {
             <Register/>
           </Route>
 
-          <Route path="/add">
+          <Route path="/review">
             <AddReview/>
           </Route>
 
