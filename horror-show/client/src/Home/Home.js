@@ -26,7 +26,7 @@ function Home() {
         <main>
             <div className="container">
                 <h1>Welcome to Horror Show</h1>
-                <div className="grid">
+                <div className="grid" href="/movieDisplay/{movie}">
                     {movies.map((movie) =>
                     <Movie key ={movie.id} {...movie}/>)}
                 </div>

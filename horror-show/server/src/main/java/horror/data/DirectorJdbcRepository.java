@@ -29,10 +29,9 @@ public class DirectorJdbcRepository implements DirectorRepository {
 
     @Override
     public Director findDirectorById(int id) throws DataAccessException {
-        final String sql = "select friendAId, friendBId, name, friend.app_user_id "
-                + "from friend "
-                + "inner join app_user on app_user.app_user_id = friend.app_user_id "
-                + "where friend.app_user_id = ?;";
+        final String sql = "select directorId, firstName, lastName, nationality "
+                + "from director "
+                + "where directorId = ?;";
 
         return jdbcTemplate.query(sql, new DirectorMapper(), id).stream()
                 .findFirst().orElse(null);

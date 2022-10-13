@@ -2,10 +2,13 @@ package horror.controller;
 
 import horror.domain.Result;
 import horror.domain.ReviewService;
+import horror.models.Movie;
 import horror.models.Review;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
@@ -16,6 +19,15 @@ public class ReviewController {
 
     public ReviewController(ReviewService service) {
         this.service = service;
+    }
+
+
+    @GetMapping
+    public List<Review> findAll() { return service.findAll(); }
+
+    @GetMapping("/{reviewId}")
+    public Review findById(@PathVariable int reviewId) {
+        return service.findById(reviewId);
     }
 
 
