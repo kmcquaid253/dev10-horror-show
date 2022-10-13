@@ -1,0 +1,69 @@
+.movies-container .card{
+    width: 161px;
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    padding: 16px;
+    box-shadow: 0 9px 17px -6px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease;
+    height: calc(100vh /2.2)
+}
+
+.movies-container .card:hover {
+    transform: scale(1.03);
+}
+
+.movies-container,
+.movies-container * {
+    box-sizing: border-box;
+}
+
+.movies-container .card a {
+    text-decoration: none;
+    color: #14213d;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movies-container .card img{
+    margin: -16px;
+    object-fit: cover;
+}
+
+.movies-container .card h2.title{
+    font-size: 16px;
+    margin: 15px 0 7px 0;
+    line-height: 1.4;
+    color: darkred;
+}
+
+.movies-container .card h6.description{
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    line-height: 1.7;
+}
+
+.movies-container .card h6.info{
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    line-height: 1.7;
+}
+
+.movies-container {
+    display: inline-block;
+    padding-left: 12px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    max-width: 800px;
+    margin: 20px auto;
+    align-items: stretch;
+    
+}
+
+img{
+    width: 160px;
+}
+
+

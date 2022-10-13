@@ -2,6 +2,7 @@ import FormInput from "../FormInput/FormInput";
 import {Link, useHistory } from "react-router-dom";
 import {useState} from 'react';
 import './AddReview.css';
+import Movie from "../Movie/MovieAddReview";
 const API_SEARCH="https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
 function AddReview(){
@@ -68,7 +69,7 @@ function AddReview(){
         e.preventDefault();
         console.log("Searching");
         try{
-          const url=`https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
+          const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
           //const url=`https://api.themoviedb.org/3/movie/{movie_id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`;
           const res= await fetch(url);
           const data= await res.json();
@@ -83,6 +84,7 @@ function AddReview(){
       const changeHandler=(e)=>{
         setQuery(e.target.value);
       }
+
 
     //movieId had to be an int and it's getting a string on the form atm resulting in an error.
     //what variable from the database should we use to lookup a movie?
@@ -102,6 +104,11 @@ function AddReview(){
                     />
                     
                     <button variant="secondary" type="submit">Search</button>
+
+                    <div className="grid">
+                    {movies.map((movie) =>
+                    <Movie key ={movie.id} {...movie}/>)}
+                </div>
 
                 </form>     
           
