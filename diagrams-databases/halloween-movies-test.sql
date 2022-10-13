@@ -152,7 +152,6 @@ begin
 		values
 		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
         
-   
 
 end //
 delimiter ;

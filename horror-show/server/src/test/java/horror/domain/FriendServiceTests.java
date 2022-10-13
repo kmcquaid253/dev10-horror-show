@@ -1,16 +1,17 @@
 package horror.domain;
 
-import horror.data.WatchlistRepository;
+import horror.data.FriendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest
-public class WatchlistServiceTests {
+public class FriendServiceTests {
 
     @Autowired
-    WatchlistService service;
+    FriendService service;
 
     @MockBean
-    WatchlistRepository repository;
+    FriendRepository repository;
+
 }

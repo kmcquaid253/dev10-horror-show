@@ -21,7 +21,7 @@ public class MovieService {
     }
 
     public Movie findById(int movieId) {
-        throw new UnsupportedOperationException();
+        return repository.findById(movieId);
     }
 
     public Result<Movie> create(Movie movie) {
