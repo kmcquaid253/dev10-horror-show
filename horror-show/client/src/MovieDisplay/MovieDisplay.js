@@ -8,19 +8,18 @@ import TMDB from "./TMDB";
 const MovieDisplay = () => {
     const [movies, setMovies] = useState([])
 
-    useEffect(() => {
-        fetch("https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&with_genres=27", 
-            {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        });
-    },[])
+        useEffect(() => {
+            fetch("https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&with_genres=27") 
+            .then((response) => response.json())
+            .then(data => {
+                console.log(data);
+                setMovies(data.results);
+            })
+        }, []);
 
     return (<div className="className">
         {movies.map((movie,index)=>{
-            return <Movie key={index} {...movie} />
+            return <MovieCard key={index} {...movie} />
         })}
     </div>)
 }

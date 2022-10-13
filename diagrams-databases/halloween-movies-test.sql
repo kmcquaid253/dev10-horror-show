@@ -142,6 +142,15 @@ begin
 
 	insert into subgenre (name)
 		values
+		("Horror"),
+        ("Thriller");
+
+	insert into actor (firstName, lastName, nationality)
+		values
+        ("Sissy", "Spacek", "American");
+    
+	insert into subgenre (name)
+		values
         ("Horror");
 
 	insert into director (firstName, lastName, nationality)
@@ -151,7 +160,6 @@ begin
 	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
 		values
 		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
-        
 
 end //
 delimiter ;

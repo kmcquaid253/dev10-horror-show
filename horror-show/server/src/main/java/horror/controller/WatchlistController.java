@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/watchlist")
 public class WatchlistController {
 
+
     private final WatchlistService service;
 
     public WatchlistController(WatchlistService service) {

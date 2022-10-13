@@ -26,12 +26,17 @@ h1{
     margin-top: 10px;
     /* background-color: #b9acac; */
     text-align: center;
-    /* margin-left: 3px; */
+    margin-left: 20px;
+    margin-right: 40px;
     /* border: 1px solid #8F1C34; */
 }
 /* 
 .card-img{
     width: 95%;
 } */
+
+body{
+    background-color: rgb(37, 36, 36);
+}
 
 
