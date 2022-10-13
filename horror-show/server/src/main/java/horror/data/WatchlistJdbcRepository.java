@@ -1,5 +1,6 @@
 package horror.data;
 
+import horror.data.mappers.WatchlistMapper;
 import horror.models.Watchlist;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,9 +18,13 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     private final JdbcTemplate jdbcTemplate;
 
-    public WatchlistJdbcRepository(JdbcTemplate jdbcTemplate) {
+    private final List<String> roles;
+
+    public WatchlistJdbcRepository(JdbcTemplate jdbcTemplate, List<String> roles) {
         this.jdbcTemplate = jdbcTemplate;
+        this.roles = roles;
     }
+
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
@@ -28,9 +33,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
 
-        //TODO figure out watchlist mapper input
-        throw new UnsupportedOperationException();
-//        return jdbcTemplate.query(sql, new WatchlistMapper());
+        return jdbcTemplate.query(sql, new WatchlistMapper(roles));
     }
 
     @Override
