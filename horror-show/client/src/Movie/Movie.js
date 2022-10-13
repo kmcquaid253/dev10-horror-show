@@ -33,7 +33,6 @@ function Movie({ title, poster_path, release_date, overview }) {
     return (
         <div className="card">
             <div className="card-body">
-
                 <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview}></img>
                 <div hidden={!show}>
                         <div className="modal-background" onClick={handleModalClose}>

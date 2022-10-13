@@ -20,15 +20,6 @@ public class ReviewServiceTests {
     ReviewRepository repository;
 
     @Test
-    void shouldFindReviewById() {
-        Review review = makeReview();
-        review.setReviewId(1);
-        when(repository.findById(1)).thenReturn(review);
-        Review actual = service.findById(1);
-        assertEquals(review, actual);
-    }
-
-    @Test
     void shouldAdd() {
         Review review = makeReview();
         Review mockOut = makeReview();

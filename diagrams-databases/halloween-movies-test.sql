@@ -142,6 +142,15 @@ begin
 
 	insert into subgenre (name)
 		values
+		("Horror"),
+        ("Thriller");
+
+	insert into actor (firstName, lastName, nationality)
+		values
+        ("Sissy", "Spacek", "American");
+    
+	insert into subgenre (name)
+		values
         ("Horror");
 
 	insert into director (firstName, lastName, nationality)

@@ -19,9 +19,13 @@ public class ReviewService {
         return repository.findAll();
     }
 
+<<<<<<< HEAD
     public Review findById(int reviewId) {
         return repository.findById(reviewId);
     }
+=======
+    public Review findById(int reviewId) { return repository.findById(reviewId);}
+>>>>>>> e39322c59bd4fc21d1d3d59ac04be52f95a11442
 
     public Result<Review> add(Review review) {
         Result<Review> result = validate(review);
@@ -75,4 +79,6 @@ public class ReviewService {
 
         return result;
     }
+
+
 }
