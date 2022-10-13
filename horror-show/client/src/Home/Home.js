@@ -20,13 +20,6 @@ function Home() {
     }, []);
 
 
-    // const fetchHorror = async () => {
-    //     const data = await fetch(url);
-    //     const movies = await data.json();
-    //     console.log(movies);
-    //     setMovie(movies.results);
-    // };
-
     return (
         
         <main>
@@ -36,12 +29,6 @@ function Home() {
                     {movies.map((movie) =>
                     <Movie key ={movie.id} {...movie}/>)}
                 </div>
-               
-            {/* <div className="horror-movies">
-            {movie.map((movies) => {
-                return <Movie key={movie.id} movie={movie}/>;
-            })}
-            </div> */}
             </div>
       </main>
     );

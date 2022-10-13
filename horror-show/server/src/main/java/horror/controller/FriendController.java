@@ -29,5 +29,4 @@ public class FriendController {
     public Friend findById(@PathVariable int friendId) {
         return service.findById(friendId);
     }
-
 }
