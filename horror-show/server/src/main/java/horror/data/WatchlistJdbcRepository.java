@@ -57,7 +57,14 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public boolean update(Review watchlist) throws DataAccessException {
-        throw new UnsupportedOperationException();
+
+        final String sql = "update watchlist_movie set "
+                + "where movieId = ?, "
+                + "where app_user_id = ?";
+
+        return jdbcTemplate.update(sql,
+                watchlist.getMovieId() > 0,
+                watchlist.getAppUserId()) > 0;
     }
 
     @Override
