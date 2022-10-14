@@ -1,60 +1,83 @@
 .container {
-    max-width: 800px; 
+  max-width: 800px;
 }
 
-    /* Navbar */
-    .navbar,
-    .navbar-spacer {
-      display: block;
-      width: 100%;
-      height: 6.5rem;
-      background: #fff;
-      z-index: 99;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee; 
-    }
-      
-    .navbar-spacer {
-      display: none; 
-    }
+/* Navbar */
+.navbar,
+.navbar-spacer {
+  display: block;
+  width: 100%;
+  height: 6.5rem;
+  background: #fff;
+  z-index: 99;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
 
-    .navbar > .container {
-      width: 100%; 
-    }
+.navbar-spacer {
+  display: none;
+}
 
-    .navbar-list {
-      list-style: none;
-      margin-bottom: 0; 
-    }
+.navbar>.container {
+  width: 100%;
+}
 
-    .navbar-item {
-      position: relative;
-      float: left;
-      margin-bottom: 0; 
-    }
+.navbar-list {
+  list-style: none;
+  margin-bottom: 0;
+}
 
-    .navbar-link {
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .2rem;
-      margin-right: 35px;
-      text-decoration: none;
-      line-height: 6.5rem;
-      color: #222; 
-    }
-      
-    .has-docked-nav .navbar {
-      position: fixed;
-      top: 0;
-      left: 0; 
-    }
+.navbar-item {
+  position: relative;
+  float: left;
+  margin-bottom: 0;
+}
 
-    .has-docked-nav .navbar-spacer {
-      display: block; 
-    }
+.navbar-link {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  margin-right: 35px;
+  text-decoration: none;
+  line-height: 6.5rem;
+  color: #222;
+}
+
+.has-docked-nav .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.has-docked-nav .navbar-spacer {
+  display: block;
+}
 
 /* Re-overiding the width 100% declaration to match size of % based container */
-.has-docked-nav .navbar > .container {
-  width: 80%; 
+.has-docked-nav .navbar>.container {
+  width: 80%;
+}
+
+.logoutButton {
+  margin-left: 1.5rem;
+}
+
+.welcomeMessage{
+  padding-block-start: 1.2rem;
+  margin-left: 10rem;
+  color: #f8f8f8;
+  text-shadow:
+  0px 0px 5px #EB1037,
+  0px 0px 7px #000000,
+  0px 6px 1px #400000,
+  0px 8px 1px #500000,
+  0px 10px 1px #600000,
+  0px 12px 1px #700000,
+  0px 14px 1px #800000,
+  0px 16px 1px #900000,
+  0px 18px 1px #A00000,
+  0px 20px 1px #B00000,
+  0px 22px 1px #C00000;
+  
 }

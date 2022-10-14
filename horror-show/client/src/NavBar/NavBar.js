@@ -48,9 +48,9 @@ function NavBar() {
 
         </ul>
         {auth.user && (
-          <div>
-            Welcome {auth.user.username}!
-            <button onClick={() => auth.logout()}>Logout</button>
+          <div className="welcomeMessage">
+            Welcome {auth.user.username}! 
+            <button className="logoutButton" onClick={() => auth.logout()}>Logout</button>
           </div>
         )}
       </div>
