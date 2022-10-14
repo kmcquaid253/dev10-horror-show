@@ -11,7 +11,7 @@ function Friends(){
 
         <div className="card">
             <div className="card-header">
-                <h5>Friend Name goes here</h5>
+                <h5>Friend Name goes</h5>
             </div>
             <div className="card-body">
                 <button onClick={friendURL} className="button">See Reviews</button>
