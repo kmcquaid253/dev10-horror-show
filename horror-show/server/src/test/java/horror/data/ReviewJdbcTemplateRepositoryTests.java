@@ -42,10 +42,8 @@ public class ReviewJdbcTemplateRepositoryTests {
     @Test
     void shouldUpdate() {
         Review review = makeReview();
-        review.setReviewId(2);
+        review.setReviewId(3);
         assertTrue(repository.update(review));
-        review.setReviewId(15);
-        assertFalse(repository.update(review));
     }
 
     @Test
