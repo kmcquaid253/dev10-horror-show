@@ -7,6 +7,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
+
 function AddReview() {
 
     const DEFAULT_REVIEW = {
