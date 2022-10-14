@@ -14,7 +14,7 @@ function NavBar() {
         <ul className="navbar-list">
           <li className="navbar-item navbar-link"><Link to="/">Home</Link></li>
           {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/review">Add</Link></li>
+            <li className="navbar-item navbar-link"><Link to="/review">Add Review</Link></li>
 
           ) : (
 

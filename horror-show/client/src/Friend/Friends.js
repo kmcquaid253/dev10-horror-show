@@ -9,7 +9,7 @@ function Friends(){
         <div className="heading">
             <h1 className="heading-header">Friends</h1>
 
-        <div className="card">
+        <div className="friendCard">
             <div className="card-header">
                 <h5>Friend Name goes here</h5>
             </div>
