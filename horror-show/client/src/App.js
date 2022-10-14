@@ -110,7 +110,7 @@ function App() {
           </Route>
 
 
-          {/* for watchlist
+          {/* for watchlist */}
           <Route path="/mainpage">
             <MainPage/>
           </Route>
@@ -125,7 +125,7 @@ function App() {
           
           <Route path="/detail">
             <Detail/>
-          </Route>*/}
+          </Route>
 
 
           <Route>
