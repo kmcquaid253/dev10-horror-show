@@ -11,7 +11,7 @@ function AddReview() {
 
     const DEFAULT_REVIEW = {
         userReview: "",
-        //appUserId: "",
+        appUserId: "",
         movieId: ""
     };
 
@@ -19,11 +19,9 @@ function AddReview() {
     const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState('');
-
     const auth = useContext(AuthContext);
 
     const history = useHistory();
-
 
     function handleMovieSelect(movieId) {
         const reviewCopy = { ...review };
@@ -37,13 +35,14 @@ function AddReview() {
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("http://localhost:3000/api/review", {
+        fetch("http://localhost:8080/api/review", {
             method: "POST",
-            body: JSON.stringify(review),
             headers: {
                 "Content-Type": "application/json",
+                Accept: "application/json",
                 Authorization: `Bearer ${auth.user.token}`,
-            }
+            },
+            body: JSON.stringify(review),
         })
             //fetch returns a response
             .then(async response => {
@@ -51,7 +50,7 @@ function AddReview() {
 
                     //Invoking this hook returns an object
                     //if successful...
-                    history.push("/home");
+                    history.push("/reviewlist");
                     return response.json();
                 }
                 return Promise.reject(await response.json());
@@ -83,7 +82,6 @@ function AddReview() {
         console.log("Searching");
         try {
             const url = `https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
-            //const url=`https://api.themoviedb.org/3/movie/{movie_id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
@@ -104,7 +102,7 @@ function AddReview() {
     //what variable from the database should we use to lookup a movie?
     return (
         <div className='container'>
-            <h4>Add Review:</h4>
+            <h2>Add Review:</h2>
             <div className="searchDiv">
                 <form onSubmit={searchMovie}>
                     <FormInput className="d-flex" onSubmit={searchMovie} autoComplete="off"
@@ -129,12 +127,12 @@ function AddReview() {
 
             <div className="inputDiv">
             <form onSubmit={handleSubmit}>
-                <FormInput
+                {/* <FormInput
                     inputType={"text"}
                     identifier={"movieId"}
                     labelText={"Movie Title"}
                     currVal={review.movieId}
-                    onChangeHandler={inputChangeHandler} />
+                    onChangeHandler={inputChangeHandler} /> */}
 
                 <FormInput
                     inputType={"text"}
@@ -143,13 +141,16 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
-
+                {/* <FormInput
+                    inputType={"number"}
+                    identifier={"appUserId"}
+                    labelText={"User Id"}
+                    currVal={review.appUserId}
+                    onChangeHandler={inputChangeHandler}
+                /> */}
                 
-
                 <button type='submit'>Add</button>
                 <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
-
-                <div id="messages" className="alert alert-danger" role="alert"></div>
             </form>
             </div>
         </div>
