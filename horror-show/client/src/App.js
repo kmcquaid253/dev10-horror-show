@@ -132,7 +132,7 @@ function App() {
           
           <Route path="/detail">
             <Detail/>
-          </Route>*/}
+          </Route> */}
 
 
           <Route>

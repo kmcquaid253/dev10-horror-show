@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useContext } from 'react';
 import { DataContext } from './DataContext';
 import { useHistory } from 'react-router-dom';
+import "./MainPage.css";
 
 export default function MainPage() {
 
@@ -10,12 +12,16 @@ export default function MainPage() {
             watchLater,
             setWatchLater,
             addToWatched,
-            setSelectedMovie } = useContext(DataContext);
+            setSelectedMovie,
+            sidebar,
+            openSidebar,
+            showSidebar } = useContext(DataContext);
 
 let history = useHistory();
+
     const addToWatchLater = (movie) => {
-        const check = watchLater.every(item => {
-            return item.id !== movie.id
+        const check = watchLater.every((item) => {
+            return item.id !== movie.id;
         })
         if (check) {
             setWatchLater([...watchLater, movie]);
@@ -41,6 +47,12 @@ let history = useHistory();
                 id="search-input"
                 onChange={handleSearch}
             />
+            <div className={sidebar ? "side-menu active" : "side-menu"}>
+                <div className='close-siderbar-cnt'>
+                    <p onClick={showSidebar}>X</p>
+                </div>
+                <watchLater/>
+            </div>
             {movies.page ? (
                 <div>
                     <p id='pages-p'>
@@ -91,7 +103,10 @@ let history = useHistory();
                                     </div>
                                 )}
                                 <div className="movie-buttons">
-                                    <button className="movie-btn" onClick={() => addToWatchLater(movie)}>Watch Later</button>
+                                    <button className="movie-btn" onClick={() => {
+                                        addToWatchLater(movie);
+                                        openSidebar();
+                                    }}>Watch Later</button>
 
                                     <button className="movie-btn" onClick={() => {
                                         addToWatched(movie);
