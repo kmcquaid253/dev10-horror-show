@@ -1,6 +1,6 @@
-import { useState } from "react";
-
 function Friends({name}){
+
+    const friendURL = "";
 
     return(
 
@@ -12,7 +12,7 @@ function Friends({name}){
                     <h5>{name}</h5>
                 </div>
                 <div className="card-body">
-                    <button className="button">See Reviews</button>
+                    <button onClick={friendURL} className="button">See Reviews</button>
                 </div>
             </div>
         </div>
