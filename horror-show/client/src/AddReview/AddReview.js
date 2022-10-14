@@ -24,7 +24,7 @@ function AddReview(){
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review",{
+        fetch("http://localhost:8080/api/review/reviewId",{
             method: "POST",
             body: JSON.stringify(review),
             headers: {
@@ -36,14 +36,14 @@ function AddReview(){
             if(response.status === 201){
                 //Invoking this hook returns an object
                 //if successful...
-                history.push("/reviewlist");
+                history.push("/home");
             }
             return Promise.reject(await response.json());
             
         })
         //when response.json happens...
         //returns hydrated reviews
-        .then(addedReview =>  history.push("/reviewlist"))
+        .then(addedReview =>  history.push("/home"))
         .catch(error => {
             if(error instanceof TypeError){
                 setErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
