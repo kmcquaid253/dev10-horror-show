@@ -2,7 +2,7 @@
     max-width: 800px; 
 }
 
-.card {
+.friendCard {
     display: inline-block;
     width: 30.0%;
     border: 5px solid #bd0b0b;
