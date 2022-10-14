@@ -12,6 +12,10 @@
     transform: scale(1.03);
 }
 
+.movies-container-selected {
+    border: 9px solid #AF2708;
+}
+
 .movies-container,
 .movies-container * {
     box-sizing: border-box;
@@ -31,14 +35,14 @@
 }
 
 .movies-container .card h2.title{
-    font-size: 16px;
+    font-size: 13px;
     margin: 15px 0 7px 0;
     line-height: 1.4;
     color: darkred;
 }
 
 .movies-container .card h6.description{
-    font-size: 14px;
+    font-size: 12px;
     color: #333;
     margin: 0;
     line-height: 1.7;

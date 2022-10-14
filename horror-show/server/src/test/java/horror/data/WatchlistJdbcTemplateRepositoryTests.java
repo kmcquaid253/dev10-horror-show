@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 public class WatchlistJdbcTemplateRepositoryTests {
@@ -56,7 +57,6 @@ public class WatchlistJdbcTemplateRepositoryTests {
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
 
-        
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
 
