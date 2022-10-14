@@ -26,6 +26,7 @@ function Movie({ title, poster_path, release_date, overview }) {
 
     const handleModalOpen = () => {
         setShow(true);
+        <button class="button button-primary close-modal">Cancel</button>
     };
 
 

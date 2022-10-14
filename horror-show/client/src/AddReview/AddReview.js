@@ -1,8 +1,9 @@
 import FormInput from "../FormInput/FormInput";
 import {useParams, Link, useHistory } from "react-router-dom";
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import './AddReview.css';
 import AddReviewTile from "../Movie/AddReviewTile";
+import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH="https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
@@ -19,6 +20,8 @@ function AddReview(){
     const [movies, setMovies]=useState([]);
     const [query, setQuery]=useState('');
 
+    const auth = useContext(AuthContext);
+
     const history = useHistory();
 
 
@@ -34,12 +37,12 @@ function AddReview(){
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review/reviewId",{
+        fetch("http://localhost:8080/api/review",{
             method: "POST",
             body: JSON.stringify(review),
             headers: {
-                "Content-Type": "application/json"
-                //add token for user auth
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
             }
         })
         //fetch returns a response
