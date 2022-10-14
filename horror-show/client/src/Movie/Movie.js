@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from "react";
-import MovieDisplay from '../MovieDisplay/MovieDisplay';
+import MovieDisplay from '../TMDBMoviePractice/MovieDisplay';
 
 
 function Movie({ title, poster_path, release_date, overview }) {

@@ -11,7 +11,7 @@ import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
-import MovieDisplay from './MovieDisplay/MovieDisplay';
+import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReview from './MovieReview/MovieReview';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
