@@ -81,23 +81,6 @@ constraint fk_movie_subgenreId
     references subgenre(subgenreId)
 );
 
-create table review (
-  reviewId int primary key auto_increment,
-  userReview varchar(750) null,
-  app_user_id int not null,
-  movieId int not null,
-constraint fk_review_app_user_id
-	foreign key (app_user_id)
-	references app_user(app_user_id),
-constraint fk_review_movieId
-    foreign key (movieId)
-    references movie(movieId)
-);
-
-
-
-
-
 
 insert into app_role (`name`) values
     ('USER'),
@@ -113,6 +96,19 @@ insert into app_user_role
 	values
 	(1,1),
     (2,2);
+    
+create table review (
+  reviewId int primary key auto_increment,
+  userReview varchar(750) null,
+  app_user_id int not null,
+  movieId int not null,
+constraint fk_review_app_user_id
+	foreign key (app_user_id)
+	references app_user(app_user_id),
+constraint fk_review_movieId
+    foreign key (movieId)
+    references movie(movieId)
+);
     
 create table watchlist_movie (
     movieId int not null,
