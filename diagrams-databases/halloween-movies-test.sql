@@ -160,6 +160,10 @@ begin
 	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
 		values
 		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
+        
+	insert into review (userReview, app_user_id, movieId)
+		values
+        ("I liked this movie.", 1, 1);
 
 end //
 delimiter ;
