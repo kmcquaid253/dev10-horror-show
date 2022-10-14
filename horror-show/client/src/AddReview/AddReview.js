@@ -115,7 +115,7 @@ function AddReview() {
 
                     />
 
-                    <button variant="secondary" type="submit">Search</button>
+                    <button variant="secondary" className="searchButton" type="submit">Search</button>
 
                     <div className="grid">
                         {movies.map((movie) =>
@@ -149,8 +149,8 @@ function AddReview() {
                     onChangeHandler={inputChangeHandler}
                 /> */}
                 
-                <button type='submit'>Add</button>
-                <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+                <button type='submit' className="addButton">Add</button>
+                <button className="cancelButton"><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
             </form>
             </div>
         </div>

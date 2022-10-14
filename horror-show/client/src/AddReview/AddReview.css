@@ -1,3 +1,13 @@
 .inputDiv{
     padding-top: 10rem;
 }
+
+.addButton {
+    color:rgb(237, 221, 225);
+    background-color: #AF3A08;
+}
+
+.searchButton {
+    color:rgb(237, 221, 225);
+    background-color: #AF3A08;
+}
