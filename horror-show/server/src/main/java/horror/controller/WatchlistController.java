@@ -34,4 +34,30 @@ public class WatchlistController {
         }
         return ErrorResponse.build(result);
     }
+
+    @PutMapping("/api/watchlist")
+    public ResponseEntity<Object> update(@PathVariable int movieId, @PathVariable int appUserId, @RequestBody Watchlist watchlist) {
+        if (movieId != watchlist.getMovie().getMovieId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        if (appUserId != watchlist.getAppUser().getAppUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Result<Watchlist> result = service.update(watchlist);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return ErrorResponse.build(result);
+    }
+
+    @DeleteMapping("/api/watchlist")
+    public ResponseEntity<Void> deleteById(@PathVariable int movieId) {
+        if (service.deleteById(movieId)) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
