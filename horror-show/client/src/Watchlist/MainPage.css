@@ -1,0 +1,24 @@
+.main-cnt {
+    margin-top: 70px;
+    text-align: center;
+}
+
+
+#search-input {
+    padding: 10px;
+    width: 250px;
+    outline: none;
+    border: none;
+}
+
+.movie-poster {
+    transition: 0.3 ease;
+    cursor: pointer;
+}
+
+.movie-poster:hover {
+    transform: scale(1.03);
+    box-shadow: 6px 6px 12px -1px rgb(0,0,0);
+}
+
+.noImage

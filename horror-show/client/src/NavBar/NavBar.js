@@ -27,24 +27,12 @@ function NavBar() {
           {auth.user ? (
             <li className="navbar-item navbar-link"><Link to="/watchlist">Watchlist</Link></li>
 
-          ) : (
-
-            <>
-              <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
-              <li className="navbar-item navbar-link"><Link to="/register">Register</Link></li>
-            </>
-          )}
+          ) : ("")}
 
           {auth.user ? (
             <li className="navbar-item navbar-link"><Link to="/friends">Friends</Link></li>
 
-          ) : (
-
-            <>
-              <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
-              <li className="navbar-item navbar-link"><Link to="/register">Register</Link></li>
-            </>
-          )}
+          ) : ("")}
 
         </ul>
         {auth.user && (

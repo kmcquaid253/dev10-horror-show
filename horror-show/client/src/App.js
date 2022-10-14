@@ -14,7 +14,8 @@ import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReview from './MovieReview/MovieReview';
 import Friends from './Friend/Friends';
-import Watchlist from './Watchlist/Watchlist';
+
+import MainPage from './Watchlist/MainPage';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -106,9 +107,12 @@ function App() {
             <Friends/>
           </Route>
 
-          <Route path="/watchlist">
-            <Watchlist/>
+
+          {/* for watchlist */}
+          <Route path="/mainpage">
+            <MainPage/>
           </Route>
+
 
           <Route>
             <NotFound />
