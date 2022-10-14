@@ -111,7 +111,7 @@ function AddReview() {
 
                         inputType={"search"}
                         identifier={"movieReview"}
-                        labelText={"Movie Title"}
+                        labelText={"Movie Title Search"}
                         currVal={query}
                         onChangeHandler={changeHandler}
 

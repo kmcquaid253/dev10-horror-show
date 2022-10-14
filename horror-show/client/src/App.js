@@ -13,6 +13,8 @@ import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReview from './MovieReview/MovieReview';
+import Friends from './Friend/Friends';
+import Watchlist from './Watchlist/Watchlist';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -98,6 +100,14 @@ function App() {
 
           <Route path="/review">
             <AddReview/>
+          </Route>
+
+          <Route path="/friends">
+            <Friends/>
+          </Route>
+
+          <Route path="/watchlist">
+            <Watchlist/>
           </Route>
 
           <Route>
