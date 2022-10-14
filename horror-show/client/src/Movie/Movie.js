@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from "react";
-import MovieDisplay from '../TMDBMoviePractice/MovieDisplay';
+
 
 
 function Movie({ title, poster_path, release_date, overview }) {
@@ -46,7 +46,7 @@ function Movie({ title, poster_path, release_date, overview }) {
                             </div>
                         </div>
                     </div>
-                    <button className="button" onClick={handleModalOpen}>View More</button>
+                    <button className="viewMoreButton" onClick={handleModalOpen}>View More</button>
 
             </div>
         

@@ -1,18 +1,22 @@
-import { useState } from "react";
+import './Friends.css';
 
 function Friends(){
 
-    const [errors, setErrors] = useState([]);
-    const [friends, setFriends] = useState({});
-
-    function handleSubmit(event) {//take in an event to prevent it from posting
-        event.preventDefault();
-    };
+    const friendURL = "";
 
     return(
 
-        <div className="container">
-            <h2>Friends:</h2>
+        <div className="heading">
+            <h1 className="heading-header">Friends</h1>
+
+        <div className="card">
+            <div className="card-header">
+                <h5>Friend Name goes here</h5>
+            </div>
+            <div className="card-body">
+                <button onClick={friendURL} className="button">See Reviews</button>
+            </div>
+        </div>
         </div>
     );
 

@@ -7,6 +7,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
+
 function AddReview() {
 
     const DEFAULT_REVIEW = {
@@ -128,7 +129,7 @@ function AddReview() {
 
                     />
 
-                    <button variant="secondary" type="submit">Search</button>
+                    <button variant="secondary" className="searchButton" type="submit">Search</button>
 
                     <div className="grid">
                         {movies.map((movie) =>
@@ -162,8 +163,8 @@ function AddReview() {
                     onChangeHandler={inputChangeHandler}
                 />
                 
-                <button className="btn" type='submit'>Add</button>
-                <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+                <button type='submit' className="addButton">Add</button>
+                <button className="cancelButton"><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
             </form>
             </div>
         </div>
