@@ -2,12 +2,32 @@
     padding-top: 10rem;
 }
 
-.addButton {
+/* .addButton {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
-}
+} */
 
 .searchButton {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
+    font-family: 'Creepster', cursive;
+    font-size: 20px;
+}
+
+.btn{
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+    cursor: pointer;
+    transition: 0.8s;
+    border: 2px solid rgba(255, 0, 0, 0.485)
+}
+
+.addButton:hover{
+    background-color: green;
+    margin-right: 1em;
+}
+
+.review-cancelButton:hover{
+    background-color: yellow;
+    margin-left: 1em;
 }
