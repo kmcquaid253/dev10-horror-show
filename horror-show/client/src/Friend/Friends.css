@@ -2,11 +2,15 @@
     max-width: 800px; 
 }
 
-.card {
+.friendCard {
     display: inline-block;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: #FFF;
     width: 30.0%;
     border: 5px solid #bd0b0b;
     margin-bottom: 15px;
     margin-right: 0.5em;
     margin-left: 0.5em;
+    text-align: center;
 }
