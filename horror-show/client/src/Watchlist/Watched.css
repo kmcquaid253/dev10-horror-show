@@ -1,18 +1,28 @@
-.main-cnt {
+.movies-cnt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+.movies-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 400px;
+    margin: 0 50px;
     margin-top: 70px;
+}
+
+.movie-title {
+    font-size: 20px;
+    color: whitesmoke;
     text-align: center;
 }
 
-
-#search-input {
-    padding: 10px;
-    width: 250px;
-    outline: none;
-    border: none;
-}
-
 .movie-poster {
-    transition: 0.3 ease;
+    transition: 0.3s ease;
     cursor: pointer;
 }
 
@@ -20,8 +30,7 @@
     transform: scale(1.03);
     box-shadow: 6px 6px 12px -1px rgb(0,0,0);
 }
-
-.movie-buttons {
+.movie-buttons{
     display: flex;
     margin: 10px 2px;
 }
@@ -33,13 +42,13 @@
     outline: none;
     border: none;
     cursor: pointer;
-    background: rgb(0,0,0);
+    background-color: antiquewhite;
     color: whitesmoke;
     transition: 0.2s ease;
 }
 
-.movie-btn:hover {
-    background: rgb(0,0,0);
+.movie-btn:hover{
+    background-color: antiquewhite;
 }
 
 .noimage {
@@ -54,21 +63,3 @@
     color: whitesmoke;
 }
 
-.watchlater-movies-cnt {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 100px;
-}
-
-#watch-list {
-    color: rgb(0,0,0);
-    font-size: 30px;
-    text-align: center;
-}
-
-#watched-header {
-    color: whitesmoke;
-    text-align: center;
-    margin-top: 50px;
-}

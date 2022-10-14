@@ -1,0 +1,13 @@
+.movie-details-title {
+    color: whitesmoke;
+}
+
+.movie-details {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.movie-overview {
+    width: 70
+}

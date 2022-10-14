@@ -1,19 +1,18 @@
 import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
 
-
-// export default WatchLater() { ;
-
-//     const {watchLater, setWatchLater} = useContext{DataContext};
-//     return (
-//         <div>
-
-//         </div>
-//     );
-// }
-
 export default function WatchLater() {
-    const { watchLater, setWatchLater } = useContext(DataContext);
+    const { watchLater, setWatchLater, addToWatched } = useContext(DataContext);
+
+    const removeFromWatchLater = (movie) => {
+        const updater = [...watchLater];
+        updater.forEach((item, index) => {
+            if (item.id === movie.id) {
+                updater.splice(index,1);
+            }
+        })
+        setWatchLater(updater);
+    }
 
     return (
         <div>
@@ -37,6 +36,21 @@ export default function WatchLater() {
                                     </div>
                                 )}
                                 <div className="movie-buttons"></div>
+                                <button
+                                    className="movie-btn"
+                                    onClick={() => {
+                                        removeFromWatchLater(movie);
+                                    }}
+                                > Remove
+                                </button>
+                                <button
+                                    className="movie-btn"
+                                    onClick={() => {
+                                        removeFromWatchLater(movie);
+                                        addToWatched(movie);
+                                    }}
+                                > Watched
+                                </button>
                             </div>
                         );
                     }) 
@@ -44,4 +58,4 @@ export default function WatchLater() {
             </div>
         </div>
     );
-                }
+}

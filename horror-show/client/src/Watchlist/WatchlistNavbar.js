@@ -9,6 +9,7 @@ export default function NavBar(){
             </div>
             <ul>
                 <Link to="/watchlater"><li>Watch Later</li></Link>
+                <Link to="/watched"><li>Watched</li></Link>
                 <li>Watched</li>
             </ul>
         </div>

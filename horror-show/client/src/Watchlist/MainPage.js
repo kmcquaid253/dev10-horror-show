@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { DataContext } from './DataContext';
+import { useHistory } from 'react-router-dom';
 
 export default function MainPage() {
 
@@ -7,10 +8,11 @@ export default function MainPage() {
             movies,
             handlePageChange,
             watchLater,
-            setWatchLater } = useContext(DataContext);
+            setWatchLater,
+            addToWatched,
+            setSelectedMovie } = useContext(DataContext);
 
-    console.log(watchLater);
-
+let history = useHistory();
     const addToWatchLater = (movie) => {
         const check = watchLater.every(item => {
             return item.id !== movie.id
@@ -20,6 +22,13 @@ export default function MainPage() {
         } else {
             alert("This movie is already in your watch list");
         }
+    }
+
+    const goToPage = (movie) => {
+        setSelectedMovie(movie.id);
+        let str = movie.title;
+        str = str.replace(/\s+/g, "-").toLowerCase();
+        history.push(`/details/${str}`);
     }
 
     return (
@@ -39,9 +48,9 @@ export default function MainPage() {
                     </p>
                     <p id="pages-p">{movies.total_results} results</p>
                     <button
-                        className="page-btn"
+                        className="movie-btn"
                         onClick={() => {
-                            if (movies.page != 1) {
+                            if (movies.page !== 1) {
                                 handlePageChange(movies.page - 1);
                             }
                         }}
@@ -49,9 +58,9 @@ export default function MainPage() {
                         Previous page
                     </button>
                     <button
-                        className="page-btn"
+                        className="movie-btn"
                         onClick={() => {
-                            if (movies.page != movies.total_pages) {
+                            if (movies.page !== movies.total_pages) {
                                 handlePageChange(movies.page + 1);
                             }
                         }}
@@ -72,6 +81,9 @@ export default function MainPage() {
                                         className="movie-poster"
                                         alt={`${movie.title} poster`}
                                         src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
+                                        onClick={() => {
+                                            goToPage(movie);
+                                        }}
                                     />
                                 ) : (
                                     <div className="noImage">
@@ -81,7 +93,9 @@ export default function MainPage() {
                                 <div className="movie-buttons">
                                     <button className="movie-btn" onClick={() => addToWatchLater(movie)}>Watch Later</button>
 
-                                    <button className="movie-btn">Watched</button>
+                                    <button className="movie-btn" onClick={() => {
+                                        addToWatched(movie);
+                                    }}>Watched</button>
                                 </div>
                             </div>
                         );

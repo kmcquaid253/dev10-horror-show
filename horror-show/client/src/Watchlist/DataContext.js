@@ -4,8 +4,29 @@ export const DataContext = createContext()
 
 export const DataProvider = (props) => {
     const [search, setSearch] = useState("");
+    const [selectedMovie, setSelectedMovie] = useState();
     const [movies, setMovies] = useState([]);
-    const [watchLater, setWatchLater] = useState([]);
+    const [selectedMovieDetails, setSelectedMovieDetails] = useState();
+
+    const [watchLater, setWatchLater] = useState(localStorage.getItem("watchlater") 
+        ? JSON.parse(localStorage.getItem("watchlater")) 
+        : []
+    );
+
+    const [watched, setWatched] = useState(localStorage.getItem("watched") 
+        ? JSON.parse(localStorage.getItem("watched")) 
+        : []
+    );
+    useEffect(() => {
+        localStorage.setItem("watchlater", JSON.
+        stringify(watchLater));
+    }, [watchLater]);
+
+    useEffect(() => {
+        localStorage.setItem("watched", JSON.
+        stringify(watched));
+    }, [watched]);
+
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -22,7 +43,36 @@ export const DataProvider = (props) => {
             .then((data) => setMovies(data));
     };
 
+    const addToWatched = (movie) => {
+        const check = watched.every((item) => {
+            return item.id !== movie.id;
+        });
+        if (check) {
+            setWatched([...watched, movie]);
+        } else { 
+            alert("Youve already seen this movie");
+        }
+    };
+
+    const getMovie = (id) => {
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`)
+        .then((response) => response.json())
+        .then ((data) => setSelectedMovieDetails(data));
+    };
+
     return (
-        <DataContext.Provider value={{handleSearch, movies, handlePageChange, watchLater, setWatchLater}}>{props.children}</DataContext.Provider>
+        <DataContext.Provider value={{
+            handleSearch,
+            movies, 
+            handlePageChange, 
+            watchLater, 
+            setWatchLater, 
+            addToWatched,
+            watched,
+            setWatched,
+            selectedMovie,
+            setSelectedMovie,
+            getMovie,
+            selectedMovieDetails}}>{props.children}</DataContext.Provider>
     )
 }
