@@ -24,6 +24,11 @@ function NavBar() {
             </>
           )}
 
+{auth.user ? (
+            <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
+
+          ) : ("")}
+
           {auth.user ? (
             <li className="navbar-item navbar-link"><Link to="/watchlist">Watchlist</Link></li>
 
