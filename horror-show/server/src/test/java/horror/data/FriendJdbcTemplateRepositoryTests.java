@@ -36,7 +36,7 @@ public class FriendJdbcTemplateRepositoryTests {
 
 
     @Test
-    void shouldFindMovieOfId1() {
+    void shouldFindFriendOfId1() {
         Friend friend = repository.findFriendById(1);
         assertEquals(1, friend.getFriendAId());
         assertEquals(2, friend.getFriendBId());

@@ -11,11 +11,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 public class WatchlistJdbcTemplateRepositoryTests {
 
     @Autowired
-    ReviewJdbcRepository repository;
+    WatchlistRepository repository;
 
     @Autowired
     KnownGoodState knownGoodState;
@@ -27,12 +30,17 @@ public class WatchlistJdbcTemplateRepositoryTests {
 
     @Test
     void shouldFindAll() {
-        throw new UnsupportedOperationException();
+        List<Watchlist> watchlist = repository.findAll();
+        assertNotNull(watchlist);
+
+        assertTrue(watchlist.size() > 0);
     }
 
     @Test
     void shouldAdd() {
-        throw new UnsupportedOperationException();
+        Watchlist watchlist = makeWatchlist();
+        Watchlist actual = repository.create(watchlist);
+        assertNotNull(actual);
     }
 
     @Test
@@ -49,6 +57,7 @@ public class WatchlistJdbcTemplateRepositoryTests {
         LocalDate release = LocalDate.parse("2014-05-17");
 
         Movie movie = new Movie();
+        movie.setMovieId(1);
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
@@ -57,8 +66,11 @@ public class WatchlistJdbcTemplateRepositoryTests {
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
 
+        AppUser appUser = new AppUser(0, "kevin1234", "q1w2e3r4!", false, List.of("User"));
+
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
+        watchlist.setAppUser(appUser);
 
         return watchlist;
     }
