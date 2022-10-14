@@ -155,30 +155,17 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
-<<<<<<< HEAD
                 </div>
-
-                {/* <FormInput
-=======
                 <FormInput
->>>>>>> 6c4457495e02f98be9c3b217e55d5d027fd639ab
                     inputType={"number"}
                     identifier={"appUserId"}
                     labelText={"User Id"}
                     currVal={review.appUserId}
                     onChangeHandler={inputChangeHandler}
-<<<<<<< HEAD
-                /> */}
-                <div className='review-container'>
-                    <button type='submit' className='btn review-add'>Add</button>
-                    <button className='btn review-cancel'><Link to="/" id="cancelButton">Cancel</Link></button>
-                </div>
-=======
                 />
                 
                 <button type='submit' className="addButton">Add</button>
                 <button className="cancelButton"><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
->>>>>>> 6c4457495e02f98be9c3b217e55d5d027fd639ab
             </form>
             </div>
         </div>
