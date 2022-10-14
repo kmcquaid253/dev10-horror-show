@@ -108,7 +108,6 @@ constraint fk_review_movieId
     foreign key (movieId)
     references movie(movieId)
 );
-
     
 create table watchlist_movie (
     movieId int not null,
