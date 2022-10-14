@@ -94,31 +94,9 @@ constraint fk_review_movieId
     references movie(movieId)
 );
 
-create table watchlist_movie (
-    movieId int not null,
-    app_user_id int not null,
-constraint pk_watchlist_movie_id
-	primary key (movieId, app_user_id),
-constraint fk_watchlist_movie_app_user_id
-	foreign key (app_user_id)
-    references app_user(app_user_id),
-constraint fk_watchlist_movie_movieId
-	foreign key (movieId)
-    references movie(movieId)
-    );
 
-create table actor_movie (
-	actorId int not null,
-    movieId int not null,
-constraint pk_actor_movie_id
-	primary key (actorId, movieId),
-constraint fk_actor_movie_movieId
-	foreign key (movieId)
-    references movie(movieId),
-constraint fk_actor_movie_actorId
-	foreign key (actorId)
-    references actor(actorId)
-);
+
+
 
 
 insert into app_role (`name`) values
@@ -135,3 +113,30 @@ insert into app_user_role
 	values
 	(1,1),
     (2,2);
+    
+create table watchlist_movie (
+    movieId int not null,
+    app_user_id int not null,
+    name varchar(50) not null,
+constraint pk_watchlist_movie_id
+	primary key (movieId, app_user_id),
+constraint fk_watchlist_movie_app_user_id
+	foreign key (app_user_id)
+    references app_user(app_user_id),
+constraint fk_watchlist_movie_movieId
+	foreign key (movieId)
+    references movie(movieId)
+    );
+    
+create table actor_movie (
+	actorId int not null,
+    movieId int not null,
+constraint pk_actor_movie_id
+	primary key (actorId, movieId),
+constraint fk_actor_movie_movieId
+	foreign key (movieId)
+    references movie(movieId),
+constraint fk_actor_movie_actorId
+	foreign key (actorId)
+    references actor(actorId)
+);

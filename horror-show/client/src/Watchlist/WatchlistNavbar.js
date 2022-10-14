@@ -8,7 +8,7 @@ export default function NavBar(){
                 <h1 id="logo">watchlist</h1>
             </div>
             <ul>
-                <li>Watch Later</li>
+                <Link to="/watchlater"><li>Watch Later</li></Link>
                 <li>Watched</li>
             </ul>
         </div>

@@ -16,6 +16,7 @@ import MovieReview from './MovieReview/MovieReview';
 import Friends from './Friend/Friends';
 
 import MainPage from './Watchlist/MainPage';
+import WatchLater from './Watchlist/WatchLater';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -111,6 +112,10 @@ function App() {
           {/* for watchlist */}
           <Route path="/mainpage">
             <MainPage/>
+          </Route>
+
+          <Route path="/watchlater">
+            <WatchLater/>
           </Route>
 
 
