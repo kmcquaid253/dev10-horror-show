@@ -7,7 +7,7 @@
       <env name="HORROR_SHOW_DB_PASSWORD" value="top-secret-password" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="horror.App" />
-    <module name="server" />
+    <module name="horror-show" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
