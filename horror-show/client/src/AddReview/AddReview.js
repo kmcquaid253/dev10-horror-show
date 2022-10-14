@@ -7,6 +7,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
+
 function AddReview() {
 
     const DEFAULT_REVIEW = {
@@ -15,9 +16,11 @@ function AddReview() {
         movieId: ""
     };
 
+
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
+    const [id, setId] = useState([]);
     const [query, setQuery] = useState('');
     const auth = useContext(AuthContext);
 
@@ -78,11 +81,22 @@ function AddReview() {
         setReview(reviewCopy);
     }
 
+    function idChangeHandler(idChangedEvent) {
+        const propertyNameId = idChangedEvent.target.name;//We are using the property name to update the value
+        const newValueId = idChangedEvent.target.value;
+
+        const idCopy = { ...id };
+
+        idCopy[propertyNameId] = newValueId;
+
+        setId(idCopy);
+    }
+
     const searchMovie = async (e) => {
         e.preventDefault();
         console.log("Searching");
-        try {
-            const url = `https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
+        try { //api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=horror&with_watch_monetization_types=flatrate
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
@@ -114,7 +128,7 @@ function AddReview() {
 
                     />
 
-                    <button variant="secondary" type="submit">Search</button>
+                    <button variant="secondary" className="searchButton" type="submit">Search</button>
 
                     <div className="grid">
                         {movies.map((movie) =>
@@ -141,19 +155,30 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
+<<<<<<< HEAD
                 </div>
 
                 {/* <FormInput
+=======
+                <FormInput
+>>>>>>> 6c4457495e02f98be9c3b217e55d5d027fd639ab
                     inputType={"number"}
                     identifier={"appUserId"}
                     labelText={"User Id"}
                     currVal={review.appUserId}
                     onChangeHandler={inputChangeHandler}
+<<<<<<< HEAD
                 /> */}
                 <div className='review-container'>
                     <button type='submit' className='btn review-add'>Add</button>
                     <button className='btn review-cancel'><Link to="/" id="cancelButton">Cancel</Link></button>
                 </div>
+=======
+                />
+                
+                <button type='submit' className="addButton">Add</button>
+                <button className="cancelButton"><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+>>>>>>> 6c4457495e02f98be9c3b217e55d5d027fd639ab
             </form>
             </div>
         </div>

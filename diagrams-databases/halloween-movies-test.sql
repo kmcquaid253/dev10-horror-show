@@ -164,6 +164,7 @@ begin
 	insert into review (userReview, app_user_id, movieId)
 		values
         ("I liked this movie.", 1, 1);
+	
 
 end //
 delimiter ;

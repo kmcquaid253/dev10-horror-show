@@ -14,7 +14,8 @@ import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReview from './MovieReview/MovieReview';
 import Friends from './Friend/Friends';
-
+import Watched from './Watchlist/Watched';
+import Detail from './Watchlist/Detail';
 import MainPage from './Watchlist/MainPage';
 import WatchLater from './Watchlist/WatchLater';
 
@@ -123,7 +124,15 @@ function App() {
 
           <Route path="/watchlater">
             <WatchLater/>
-          </Route> */}
+          </Route> 
+          
+          <Route path="/watched">
+            <Watched/>
+          </Route>
+          
+          <Route path="/detail">
+            <Detail/>
+          </Route>*/}
 
 
           <Route>
