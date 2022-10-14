@@ -30,12 +30,13 @@ function AddReview() {
     }
     //can change styling based on if it matches on selected
 
+    
 
     function handleSubmit(event) {//take in an event to prevent it from posting
         event.preventDefault();
 
         //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review#", {
+        fetch("http://localhost:8080/api/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +64,7 @@ function AddReview() {
                     setErrors(error);
                 }
             });
-    }
+    };
 
 
     function inputChangeHandler(inputChangedEvent) {
@@ -96,10 +97,8 @@ function AddReview() {
     const changeHandler = (e) => {
         setQuery(e.target.value);
     }
+    
 
-
-    //movieId had to be an int and it's getting a string on the form atm resulting in an error.
-    //what variable from the database should we use to lookup a movie?
     return (
         <div className='container'>
             <h2>Add Review:</h2>
@@ -134,13 +133,16 @@ function AddReview() {
                     currVal={review.movieId}
                     onChangeHandler={inputChangeHandler} /> */}
 
+                <div className="expandingArea">
                 <FormInput
-                    inputType={"text"}
+                    inputType={"textarea"}
                     identifier={"userReview"}
                     labelText={"User Review"}
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
+                </div>
+
                 {/* <FormInput
                     inputType={"number"}
                     identifier={"appUserId"}
@@ -148,9 +150,10 @@ function AddReview() {
                     currVal={review.appUserId}
                     onChangeHandler={inputChangeHandler}
                 /> */}
-                
-                <button type='submit'>Add</button>
-                <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+                <div className='review-container'>
+                    <button type='submit' className='btn review-add'>Add</button>
+                    <button className='btn review-cancel'><Link to="/" id="cancelButton">Cancel</Link></button>
+                </div>
             </form>
             </div>
         </div>

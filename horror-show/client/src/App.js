@@ -21,8 +21,10 @@ import WatchLater from './Watchlist/WatchLater';
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
+
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
+  
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     //const token = null;
@@ -31,6 +33,7 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+
   const login = (token) => { //do something to ensure token is valid
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
     const { sub: username, authorities: authoritiesString } = jwtDecode(token);
@@ -47,18 +50,22 @@ function App() {
     setUser(user);
     return user;
   };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
+
   const auth = {
     user: user ? { ...user } : null,
     login,
     logout
   };
+    
   if (!restoreLoginAttemptCompleted) {
-    return null;
-  }
+      return null;
+    }
+  
   return (
     <AuthContext.Provider value={auth}>
       <Router>
@@ -84,7 +91,7 @@ function App() {
 
           {/* manually testing if login works via this path */}
           <Route path="/login">
-            <Login />
+          {!user ? <Login /> : <Redirect to="/" />}
           </Route>
 
           {/* separate movie display other than home */}
