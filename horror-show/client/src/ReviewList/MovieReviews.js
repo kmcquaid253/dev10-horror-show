@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AddReviewTile from '../Movie/AddReviewTile';
+import AddReviewTile from '../AddReview/AddReviewTile';
 import Movie from '../Movie/Movie';
 
 function MovieReviews() {
