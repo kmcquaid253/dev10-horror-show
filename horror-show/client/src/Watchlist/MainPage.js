@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { DataContext } from './DataContext';
 import { useHistory } from 'react-router-dom';
+import WatchLater from './WatchLater';
 import "./MainPage.css";
 
 export default function MainPage() {
@@ -26,7 +27,7 @@ let history = useHistory();
         if (check) {
             setWatchLater([...watchLater, movie]);
         } else {
-            alert("This movie is already in your watch list");
+            alert("This movie is already in your watch list! :D");
         }
     }
 
@@ -51,7 +52,7 @@ let history = useHistory();
                 <div className='close-siderbar-cnt'>
                     <p onClick={showSidebar}>X</p>
                 </div>
-                <watchLater/>
+                <WatchLater/>
             </div>
             {movies.page ? (
                 <div>
