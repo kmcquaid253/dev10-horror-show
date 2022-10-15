@@ -48,7 +48,7 @@ public class AuthController {
             Authentication authentication = authenticationManager.authenticate(authToken);
 
             if (authentication.isAuthenticated()) {
-                String jwtToken = converter.getTokenFromUser((User) authentication.getPrincipal());
+                String jwtToken = converter.getTokenFromUser((AppUser) authentication.getPrincipal());
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("jwt_token", jwtToken);
@@ -67,7 +67,7 @@ public class AuthController {
 
     @PostMapping("/refresh_token")
     public ResponseEntity<Map<String, String>> refreshToken(UsernamePasswordAuthenticationToken principal) {
-        User user = new User(principal.getName(), principal.getName(), principal.getAuthorities());
+        AppUser user = (AppUser) appUserService.loadUserByUsername(principal.getName());
         String jwtToken = converter.getTokenFromUser(user);
 
         HashMap<String, String> map = new HashMap<>();

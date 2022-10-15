@@ -1,6 +1,7 @@
 package horror.domain;
 
 import horror.data.ReviewRepository;
+import horror.models.AppUser;
 import horror.models.Review;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class ReviewService {
     public Review findById(int reviewId) { return repository.findById(reviewId);}
 
     public Result<Review> add(Review review) {
+        //validate app user is not null
         Result<Review> result = validate(review);
         if (!result.isSuccess()) {
             return result;

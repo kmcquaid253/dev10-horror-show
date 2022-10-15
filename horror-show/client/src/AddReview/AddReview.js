@@ -2,7 +2,7 @@ import FormInput from "../FormInput/FormInput";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useEffect, useState, useContext } from 'react';
 import './AddReview.css';
-import AddReviewTile from "../Movie/AddReviewTile";
+import AddReviewTile from "./AddReviewTile";
 import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
@@ -33,13 +33,10 @@ function AddReview() {
     }
     //can change styling based on if it matches on selected
 
-    
+    function addReview() {
 
-    function handleSubmit(event) {//take in an event to prevent it from posting
-        event.preventDefault();
-
-        //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review", {
+         //Use fetch to POST to the service
+         fetch("http://localhost:8080/api/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,6 +64,34 @@ function AddReview() {
                     setErrors(error);
                 }
             });
+    }
+
+    function addMovieAndReview(){
+        const movie = movies.find((m) => m.id === review.movieId);
+
+        fetch ("http://localhost:8080/api/movie", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+            },
+            body: JSON.stringify(movie),
+        }).then(response => {
+            if (response.status == 201){
+                addReview();
+            } else {
+                console.log(response);
+
+            }
+        })
+    }
+    
+
+    function handleSubmit(event) {//take in an event to prevent it from posting
+        event.preventDefault();
+
+        addMovieAndReview();
     };
 
 
@@ -96,7 +121,8 @@ function AddReview() {
         e.preventDefault();
         console.log("Searching");
         try { //api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=horror&with_watch_monetization_types=flatrate
-            const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`;
+            //const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`; 
+            const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`; // this URL is for overall searching, includes even non horror movies
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
@@ -147,7 +173,6 @@ function AddReview() {
                     currVal={review.movieId}
                     onChangeHandler={inputChangeHandler} /> */}
 
-                <div className="expandingArea">
                 <FormInput
                     inputType={"textarea"}
                     identifier={"userReview"}
@@ -155,17 +180,18 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
-                </div>
-                <FormInput
+                {/* <FormInput
                     inputType={"number"}
                     identifier={"appUserId"}
                     labelText={"User Id"}
                     currVal={review.appUserId}
                     onChangeHandler={inputChangeHandler}
-                />
-                
-                <button type='submit' className="addButton">Add</button>
-                <button className="cancelButton"><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+                /> */}
+
+                <div className="review-container">
+                    <button type='submit' className="btn addButton">Add</button>
+                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>
+                </div>
             </form>
             </div>
         </div>

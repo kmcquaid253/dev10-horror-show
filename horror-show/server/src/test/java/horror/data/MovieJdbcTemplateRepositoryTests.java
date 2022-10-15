@@ -42,12 +42,12 @@ public class MovieJdbcTemplateRepositoryTests {
         LocalDate release = LocalDate.parse("1976-11-03");
 
         Movie movie = repository.findById(1);
-        assertEquals(1, movie.getMovieId());
+        assertEquals(1, movie.getId());
         assertEquals("Carrie", movie.getTitle());
         assertEquals(98, movie.getRuntime());
         assertEquals("R", movie.getRating());
-        assertEquals(release, movie.getReleaseDate());
-        assertEquals(10, movie.getScoreNum());
+        assertEquals(release, movie.getRelease_date());
+        assertEquals(10, movie.getVote_average());
         assertEquals(1, movie.getDirectorId());
         assertEquals(1, movie.getSubgenreId());
     }
@@ -62,9 +62,9 @@ public class MovieJdbcTemplateRepositoryTests {
     @Test
     void shouldUpdate() {
         Movie movie = makeMovie();
-        movie.setMovieId(2);
+        movie.setId(2);
         assertTrue(repository.update(movie));
-        movie.setMovieId(20);
+        movie.setId(20);
         assertFalse(repository.update(movie));
     }
 
@@ -81,8 +81,8 @@ public class MovieJdbcTemplateRepositoryTests {
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
-        movie.setReleaseDate(release);
-        movie.setScoreNum(10);
+        movie.setRelease_date(release);
+        movie.setVote_average(10);
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
         return movie;

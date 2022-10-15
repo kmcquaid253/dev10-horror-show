@@ -20,7 +20,8 @@ export default function Detail() {
                 <h1 id="movie-title-h1">{selectedMovieDetails.title}</h1>
                 <p id="runtime">{selectedMovieDetails.runtime} min</p>
                 <div className='movie-details'>
-                    <img 
+                    <img
+                        id="details-poster"
                         src={`https://image.tmdb.org/t/p/w200${selectedMovieDetails.poster_path}`}
                     />
                     <div className='movie-overview'>
@@ -29,9 +30,9 @@ export default function Detail() {
                         <h3>Genres:</h3>
                         {selectedMovieDetails.genres
                             ? selectedMovieDetails.map((genre) => (
-                            <span>{genre.name},</span>
-                        ))
-                    : null } 
+                                <span>{genre.name},</span>
+                            ))
+                            : null}
                     </div>
                 </div>
             </div>

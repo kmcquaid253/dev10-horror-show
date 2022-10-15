@@ -6,6 +6,7 @@ export const DataProvider = (props) => {
     const [search, setSearch] = useState("");
     const [selectedMovie, setSelectedMovie] = useState();
     const [movies, setMovies] = useState([]);
+    const [sidebar, setSidebar] = useState(false);
     const [selectedMovieDetails, setSelectedMovieDetails] = useState();
 
     const [watchLater, setWatchLater] = useState(localStorage.getItem("watchlater") 
@@ -17,14 +18,18 @@ export const DataProvider = (props) => {
         ? JSON.parse(localStorage.getItem("watched")) 
         : []
     );
+
+    const showSidebar = () => setSidebar(!sidebar);
+    const openSidebar = () => setSidebar(true);
+    
     useEffect(() => {
-        localStorage.setItem("watchlater", JSON.
-        stringify(watchLater));
+        localStorage.setItem("watchlater", 
+        JSON.stringify(watchLater));
     }, [watchLater]);
 
     useEffect(() => {
-        localStorage.setItem("watched", JSON.
-        stringify(watched));
+        localStorage.setItem("watched", 
+        JSON.stringify(watched));
     }, [watched]);
 
 
@@ -50,7 +55,7 @@ export const DataProvider = (props) => {
         if (check) {
             setWatched([...watched, movie]);
         } else { 
-            alert("Youve already seen this movie");
+            alert("Youve already seen this movie! :D");
         }
     };
 
@@ -73,6 +78,9 @@ export const DataProvider = (props) => {
             selectedMovie,
             setSelectedMovie,
             getMovie,
-            selectedMovieDetails}}>{props.children}</DataContext.Provider>
+            selectedMovieDetails,
+            openSidebar,
+            showSidebar,
+            sidebar}}>{props.children}</DataContext.Provider>
     )
 }

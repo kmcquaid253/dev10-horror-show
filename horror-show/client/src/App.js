@@ -18,6 +18,9 @@ import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
 import MainPage from './Watchlist/MainPage';
 import WatchLater from './Watchlist/WatchLater';
+import { DataProvider } from './Watchlist/DataContext';
+import WatchlistNavbar from './Watchlist/WatchlistNavbar';
+
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -25,7 +28,7 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
-  
+
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     //const token = null;
@@ -37,12 +40,13 @@ function App() {
 
   const login = (token) => { //do something to ensure token is valid
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-    const { sub: username, authorities: authoritiesString } = jwtDecode(token);
+    const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
       username,
       roles,
       token,
+      userId,
       hasRole(role) {
         return this.roles.includes(role);
       }
@@ -62,11 +66,11 @@ function App() {
     login,
     logout
   };
-    
+
   if (!restoreLoginAttemptCompleted) {
-      return null;
-    }
-  
+    return null;
+  }
+
   return (
     <AuthContext.Provider value={auth}>
       <Router>
@@ -74,9 +78,9 @@ function App() {
 
         <Switch>
 
-        <Route path="/error">
-          <Error/>
-        </Route>
+          <Route path="/error">
+            <Error />
+          </Route>
 
           <Route path="/login">
             {!user ? <Login /> : <Redirect to="/" />}
@@ -92,47 +96,49 @@ function App() {
 
           {/* manually testing if login works via this path */}
           <Route path="/login">
-          {!user ? <Login /> : <Redirect to="/" />}
+            {!user ? <Login /> : <Redirect to="/" />}
           </Route>
 
           {/* separate movie display other than home */}
           <Route path="/movieDisplay">
-            <MovieDisplay/>
+            <MovieDisplay />
           </Route>
 
           <Route path="/register">
-            <Register/>
+            <Register />
           </Route>
 
           <Route path="/reviewlist">
-            <MovieReview/>
+            <MovieReview />
           </Route>
 
           <Route path="/review">
-            <AddReview/>
+            <AddReview />
           </Route>
 
           <Route path="/friends">
-            <Friends/>
+            <Friends />
           </Route>
 
+          <DataProvider>
+            <WatchlistNavbar/>
+              {/* for watchlist */}
+              <Route path="/watchlist">
+                <MainPage />
+              </Route>
 
-          {/* for watchlist
-          <Route path="/mainpage">
-            <MainPage/>
-          </Route>
+              <Route path="/watchlater">
+                <WatchLater />
+              </Route>
 
-          <Route path="/watchlater">
-            <WatchLater/>
-          </Route> 
-          
-          <Route path="/watched">
-            <Watched/>
-          </Route>
-          
-          <Route path="/detail">
-            <Detail/>
-          </Route>*/}
+              <Route path="/watched">
+                <Watched />
+              </Route>
+
+              <Route path="/detail">
+                <Detail />
+              </Route>
+          </DataProvider>
 
 
           <Route>

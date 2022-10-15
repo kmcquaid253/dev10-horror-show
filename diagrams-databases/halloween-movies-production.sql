@@ -65,7 +65,7 @@ constraint fk_friend_app_user
 -- non-security
 
 create table movie (
-  movieId int primary key auto_increment,
+  movieId int primary key,
   title varchar(50) not null,
   runtime varchar(50) null,
   rating varchar(50) null,
@@ -89,12 +89,14 @@ insert into app_role (`name`) values
 insert into app_user (username, password_hash, disabled)
     values
     ('dracula@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
-    ('samara@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
+    ('samara@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
+	('chucky@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
     
 insert into app_user_role
 	values
 	(1,1),
-    (2,2);
+    (2,2),
+    (3,1);
     
 create table review (
   reviewId int primary key auto_increment,

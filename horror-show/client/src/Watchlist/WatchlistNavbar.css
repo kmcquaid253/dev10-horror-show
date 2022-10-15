@@ -1,11 +1,11 @@
 
 .watchlistNav {
-    display: flex;
+    display: inline-flex;
     position: sticky;
     justify-content: space-around;
     align-items: center;
     top: 0;
-    background-color: aliceblue;
+    background-color: rgb(0, 0, 0);
 }
 
 ul {
@@ -13,12 +13,14 @@ ul {
 }
 
 li {
-    display: inline;
-    padding: 2rem;
+    display: inline-flex;
+    padding: 1rem;
     margin: 0 10px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
-li:hover {
-    background-color: aqua;
-}
+
+/* affects all link hovers */
+/* li:hover {
+    background-color: rgb(0, 0, 0);
+} */

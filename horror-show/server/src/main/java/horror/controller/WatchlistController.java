@@ -37,7 +37,7 @@ public class WatchlistController {
 
     @PutMapping("/api/watchlist")
     public ResponseEntity<Object> update(@PathVariable int movieId, @PathVariable int appUserId, @RequestBody Watchlist watchlist) {
-        if (movieId != watchlist.getMovie().getMovieId()) {
+        if (movieId != watchlist.getMovie().getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 

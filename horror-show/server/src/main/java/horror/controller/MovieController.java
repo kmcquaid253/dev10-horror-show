@@ -40,7 +40,7 @@ private final MovieService service;
 
     @PutMapping("/{movieId}")
     public ResponseEntity<Object> update(@PathVariable int movieId, @RequestBody Movie movie) {
-        if (movieId != movie.getMovieId()) {
+        if (movieId != movie.getId()) {
             return  new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 

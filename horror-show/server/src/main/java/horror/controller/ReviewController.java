@@ -2,10 +2,12 @@ package horror.controller;
 
 import horror.domain.Result;
 import horror.domain.ReviewService;
-import horror.models.Movie;
+import horror.models.AppUser;
 import horror.models.Review;
+import horror.security.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,9 +18,11 @@ import java.util.List;
 public class ReviewController {
 
     private final ReviewService service;
+    private final AppUserService appUserService;
 
-    public ReviewController(ReviewService service) {
+    public ReviewController(ReviewService service, AppUserService appUserService) {
         this.service = service;
+        this.appUserService = appUserService;
     }
 
 
@@ -33,6 +37,9 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Review review) {
+        //security checks for role in add, delete, and update: widget manager
+        AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        review.setAppUserId(appUser.getAppUserId());
         Result<Review> result = service.add(review);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);

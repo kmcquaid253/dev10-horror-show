@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Movie {
 
-    private int movieId;
+    private int id;
 
     private String title;
 
@@ -13,9 +13,9 @@ public class Movie {
 
     private String rating;
 
-    private LocalDate releaseDate;
+    private LocalDate release_date;
 
-    private int scoreNum;
+    private double vote_average;
 
     private List<Actor> actorId; // subject to change based on bridge table?
     // going to focus on this when we list out movies from external api
@@ -24,12 +24,12 @@ public class Movie {
 
     private int subgenreId;
 
-    public int getMovieId() {
-        return movieId;
+    public int getId() {
+        return id;
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -56,20 +56,20 @@ public class Movie {
         this.rating = rating;
     }
 
-    public LocalDate getReleaseDate() {
-        return releaseDate;
+    public LocalDate getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(LocalDate release_date) {
+        this.release_date = release_date;
     }
 
-    public int getScoreNum() {
-        return scoreNum;
+    public double getVote_average() {
+        return vote_average;
     }
 
-    public void setScoreNum(int scoreNum) {
-        this.scoreNum = scoreNum;
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
     }
 
     public List<Actor> getActorId() {

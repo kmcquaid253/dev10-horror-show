@@ -36,7 +36,7 @@ public class WatchlistService {
             return result;
         }
 
-        if (watchlist.getMovie().getMovieId() <= 0) {
+        if (watchlist.getMovie().getId() <= 0) {
             result.addMessage("movieId must be set for 'update' operation", ResultType.INVALID);
             return result;
         }
@@ -61,7 +61,7 @@ public class WatchlistService {
             return result;
         }
 
-        if (watchlist.getMovie().getMovieId() == 0){
+        if (watchlist.getMovie().getId() == 0){
             result.addMessage("Invalid film selected.", ResultType.INVALID);
             return result;
         }

@@ -5,7 +5,7 @@ function Error({ msg }) {
 
   return (
     <p>
-      🙅🏾‍♂️ Error{" "}
+      🙅🏾‍♂️ Error...{" "}
       {history.location.state ? ` - ${history.location.state.msg}` : ""}
       {msg}
     </p>
