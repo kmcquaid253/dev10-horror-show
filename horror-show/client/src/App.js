@@ -40,12 +40,13 @@ function App() {
 
   const login = (token) => { //do something to ensure token is valid
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-    const { sub: username, authorities: authoritiesString } = jwtDecode(token);
+    const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
       username,
       roles,
       token,
+      userId,
       hasRole(role) {
         return this.roles.includes(role);
       }

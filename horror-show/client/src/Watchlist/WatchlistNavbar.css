@@ -19,6 +19,8 @@ li {
     font-size: 15px;
 }
 
-li:hover {
+
+/* affects all link hovers */
+/* li:hover {
     background-color: rgb(0, 0, 0);
-}
+} */

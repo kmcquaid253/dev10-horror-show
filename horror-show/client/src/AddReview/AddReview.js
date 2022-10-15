@@ -33,13 +33,10 @@ function AddReview() {
     }
     //can change styling based on if it matches on selected
 
-    
+    function addReview() {
 
-    function handleSubmit(event) {//take in an event to prevent it from posting
-        event.preventDefault();
-
-        //Use fetch to POST to the service
-        fetch("http://localhost:8080/api/review", {
+         //Use fetch to POST to the service
+         fetch("http://localhost:8080/api/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,6 +64,34 @@ function AddReview() {
                     setErrors(error);
                 }
             });
+    }
+
+    function addMovieAndReview(){
+        const movie = movies.find((m) => m.id === review.movieId);
+
+        fetch ("http://localhost:8080/api/movie", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+            },
+            body: JSON.stringify(movie),
+        }).then(response => {
+            if (response.status == 201){
+                addReview();
+            } else {
+                console.log(response);
+
+            }
+        })
+    }
+    
+
+    function handleSubmit(event) {//take in an event to prevent it from posting
+        event.preventDefault();
+
+        addMovieAndReview();
     };
 
 

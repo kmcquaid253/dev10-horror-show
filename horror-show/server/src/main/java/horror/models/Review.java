@@ -10,6 +10,17 @@ public class Review {
 
     private int movieId;
 
+
+    private Movie movie;
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
     public int getReviewId() {
         return reviewId;
     }

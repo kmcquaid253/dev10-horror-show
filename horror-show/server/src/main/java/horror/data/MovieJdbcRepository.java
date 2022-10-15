@@ -36,11 +36,11 @@ public class MovieJdbcRepository implements MovieRepository {
 
     @Override
     public Movie findById(int id) throws DataAccessException {
-        final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId "
-        + "from movie "
-        + "inner join director on director.directorId = movie.directorId "
-        + "inner join subgenre on subgenre.subgenreId = movie.subgenreId "
-        + "where movieId = ?";
+        final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, d.directorId, s.subgenreId, d.firstName, d.lastName, d.nationality, s.name " +
+                "from movie " +
+                "left outer join director d on d.directorId = movie.directorId " +
+                "left outer join subgenre s on s.subgenreId = movie.subgenreId " +
+                "where movieId = ?;";
 
         return jdbcTemplate.query(sql, new MovieMapper(), id).stream()
                 .findFirst().orElse(null);
@@ -48,27 +48,21 @@ public class MovieJdbcRepository implements MovieRepository {
 
     @Override
     public Movie create(Movie movie){
-        final String sql = "insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId) "
-                + " values (?,?,?,?,?,?,?)";
+        final String sql = "insert into movie (movieId, title, runtime, rating, releaseDate, scoreNum) "
+                + " values (?,?,?,?,?,?)";
 
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        int rowsAffected = jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, movie.getTitle());
-            ps.setInt(2, movie.getRuntime());
-            ps.setString(3, movie.getRating());
-            ps.setDate(4, movie.getReleaseDate() == null ? null : Date.valueOf(movie.getReleaseDate()));
-            ps.setInt(5, movie.getScoreNum());
-            ps.setInt(6, movie.getDirectorId());
-            ps.setInt(7, movie.getSubgenreId());
-            return ps;
-        }, keyHolder);
+        int rowsAffected = jdbcTemplate.update(sql,
+            movie.getId(),
+            movie.getTitle(),
+            movie.getRuntime(),
+            movie.getRating(),
+            movie.getRelease_date() == null ? null : Date.valueOf(movie.getRelease_date()),
+            movie.getVote_average());
 
         if (rowsAffected <= 0) {
             return null;
         }
 
-        movie.setMovieId(keyHolder.getKey().intValue());
         return movie;
     }
 
@@ -89,11 +83,11 @@ public class MovieJdbcRepository implements MovieRepository {
                 movie.getTitle(),
                 movie.getRuntime(),
                 movie.getRating(),
-                movie.getReleaseDate(),
-                movie.getScoreNum(),
+                movie.getRelease_date(),
+                movie.getVote_average(),
                 movie.getDirectorId(),
                 movie.getSubgenreId(),
-                movie.getMovieId()) > 0;
+                movie.getId()) > 0;
     }
 
     @Override

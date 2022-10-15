@@ -24,7 +24,7 @@ public class MovieServiceTests {
     @Test
     void shouldFindHereditary() {
         Movie movie = makeMovie();
-        movie.setMovieId(1);
+        movie.setId(1);
         when(repository.findById(1)).thenReturn(movie);
         Movie actual = service.findById(1);
         assertEquals(movie, actual);
@@ -34,7 +34,7 @@ public class MovieServiceTests {
     void shouldCreate(){
         Movie movie = makeMovie();
         Movie mockOut = makeMovie();
-        mockOut.setMovieId(1);
+        mockOut.setId(1);
 
         when(repository.create(movie)).thenReturn(mockOut);
 
@@ -55,7 +55,7 @@ public class MovieServiceTests {
     @Test
     void shouldUpdate(){
         Movie movie = makeMovie();
-        movie.setMovieId(1);
+        movie.setId(1);
 
         when(repository.update(movie)).thenReturn(true);
 
@@ -70,13 +70,13 @@ public class MovieServiceTests {
         assertEquals(ResultType.INVALID, actual.getType());
 
         movie = makeMovie();
-        movie.setMovieId(1);
+        movie.setId(1);
         movie.setTitle("");
         actual = service.update(movie);
         assertEquals(ResultType.INVALID, actual.getType());
 
         movie = makeMovie();
-        movie.setMovieId(1);
+        movie.setId(1);
         movie.setTitle(null);
         actual = service.update(movie);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -85,12 +85,14 @@ public class MovieServiceTests {
     Movie makeMovie() {
         LocalDate release = LocalDate.parse("2018-06-08");
 
+
         Movie movie = new Movie();
+        movie.setId(1);
         movie.setTitle("Hereditary");
         movie.setRuntime(127);
         movie.setRating("R");
-        movie.setReleaseDate(release);
-        movie.setScoreNum(10);
+        movie.setRelease_date(release);
+        movie.setVote_average(10);
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
         return movie;

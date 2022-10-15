@@ -45,7 +45,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, watchlist.getMovie().getMovieId());
+            ps.setInt(1, watchlist.getMovie().getId());
             ps.setInt(2, watchlist.getAppUser().getAppUserId());
             return ps;
         }, keyHolder);
@@ -64,7 +64,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
                 + "where app_user_id = ?";
 
         return jdbcTemplate.update(sql,
-                watchlist.getMovie().getMovieId() > 0,
+                watchlist.getMovie().getId() > 0,
                 watchlist.getAppUser().getAppUserId()) > 0;
     }
 

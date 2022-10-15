@@ -57,12 +57,12 @@ public class WatchlistJdbcTemplateRepositoryTests {
         LocalDate release = LocalDate.parse("2014-05-17");
 
         Movie movie = new Movie();
-        movie.setMovieId(1);
+        movie.setId(1);
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
-        movie.setReleaseDate(release);
-        movie.setScoreNum(10);
+        movie.setRelease_date(release);
+        movie.setVote_average(10);
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
 

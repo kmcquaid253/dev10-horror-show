@@ -30,12 +30,11 @@ public class MovieService {
             return result;
         }
 
-        if (movie.getMovieId() != 0) {
-            result.addMessage("movieId cannot be set for 'create' operation.", ResultType.INVALID);
-            return result;
+        Movie movieExisting = repository.findById(movie.getId());
+        if (movieExisting == null){
+            movie = repository.create(movie);
         }
 
-        movie = repository.create(movie);
         result.setPayload(movie);
         return result;
     }
@@ -46,13 +45,13 @@ public class MovieService {
             return result;
         }
         
-        if (movie.getMovieId() <= 0) {
+        if (movie.getId() <= 0) {
             result.addMessage("MovieId must be set for 'update' operation", ResultType.INVALID);
             return result;
         }
         
         if (!repository.update(movie)) {
-            String msg = String.format("MovieId: %s not found.", movie.getMovieId());
+            String msg = String.format("MovieId: %s not found.", movie.getId());
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
 
