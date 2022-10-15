@@ -2,10 +2,10 @@
     padding-top: 10rem;
 }
 
-/* .addButton {
+.addButton {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
-} */
+}
 
 .searchButton {
     color:rgb(237, 221, 225);
@@ -19,7 +19,7 @@
     font-family: 'Creepster', cursive;
     cursor: pointer;
     transition: 0.8s;
-    border: 2px solid rgba(255, 0, 0, 0.485)
+    border: 2px solid rgba(255, 0, 0, 0.485);
 }
 
 .addButton:hover{
