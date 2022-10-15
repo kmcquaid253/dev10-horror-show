@@ -12,7 +12,7 @@ import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
-import MovieReview from './MovieReview/MovieReview';
+import ReviewList from './ReviewList/ReviewList';
 import Friends from './Friend/Friends';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
@@ -109,7 +109,7 @@ function App() {
           </Route>
 
           <Route path="/reviewlist">
-            <MovieReview />
+            <ReviewList />
           </Route>
 
           <Route path="/review">

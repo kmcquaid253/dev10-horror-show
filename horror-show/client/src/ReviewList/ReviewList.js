@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import Movie from '../Movie/Movie';
 
-function MovieReview () {
+function ReviewList () {
 
     const [movies, setMovies] = useState([]);
 
@@ -29,4 +29,4 @@ function MovieReview () {
         );
 };
 
-export default MovieReview;
+export default ReviewList;
