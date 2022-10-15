@@ -12,7 +12,7 @@ import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
-import MovieReview from './MovieReview/MovieReview';
+import MovieReview from './MovieReview/MovieReviews';
 import Friends from './Friend/Friends';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';

@@ -10,7 +10,6 @@ public class Review {
 
     private int movieId;
 
-
     private Movie movie;
 
     public Movie getMovie() {
