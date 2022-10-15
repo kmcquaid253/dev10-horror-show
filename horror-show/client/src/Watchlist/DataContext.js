@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 
-export const DataContext = createContext();
+export const DataContext = createContext()
 
 export const DataProvider = (props) => {
     const [search, setSearch] = useState("");

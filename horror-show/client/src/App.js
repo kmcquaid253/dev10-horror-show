@@ -18,6 +18,8 @@ import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
 import MainPage from './Watchlist/MainPage';
 import WatchLater from './Watchlist/WatchLater';
+import { DataProvider } from './Watchlist/DataContext';
+
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
@@ -116,9 +118,9 @@ function App() {
             <Friends/>
           </Route>
 
-
-          {/* for watchlist
-          <Route path="/mainpage">
+          <DataProvider>
+          {/* for watchlist */}
+          <Route path="/watchlist">
             <MainPage/>
           </Route>
 
@@ -132,7 +134,8 @@ function App() {
           
           <Route path="/detail">
             <Detail/>
-          </Route> */}
+          </Route>
+          </DataProvider>
 
 
           <Route>
