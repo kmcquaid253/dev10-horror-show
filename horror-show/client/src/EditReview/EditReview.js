@@ -48,7 +48,9 @@ function EditReview() {
             method: "PUT",
             body: JSON.stringify(review),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${auth.user.token}`,
+
             }
         }) .then(async response => {
             if(response.status === 204) {
