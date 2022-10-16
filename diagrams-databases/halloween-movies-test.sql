@@ -157,15 +157,18 @@ begin
 
 	insert into director (firstName, lastName, nationality)
 		values
-		("Brian", "De Palma", "American");
+		("Brian", "De Palma", "American"),
+        ("John", "Carpenter", "American");
 
 	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
 		values
-		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1);
+		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1),
+        ('Halloween', 95, 'R', '1978-10-27', 9, 2, 1); 
         
 	insert into review (userReview, app_user_id, movieId)
 		values
-        ("I liked this movie.", 1, 1);
+        ("I liked this movie.", 1, 1),
+        ("This movie isn't the classic everyone thinks it is.", 2, 1);
 	
 
 end //

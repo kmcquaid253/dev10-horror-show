@@ -25,7 +25,7 @@ function loadFriends() {
 
     return (
         <>
-            {friends.map( a => <Friends key={[a.friendAId, b.friendBId]} friendData={[a, b]} />) }
+            {friends.map( a => <Friends key={(a.friendAId, b.friendBId)} friendData={(a, b)} />) }
         </>
     );
 
