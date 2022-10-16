@@ -1,5 +1,6 @@
 import {useHistory, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import AuthContext from "../AuthContext/AuthContext";
 import FormInput from "../FormInput/FormInput";
 import Error from "../Error/Error";
 import {Link} from 'react-router-dom';
@@ -13,6 +14,8 @@ function EditReview() {
     const [errors, setErrors] = useState([]);
 
     const history = useHistory();
+
+    const auth = useContext(AuthContext);
 
     useEffect(() => {
         fetch("http://localhost:8080/api/review/" + reviewId)
@@ -49,8 +52,8 @@ function EditReview() {
             body: JSON.stringify(review),
             headers: {
                 "Content-Type": "application/json",
+                Accept: "application/json",
                 Authorization: `Bearer ${auth.user.token}`,
-
             }
         }) .then(async response => {
             if(response.status === 204) {
