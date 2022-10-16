@@ -1,8 +1,10 @@
 import React from 'react';
 import "./AddReviewTile.css";
+import {Link} from "react-router-dom";
 
-function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, movie }) {
+function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, reviewId }) {
 
+    
     const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
     const getPosterUrl = (posterpath) => {
@@ -18,6 +20,9 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
         // <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
         <div className="card">
             <a href='#'>
+                <div className="card-header">
+                    <h5 className="editReview"><Link to={"/review/edit/" + reviewId}>{userReview}</Link></h5>
+                </div>
             <div className="card-body">
             <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img>
                 <h2 className='title'>{movie.title}</h2>
