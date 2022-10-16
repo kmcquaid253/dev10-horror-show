@@ -2,7 +2,7 @@ import React from 'react';
 import "./AddReviewTile.css";
 import {Link} from "react-router-dom";
 
-function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, reviewId }) {
+function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, reviewId, movie }) {
 
     
     const API_IMG = "https://image.tmdb.org/t/p/w500/";

@@ -13,10 +13,11 @@
 }
 
 .movies-container-selected {
-    border: 9px solid #AF2708;
+    border: 6px solid #AF2708;
     padding-bottom: 10px;
     padding-top: 10px;
     padding-right: 10px;
+
 }
 
 .movies-container,

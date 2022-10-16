@@ -65,8 +65,6 @@ function App() {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
 
-
-
   const auth = {
     user: user ? { ...user } : null,
     login,
@@ -122,7 +120,7 @@ function App() {
             <AddReview />
           </Route>
 
-          <Route path="/review/edit">
+          <Route exact path="/review/edit">
             <EditReview/>
           </Route>
 

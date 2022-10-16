@@ -36,6 +36,8 @@ body {
 .movie-poster:hover {
     transform: scale(1.03);
     box-shadow: 6px 6px 12px -1px rgb(0, 0, 0);
+    transition: 2s ease;
+
 }
 
 .movie-buttons {
@@ -44,7 +46,7 @@ body {
 }
 
 .movie-btn {
-    padding: 10px;
+    padding: 0px;
     width: 120px;
     margin: 0 10px;
     outline: none;
@@ -52,7 +54,7 @@ body {
     cursor: pointer;
     background: rgb(0, 0, 0);
     color: whitesmoke;
-    transition: 0.2s ease;
+    transition: 2s ease;
 }
 
 .movie-btn:hover {
