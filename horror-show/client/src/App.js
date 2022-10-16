@@ -116,7 +116,7 @@ function App() {
             <MovieReviews />
           </Route>
 
-          <Route path="/review">
+          <Route exact path="/review">
             <AddReview />
           </Route>
 
