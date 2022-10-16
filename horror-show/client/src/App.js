@@ -113,11 +113,11 @@ function App() {
             <MovieReviews />
           </Route>
 
-          <Route path="/review">
+          <Route exact path="/review">
             <AddReview />
           </Route>
 
-          <Route path="/review/edit">
+          <Route exact path="/review/edit">
             <EditReview/>
           </Route>
 
