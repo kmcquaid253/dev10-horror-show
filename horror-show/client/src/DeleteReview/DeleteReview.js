@@ -70,7 +70,7 @@ function DeleteReview(){
                 <form onSubmit={handleSubmit}>
 
                 <button className='btn delete-deleteButton'>Delete</button>
-                <button className="btn delete-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>
+                <button className="btn delete-cancelButton"><Link to="/reviewlist"  id="cancelButton">Cancel</Link></button>
                 </form> 
         </div>
         

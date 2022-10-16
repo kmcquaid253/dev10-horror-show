@@ -121,7 +121,7 @@ function App() {
             <AddReview />
           </Route>
 
-          <Route path="/review/edit/:reviewId">
+          <Route path="/reviews/edit/:reviewId">
             <EditReview/>
           </Route>
 

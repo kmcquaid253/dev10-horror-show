@@ -4,6 +4,7 @@ import AuthContext from "../AuthContext/AuthContext";
 import FormInput from "../FormInput/FormInput";
 import Error from "../Error/Error";
 import {Link} from 'react-router-dom';
+import './EditReview.css';
 
 function EditReview() {
 
@@ -101,8 +102,8 @@ function EditReview() {
                 currVal={review.userReview}
                 onChangeHandler={inputChangeHandler}/>
 
-                <button className="btn" id="editButton">Edit</button>
-                <Link to="/reviewlist" className="btn" id="cancelEditButton">Cancel</Link>
+                <button className="btn editReview-edit" id="editButton">Edit</button>
+                <button className="btn review-cancelButton"><Link to="/reviewlist"  id="cancelButton">Cancel</Link></button>
             </form> : null}
         </div>
     )
