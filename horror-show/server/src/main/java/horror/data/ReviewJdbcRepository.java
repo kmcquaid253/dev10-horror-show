@@ -25,7 +25,7 @@ public class ReviewJdbcRepository implements ReviewRepository{
 
     @Override
     public List<Review> findAll() throws DataAccessException {
-        final String sql = "select reviewId, userReview, app_user.app_user_id, movie.movieId, movie.title, movie.runtime, movie.rating " +
+        final String sql = "select reviewId, userReview, app_user.app_user_id, movie.movieId, movie.title, movie.runtime, movie.rating, " +
                 " movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId "
                 + "from review "
                 + "left outer join app_user on app_user.app_user_id = review.app_user_id "
