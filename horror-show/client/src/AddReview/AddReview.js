@@ -78,7 +78,7 @@ function AddReview() {
             },
             body: JSON.stringify(movie),
         }).then(response => {
-            if (response.status == 201){
+            if (response.status === 201){
                 addReview();
             } else {
                 console.log(response);
