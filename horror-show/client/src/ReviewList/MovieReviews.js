@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import AddReviewTile from '../AddReview/AddReviewTile';
+import ReviewTile from '../AddReview/ReviewTile';
 import Movie from '../Movie/Movie';
 
 function MovieReviews() {
@@ -40,7 +40,7 @@ function MovieReviews() {
     return (
         <>
             {movies.map((movie) =>
-                <AddReviewTile
+                <ReviewTile
                     key={movie.id}
                     {...movie}
                     onMovieClick={handleMovieSelect}
