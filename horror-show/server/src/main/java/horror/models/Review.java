@@ -4,14 +4,15 @@ public class Review {
 
     private int reviewId;
 
+
     private String userReview;
 
     private int appUserId;
 
     private int movieId;
 
-
     private Movie movie;
+
 
     public Movie getMovie() {
         return movie;

@@ -49,6 +49,8 @@ public class ReviewController {
 
     @PutMapping("/{reviewId}")
     public ResponseEntity<Object> update(@PathVariable int reviewId, @RequestBody Review review) {
+        AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        review.setAppUserId(appUser.getAppUserId());
         if (reviewId != review.getReviewId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
