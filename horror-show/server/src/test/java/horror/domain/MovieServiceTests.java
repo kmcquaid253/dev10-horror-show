@@ -87,7 +87,6 @@ public class MovieServiceTests {
 
 
         Movie movie = new Movie();
-        movie.setId(1);
         movie.setTitle("Hereditary");
         movie.setRuntime(127);
         movie.setRating("R");
