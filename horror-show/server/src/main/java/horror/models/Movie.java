@@ -9,6 +9,16 @@ public class Movie {
 
     private String title;
 
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    private String poster_path;
+
     private int runtime;
 
     private String rating;

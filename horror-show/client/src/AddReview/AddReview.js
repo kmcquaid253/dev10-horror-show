@@ -2,7 +2,7 @@ import FormInput from "../FormInput/FormInput";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useEffect, useState, useContext } from 'react';
 import './AddReview.css';
-import AddReviewTile from "../Movie/AddReviewTile";
+import AddReviewTile from "./AddReviewTile";
 import AuthContext from "../AuthContext/AuthContext";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
@@ -106,21 +106,11 @@ function AddReview() {
         setReview(reviewCopy);
     }
 
-    function idChangeHandler(idChangedEvent) {
-        const propertyNameId = idChangedEvent.target.name;//We are using the property name to update the value
-        const newValueId = idChangedEvent.target.value;
-
-        const idCopy = { ...id };
-
-        idCopy[propertyNameId] = newValueId;
-
-        setId(idCopy);
-    }
 
     const searchMovie = async (e) => {
         e.preventDefault();
         console.log("Searching");
-        try { //api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=horror&with_watch_monetization_types=flatrate
+        try {
             //const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`; 
             const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`; // this URL is for overall searching, includes even non horror movies
             const res = await fetch(url);

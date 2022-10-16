@@ -55,7 +55,7 @@ export const DataProvider = (props) => {
         if (check) {
             setWatched([...watched, movie]);
         } else { 
-            alert("Youve already seen this movie! :D");
+            alert("You've already seen this movie! :D");
         }
     };
 

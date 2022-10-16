@@ -2,10 +2,6 @@
   <configuration default="false" name="Production App" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="17" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <envs>
-      <env name="HORROR_SHOW_DB_USERNAME" value="root" />
-      <env name="HORROR_SHOW_DB_PASSWORD" value="top-secret-password" />
-    </envs>
     <option name="MAIN_CLASS_NAME" value="horror.App" />
     <module name="horror-show" />
     <method v="2">

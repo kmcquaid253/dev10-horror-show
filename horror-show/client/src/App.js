@@ -1,6 +1,6 @@
 import './App.css';
 import AuthContext from './AuthContext/AuthContext';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
 import jwtDecode from "jwt-decode";
@@ -12,7 +12,7 @@ import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
-import MovieReview from './MovieReview/MovieReview';
+import MovieReviews from './ReviewList/MovieReviews';
 import Friends from './Friend/Friends';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
@@ -20,11 +20,15 @@ import MainPage from './Watchlist/MainPage';
 import WatchLater from './Watchlist/WatchLater';
 import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
+import EditReview from './EditReview/EditReview';
 
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
+
+  const history = useHistory();
+
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -109,11 +113,15 @@ function App() {
           </Route>
 
           <Route path="/reviewlist">
-            <MovieReview />
+            <MovieReviews />
           </Route>
 
           <Route path="/review">
             <AddReview />
+          </Route>
+
+          <Route path="/review/edit/:reviewId">
+            <EditReview/>
           </Route>
 
           <Route path="/friends">
@@ -121,23 +129,23 @@ function App() {
           </Route>
 
           <DataProvider>
-            <WatchlistNavbar/>
-              {/* for watchlist */}
-              <Route path="/watchlist">
-                <MainPage />
-              </Route>
+            <WatchlistNavbar />
+            {/* for watchlist */}
+            <Route path="/watchlist">
+              <MainPage />
+            </Route>
 
-              <Route path="/watchlater">
-                <WatchLater />
-              </Route>
+            <Route path="/watchlater">
+              <WatchLater />
+            </Route>
 
-              <Route path="/watched">
-                <Watched />
-              </Route>
+            <Route path="/watched">
+              <Watched />
+            </Route>
 
-              <Route path="/detail">
-                <Detail />
-              </Route>
+            <Route path="/detail">
+              <Detail />
+            </Route>
           </DataProvider>
 
 
