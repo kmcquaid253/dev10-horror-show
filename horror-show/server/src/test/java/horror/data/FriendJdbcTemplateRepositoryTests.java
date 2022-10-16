@@ -37,10 +37,10 @@ public class FriendJdbcTemplateRepositoryTests {
 
     @Test
     void shouldFindFriendOfId1() {
-        Friend friend = repository.findFriendById(1);
+        Friend friend = repository.findFriendById(3);
         assertEquals(1, friend.getFriendAId());
         assertEquals(2, friend.getFriendBId());
-        assertEquals("Gorp", friend.getName());
-        assertEquals(1, friend.getAppUserId());
+        assertEquals("Kevin", friend.getName());
+        assertEquals(3, friend.getAppUserId());
     }
 }

@@ -169,6 +169,10 @@ begin
 		values
         ("I liked this movie.", 1, 1),
         ("This movie isn't the classic everyone thinks it is.", 2, 1);
+        
+-- 	insert into friend (friendAId, friendBId, name, app_user_id)
+-- 		values
+--         (1, 2, "Kevin", 3);
 	
 
 end //

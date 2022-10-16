@@ -22,17 +22,17 @@ public class FriendServiceTests {
     @Test
     void shouldFindBob() {
         Friend expected = makeFriend();
-        when(repository.findFriendById(1)).thenReturn(expected);
-        Friend actual = service.findById(1);
+        when(repository.findFriendById(100)).thenReturn(expected);
+        Friend actual = service.findById(100);
         assertEquals(expected, actual);
     }
 
     Friend makeFriend() {
         Friend friend = new Friend();
-        friend.setFriendAId(1);
-        friend.setFriendBId(1);
+        friend.setFriendAId(2);
+        friend.setFriendBId(2);
         friend.setName("Bob");
-        friend.setAppUserId(1);
+        friend.setAppUserId(3);
         return friend;
     }
 }

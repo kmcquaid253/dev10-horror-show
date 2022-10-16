@@ -85,7 +85,6 @@ public class MovieServiceTests {
     Movie makeMovie() {
         LocalDate release = LocalDate.parse("2018-06-08");
 
-
         Movie movie = new Movie();
         movie.setTitle("Hereditary");
         movie.setRuntime(127);
