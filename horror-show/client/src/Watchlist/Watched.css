@@ -44,7 +44,7 @@
     cursor: pointer;
     background-color: antiquewhite;
     color: whitesmoke;
-    transition: 0.2s ease;
+    transition: 2s ease;
 }
 
 .movie-btn:hover{
