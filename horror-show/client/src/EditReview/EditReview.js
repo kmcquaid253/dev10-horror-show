@@ -1,6 +1,8 @@
 import {useHistory, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import FormInput from "../FormInput/FormInput";
+import Error from "../Error/Error";
+import {Link} from 'react-router-dom';
 
 function EditReview() {
 
@@ -79,7 +81,11 @@ function EditReview() {
 
     return (
         <div className="container">
-            {errors.length > 0 ? <Errors errors={errors}/> : null}
+            {/* {errors.length > 0 ? <Error error={error}/> : null} */}
+            {errors.map((error, i) => 
+            (
+                <Error key={i} msg={error} />
+                ))}
             {review ?
             <form onSubmit={handleSubmit}>
                 <FormInput

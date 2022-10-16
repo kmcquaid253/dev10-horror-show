@@ -20,6 +20,7 @@ import MainPage from './Watchlist/MainPage';
 import WatchLater from './Watchlist/WatchLater';
 import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
+import EditReview from './EditReview/EditReview';
 
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
@@ -114,6 +115,10 @@ function App() {
 
           <Route path="/review">
             <AddReview />
+          </Route>
+
+          <Route path="/review/edit">
+            <EditReview/>
           </Route>
 
           <Route path="/friends">
