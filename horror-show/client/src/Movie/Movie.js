@@ -2,8 +2,7 @@ import React from 'react';
 import {useState} from "react";
 
 
-
-function Movie({ title, poster_path, release_date, overview }) {
+function Movie({ title, poster_path, release_date, overview}) {
 
     const movieUrl = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US";
 
@@ -47,7 +46,6 @@ function Movie({ title, poster_path, release_date, overview }) {
                         </div>
                     </div>
                     <button className="viewMoreButton" onClick={handleModalOpen}>View More</button>
-
             </div>
         
         </div>

@@ -1,0 +1,36 @@
+.delete-review-h3 {
+    font-size: 80px;
+    font-family: 'Creepster', cursive;
+    color: rgba(255, 0, 0, 0.485);
+    text-align: center;
+}
+
+.del-war {
+    color: rgba(255, 0, 0, 0.485);
+    font-size: 30px;
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+}
+
+.btn {
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+    cursor: pointer;
+    transition: 0.8s;
+    border: 2px solid rgba(255, 0, 0, 0.485);
+}
+
+.delete-cancelButton:hover {
+    background-color: yellow;
+    margin-left: 1em;
+}
+
+.delete-deleteButton {
+    color:rgb(237, 221, 225);
+    background-color: #AF3A08;
+}
+
+.delete-deleteButton:hover{
+    background-color: red;
+    margin-right: 1em;
+}

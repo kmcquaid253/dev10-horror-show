@@ -15,6 +15,7 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
     }
 
     return (
+        <>
         <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
         <div className="card">
             <a href='#'>
@@ -29,6 +30,7 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
             </a>
         </div>
         </div>
+        </>
     )
 }
 

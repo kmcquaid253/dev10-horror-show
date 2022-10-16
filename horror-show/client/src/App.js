@@ -21,6 +21,7 @@ import WatchLater from './Watchlist/WatchLater';
 import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 import EditReview from './EditReview/EditReview';
+import DeleteReview from './DeleteReview/DeleteReview';
 
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
@@ -124,6 +125,10 @@ function App() {
             <EditReview/>
           </Route>
 
+          <Route path="/reviews/delete/:reviewId">
+            <DeleteReview/>
+          </Route>
+
           <Route path="/friends">
             <Friends />
           </Route>
@@ -147,7 +152,6 @@ function App() {
               <Detail />
             </Route>
           </DataProvider>
-
 
           <Route>
             <NotFound />

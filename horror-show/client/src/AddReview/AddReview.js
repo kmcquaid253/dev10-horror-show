@@ -156,13 +156,6 @@ function AddReview() {
 
             <div className="inputDiv">
             <form onSubmit={handleSubmit}>
-                {/* <FormInput
-                    inputType={"text"}
-                    identifier={"movieId"}
-                    labelText={"Movie Title"}
-                    currVal={review.movieId}
-                    onChangeHandler={inputChangeHandler} /> */}
-
                 <FormInput
                     inputType={"textarea"}
                     identifier={"userReview"}
@@ -170,14 +163,6 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
-                {/* <FormInput
-                    inputType={"number"}
-                    identifier={"appUserId"}
-                    labelText={"User Id"}
-                    currVal={review.appUserId}
-                    onChangeHandler={inputChangeHandler}
-                /> */}
-
                 <div className="review-container">
                     <button type='submit' className="btn addButton">Add</button>
                     <button className="btn review-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>

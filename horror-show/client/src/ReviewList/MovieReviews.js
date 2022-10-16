@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import ReviewTile from '../AddReview/ReviewTile';
+import {Link} from 'react-router-dom';
 import Movie from '../Movie/Movie';
+import DeleteReview from '../DeleteReview/DeleteReview';
 
 function MovieReviews() {
 
@@ -36,15 +38,17 @@ function MovieReviews() {
         () => {
             loadAllReviews();
         }, []);
-
     return (
         <>
-            {movies.map((movie) =>
+        <div className='card-body'>
+            { 
+            movies.map((movie) =>
                 <ReviewTile
                     key={movie.id}
                     {...movie}
                     onMovieClick={handleMovieSelect}
-                    matchesSelected={movie.id === review.movieId} />)}
+                    matchesSelected={movie.id === review.movieId}/>)}
+        </div>
         </>
     );
 };

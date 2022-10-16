@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { useParams, Link, useHistory } from "react-router-dom";
-import DeleteFormInput from '../DeleteFormInput/DeleteFormInput';
+import "./DeleteReview.css";
 
 function DeleteReview(){
 
@@ -61,18 +61,17 @@ function DeleteReview(){
         <div className='container'>
             
             <div id="messages">
-                <h3>WARNING</h3>
-                <h6 id='del-war'>Are you sure you want to delete the following Review?</h6>
-                <h6 id='del-war'>CAUTION: Deletion is permanent</h6>
+                <h3 className='delete-review-h3'>WARNING</h3>
+                <h6 className='del-war'>Are you sure you want to delete the following Review?</h6>
+                <h6 className='del-war'>CAUTION: Deletion is permanent</h6>
             </div>
 
-            {review ?
+            
                 <form onSubmit={handleSubmit}>
 
-                <button className='btn btn-danger del-btn'>Delete</button>
-                <Link to="/reviewlist" className="btn btn-warning can-btn">Cancel</Link>
-                </form> :
-            null}
+                <button className='btn delete-deleteButton'>Delete</button>
+                <button className="btn delete-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>
+                </form> 
         </div>
         
     );
