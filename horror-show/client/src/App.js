@@ -1,6 +1,6 @@
 import './App.css';
 import AuthContext from './AuthContext/AuthContext';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
 import jwtDecode from "jwt-decode";
@@ -25,6 +25,9 @@ import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
+
+  const history = useHistory();
+
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -60,6 +63,8 @@ function App() {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
+
+
 
   const auth = {
     user: user ? { ...user } : null,
@@ -121,23 +126,23 @@ function App() {
           </Route>
 
           <DataProvider>
-            <WatchlistNavbar/>
-              {/* for watchlist */}
-              <Route path="/watchlist">
-                <MainPage />
-              </Route>
+            <WatchlistNavbar />
+            {/* for watchlist */}
+            <Route path="/watchlist">
+              <MainPage />
+            </Route>
 
-              <Route path="/watchlater">
-                <WatchLater />
-              </Route>
+            <Route path="/watchlater">
+              <WatchLater />
+            </Route>
 
-              <Route path="/watched">
-                <Watched />
-              </Route>
+            <Route path="/watched">
+              <Watched />
+            </Route>
 
-              <Route path="/detail">
-                <Detail />
-              </Route>
+            <Route path="/detail">
+              <Detail />
+            </Route>
           </DataProvider>
 
 

@@ -6,6 +6,7 @@
     align-items: center;
     top: 0;
     background-color: rgb(0, 0, 0);
+    border-radius: 2em;
 }
 
 ul {
@@ -16,6 +17,7 @@ li {
     display: inline-flex;
     padding: 1rem;
     margin: 0 10px;
+    margin-top: 1em;
     font-size: 15px;
 }
 
