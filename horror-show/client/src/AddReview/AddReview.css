@@ -30,3 +30,9 @@
 .review-cancelButton:hover{
     background-color: yellow;
 }
+
+.add-review-error-messages {
+    font-family: 'Creepster', cursive;
+    color: #AF3A08;
+    font-size: 17px;
+}

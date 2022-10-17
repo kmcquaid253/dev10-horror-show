@@ -1,4 +1,5 @@
 import FormInput from "../FormInput/FormInput";
+import Error from "../Error/Error";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { useEffect, useState, useContext } from 'react';
 import './AddReview.css';
@@ -16,15 +17,22 @@ function AddReview() {
         movieId: ""
     };
 
-
-    const [errors, setErrors] = useState([]);
     const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
     const [id, setId] = useState([]);
     const [query, setQuery] = useState('');
     const auth = useContext(AuthContext);
+    const [errors, setErrors] = useState([]);
 
     const history = useHistory();
+
+
+    function showErrors( listOfErrorMessages ){
+        const messageContainer = document.getElementById("messages");
+        
+        messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + "💀 " + m + " 💀" + "</p>" ).reduce( (prev, curr) => prev + curr );
+    }
+
 
     function handleMovieSelect(movieId) {
         const reviewCopy = { ...review };
@@ -59,9 +67,9 @@ function AddReview() {
             })
             .catch(error => {
                 if (error instanceof TypeError) {
-                    setErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
+                    showErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
                 } else {
-                    setErrors(error);
+                    showErrors(error);
                 }
             });
     }
@@ -80,11 +88,12 @@ function AddReview() {
         }).then(response => {
             if (response.status === 201){
                 addReview();
-            } else {
-                console.log(response);
-
-            }
-        })
+            } 
+        }).catch(error => {
+            
+                showErrors(error);
+         
+        });
     }
     
 
@@ -132,6 +141,7 @@ function AddReview() {
     return (
         <div className='container'>
             <h2>Add Review:</h2>
+            <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
                 <form onSubmit={searchMovie}>
                     <FormInput className="d-flex" onSubmit={searchMovie} autoComplete="off"
@@ -156,6 +166,7 @@ function AddReview() {
 
             <div className="inputDiv">
             <form onSubmit={handleSubmit}>
+                
                 <FormInput
                     inputType={"textarea"}
                     identifier={"userReview"}

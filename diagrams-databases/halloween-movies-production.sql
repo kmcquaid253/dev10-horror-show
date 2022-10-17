@@ -99,9 +99,11 @@ insert into app_user_role
     (2,2),
     (3,1);
     
--- insert into friend (friendAId, friendBId, name, app_user_id)
--- 	values
--- 	(1, 2, "Kevin", 3);
+insert into friend (friendAId, friendBId)
+	values
+    (1,2),
+    (2,1);
+
     
 create table review (
   reviewId int primary key auto_increment,
