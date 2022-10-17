@@ -1,17 +1,19 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { useContext } from 'react';
+import { useContext, useHistory } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
+import Login from '../Login/Login';
 
 export const DataContext = createContext();
-
-
 
 export const DataProvider = (props) => {
 
     const auth = useContext(AuthContext);
+    const history = useHistory();
 
     const [search, setSearch] = useState("");
     const [selectedMovie, setSelectedMovie] = useState();
+    const [watchlistMovies, setWatchlistMovies] = useState([]);
+
     const [movies, setMovies] = useState([]);
     const [sidebar, setSidebar] = useState(false);
     const [selectedMovieDetails, setSelectedMovieDetails] = useState();
@@ -29,10 +31,31 @@ export const DataProvider = (props) => {
     const showSidebar = () => setSidebar(!sidebar);
     const openSidebar = () => setSidebar(true);
     
+    // function loadAllWatchlists() {
+    //     fetch("http://localhost:8080/api/watchlist")
+    //         .then(response => {
+    //             if (response.status === 200) {
+    //                 return response.json();
+    //             } else (console.log(response))
+    //         })
+    //         .then(watchlistMovies => {
+    //             setWatchLater(watchlistMovies);
+    //         });
+    // }
+
+    // useEffect(
+    //     () => {
+    //         loadAllWatchlists();
+    //     }, []);
+
+
+    // front end only local storage
+
     useEffect(() => {
+        history.push("watchlater");
         localStorage.setItem("watchlater", 
         JSON.stringify(watchLater));
-    }, [watchLater]);
+    }, [watched]);
 
     useEffect(() => {
         localStorage.setItem("watched", 
@@ -85,6 +108,7 @@ export const DataProvider = (props) => {
 
     return (
         <DataContext.Provider value={{
+            auth,
             handleSearch,
             movies, 
             handlePageChange, 

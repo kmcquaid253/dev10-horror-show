@@ -26,16 +26,25 @@ public class WatchlistController {
         return service.findAll();
     }
 
-    @PostMapping
-    public ResponseEntity<Object> create(@RequestBody Watchlist watchlist) {
-        Result<Watchlist> result = service.create(watchlist);
+    @PostMapping("/watchLater")
+    public ResponseEntity<Object> createWatchLater(@RequestBody Watchlist watchlist) {
+        Result<Watchlist> result = service.createWatchLater(watchlist);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
     }
 
-    @PutMapping("/api/watchlist")
+    @PostMapping("/watched")
+    public ResponseEntity<Object> createWatched(@RequestBody Watchlist watchlist) {
+        Result<Watchlist> result = service.createWatchLater(watchlist);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping
     public ResponseEntity<Object> update(@PathVariable int movieId, @PathVariable int appUserId, @RequestBody Watchlist watchlist) {
         if (movieId != watchlist.getMovie().getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -53,7 +62,7 @@ public class WatchlistController {
         return ErrorResponse.build(result);
     }
 
-    @DeleteMapping("/api/watchlist")
+    @DeleteMapping
     public ResponseEntity<Void> deleteById(@PathVariable int movieId) {
         if (service.deleteById(movieId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

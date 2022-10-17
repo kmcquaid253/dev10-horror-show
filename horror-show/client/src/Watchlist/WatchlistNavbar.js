@@ -7,7 +7,7 @@ export default function NavBar(){
     return (
         <div className="watchlistNav">
             <div className="logo">
-                <h1 id="logo"><a href="/watchlist">watchlist</a></h1>
+                <h1 id="logo">watchlist</h1>
             </div>
             <ul>
                 <Link to="/watchlater" className="watchlistNavbarLinks"><li>Watch Later</li></Link>

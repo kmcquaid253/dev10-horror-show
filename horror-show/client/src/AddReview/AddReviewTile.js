@@ -16,20 +16,20 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
 
     return (
         <>
-        <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
-        <div className="card">
-            <a href='#'>
-            <div className="card-body">
-            <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview + " " + id}></img>
-                <h2 className='title'>{title}</h2>
-                <h6 className='description'>Release Date:<br/> {release_date}</h6>
-                {/* <h6 className='info'>Movie Id: {id}</h6> */}
-                {/* <p>{overview}</p> */}
-                
+            <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
+                <div className="card">
+                    <a href='#'>
+                        <div className="card-body">
+                            <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview + " " + id}></img>
+                            <h2 className='title'>{title}</h2>
+                            <h6 className='description'>Release Date:<br /> {release_date}</h6>
+                            {/* <h6 className='info'>Movie Id: {id}</h6> */}
+                            {/* <p>{overview}</p> */}
+
+                        </div>
+                    </a>
+                </div>
             </div>
-            </a>
-        </div>
-        </div>
         </>
     )
 }

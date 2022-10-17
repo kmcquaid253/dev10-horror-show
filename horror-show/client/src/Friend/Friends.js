@@ -1,8 +1,8 @@
 import './Friends.css';
 
-function Friends({ userA, userB }){
+function Friends( {userA, userB} ){
 
-    const friendURL = "http://localhost:8080/friend/" + userA;
+    const friendURL = "http://localhost:8080/api/friend/" + userA;
 
     return(
 

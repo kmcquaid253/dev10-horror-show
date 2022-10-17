@@ -121,7 +121,8 @@ constraint fk_review_movieId
 create table watchlist_movie (
     movieId int not null,
     app_user_id int not null,
-    name varchar(50) not null,
+    watchLater boolean null,
+    watched boolean null,
 constraint pk_watchlist_movie_id
 	primary key (movieId, app_user_id),
 constraint fk_watchlist_movie_app_user_id

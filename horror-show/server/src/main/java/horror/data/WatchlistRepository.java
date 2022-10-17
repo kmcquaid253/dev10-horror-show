@@ -12,8 +12,10 @@ import java.util.List;
 public interface WatchlistRepository {
 
     List<Watchlist> findAll() throws DataAccessException;
-    Watchlist create(Watchlist watchlist) throws DataAccessException;
 
+    Watchlist createWatchLater(Watchlist watchlist) throws DataAccessException;
+
+    Watchlist createWatched(Watchlist watchlist) throws DataAccessException;
 
     boolean update(Watchlist watchlist) throws DataAccessException;
 

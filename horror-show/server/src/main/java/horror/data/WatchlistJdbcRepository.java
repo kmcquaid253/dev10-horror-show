@@ -28,7 +28,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id "
+        final String sql = "select movie.movieId, app_user.app_user_id, watchLater, watched "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
@@ -36,17 +36,39 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
         return jdbcTemplate.query(sql, new WatchlistMapper(roles));
     }
 
-    @Override
-    public Watchlist create(Watchlist watchlist) throws DataAccessException {
 
-        final String sql = "insert into watchlist_movie (movieId, app_user_id) "
-                + " values (?,?)";
+    @Override public Watchlist createWatchLater(Watchlist watchlist) throws DataAccessException {
+        final String sql = "insert into watchlist_movie (movieId, app_user_id, watchLater) "
+                + " values (?,?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, watchlist.getMovie().getId());
             ps.setInt(2, watchlist.getAppUser().getAppUserId());
+            ps.setBoolean(3, watchlist.getWatchLater());
+            return ps;
+        }, keyHolder);
+
+        if (rowsAffected <= 0) {
+            return null;
+        }
+        return watchlist;
+    }
+
+    @Override
+    public Watchlist createWatched(Watchlist watchlist) throws DataAccessException {
+
+        final String sql = "insert into watchlist_movie (movieId, app_user_id, watched) "
+                + " values (?,?,?)";
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int rowsAffected = jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, watchlist.getMovie().getId());
+            ps.setInt(2, watchlist.getAppUser().getAppUserId());
+            ps.setBoolean(3, watchlist.getWatched());
+
             return ps;
         }, keyHolder);
 

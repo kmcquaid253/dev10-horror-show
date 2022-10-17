@@ -19,13 +19,13 @@ public class WatchlistService {
         return repository.findAll();
     }
 
-    public Result<Watchlist> create(Watchlist watchlist){
+    public Result<Watchlist> createWatchLater(Watchlist watchlist){
         Result<Watchlist> result = validate(watchlist);
         if (!result.isSuccess()) {
             return result;
         }
 
-        watchlist = repository.create(watchlist);
+        watchlist = repository.createWatchLater(watchlist);
         result.setPayload(watchlist);
         return result;
     }

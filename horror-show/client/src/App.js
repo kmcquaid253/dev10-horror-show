@@ -11,7 +11,6 @@ import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
-import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReviews from './ReviewList/MovieReviews';
 import Friends from './Friend/Friends';
 import Watched from './Watchlist/Watched';
@@ -24,7 +23,7 @@ import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 
 
-const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
+const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
 function App() {
 
@@ -61,6 +60,8 @@ function App() {
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+    // localStorage.removeItem("watched"); //removes for every logout
+    // localStorage.removeItem("watchlater");
   };
 
   const auth = {
@@ -91,21 +92,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          {/* 
-          <Route>
-            {!user ? <Login /> : <Redirect to="/" />}
-          </Route> */}
-
-          {/* manually testing if login works via this path */}
-          <Route path="/login">
-            {!user ? <Login /> : <Redirect to="/" />}
-          </Route>
-
-          {/* separate movie display other than home */}
-          <Route path="/movieDisplay">
-            <MovieDisplay />
-          </Route>
-
+          
           <Route path="/register">
             <Register />
           </Route>
