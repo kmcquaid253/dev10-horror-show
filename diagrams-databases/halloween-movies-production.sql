@@ -53,13 +53,14 @@ create table app_user_role (
 create table friend (
   friendAId int not null,
   friendBId int not null,
-  name varchar(50) not null,
-  app_user_id int not null,
 constraint pk_friend_id
 	primary key (friendAId, friendBId),
-constraint fk_friend_app_user
-	foreign key (app_user_id)
-	references app_user(app_user_id)
+constraint fk_friend_friendAId
+	foreign key (friendAId)
+    references app_user (app_user_id),
+constraint fk_friend_friendBId
+	foreign key (friendBId)
+    references app_user (app_user_id)
 );
 
 -- non-security
@@ -98,9 +99,9 @@ insert into app_user_role
     (2,2),
     (3,1);
     
-insert into friend (friendAId, friendBId, name, app_user_id)
-	values
-	(1, 2, "Kevin", 3);
+-- insert into friend (friendAId, friendBId, name, app_user_id)
+-- 	values
+-- 	(1, 2, "Kevin", 3);
     
 create table review (
   reviewId int primary key auto_increment,
