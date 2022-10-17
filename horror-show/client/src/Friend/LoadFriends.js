@@ -13,7 +13,7 @@ function loadFriends() {
                 } else (console.log(response))
             })
             .then(friendList => {
-                friendList.sort((a, b) => a.friendAId - b.friendAId, a.friendAId - b.friendBId)
+                //friendList.sort((a, b) => a.friendAId - b.friendAId, a.friendAId - b.friendBId)
                 setFriends(friendList);
             });
     }
@@ -25,7 +25,9 @@ function loadFriends() {
 
     return (
         <>
-            {friends.map( a => <Friends key={(a.friendAId, b.friendBId)} friendData={(a, b)} />) }
+            {friends.map( a => 
+                <Friends key={a.friendAId} friendData={a} />) } 
+                    
         </>
 
     );

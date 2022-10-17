@@ -2,7 +2,7 @@ import './Friends.css';
 
 function Friends({ userA, userB }){
 
-    const friendURL = "http://localhost:8080/friend/" + userA;
+    
 
     return(
 
