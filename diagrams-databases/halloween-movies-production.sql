@@ -60,7 +60,7 @@ constraint fk_friend_friendAId
     references app_user (app_user_id),
 constraint fk_friend_friendBId
 	foreign key (friendBId)
-    references app_user (app_user_id)
+    references app_user(app_user_id)
 );
 
 -- non-security

@@ -3,22 +3,22 @@ import { useContext } from 'react';
 import { DataContext } from './DataContext';
 import { useHistory } from 'react-router-dom';
 import WatchLater from './WatchLater';
-import "./MainPage.css";
+import "./WatchlistPage.css";
 
-export default function MainPage() {
+export default function WatchlistPage() {
 
     const { handleSearch,
-            movies,
-            handlePageChange,
-            watchLater,
-            setWatchLater,
-            addToWatched,
-            setSelectedMovie,
-            sidebar,
-            openSidebar,
-            showSidebar } = useContext(DataContext);
+        movies,
+        handlePageChange,
+        watchLater,
+        setWatchLater,
+        addToWatched,
+        setSelectedMovie,
+        sidebar,
+        openSidebar,
+        showSidebar } = useContext(DataContext);
 
-let history = useHistory();
+    let history = useHistory();
 
     const addToWatchLater = (movie) => {
         const check = watchLater.every((item) => {
@@ -30,6 +30,8 @@ let history = useHistory();
             alert("This movie is already in your watch list! :D");
         }
     }
+
+    
 
     const goToPage = (movie) => {
         setSelectedMovie(movie.id);
@@ -52,7 +54,7 @@ let history = useHistory();
                 <div className='close-siderbar-cnt'>
                     <p onClick={showSidebar}>X</p>
                 </div>
-                <WatchLater/>
+                <WatchLater />
             </div>
             {movies.page ? (
                 <div>
@@ -83,40 +85,42 @@ let history = useHistory();
                 </div>
             ) : null
             }
-            <div className="movies-cnt">
-                {movies.results
-                    ? movies.results.map((movie) => {
-                        return (
-                            <div className="movies-item">
-                                <h1 className="movie-title">{movie.title}</h1>
-                                {movie.poster_path ? (
-                                    <img
-                                        className="movie-poster"
-                                        alt={`${movie.title} poster`}
-                                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
-                                        onClick={() => {
-                                            goToPage(movie);
-                                        }}
-                                    />
-                                ) : (
-                                    <div className="noImage">
-                                        <p>Poster not available</p>
-                                    </div>
-                                )}
-                                <div className="movie-buttons">
-                                    <button className="movie-btn" onClick={() => {
-                                        addToWatchLater(movie);
-                                        openSidebar();
-                                    }}>Watch Later</button>
+            <div className="grid">
+                <div className="movies-cnt">
+                    {movies.results
+                        ? movies.results.map((movie) => {
+                            return (
+                                <div className="movies-item">
+                                    <h1 className="movie-title">{movie.title}</h1>
+                                    {movie.poster_path ? (
+                                        <img
+                                            className="movie-poster"
+                                            alt={`${movie.title} poster`}
+                                            src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
+                                            onClick={() => {
+                                                goToPage(movie);
+                                            }}
+                                        />
+                                    ) : (
+                                        <div className="noImage">
+                                            <p>Poster not available :(</p>
+                                        </div>
+                                    )}
+                                    <div className="watch-buttons">
+                                        <button className="movie-btn" onClick={() => {
+                                            addToWatchLater(movie);
+                                            openSidebar();
+                                        }}>Watch Later</button>
 
-                                    <button className="movie-btn" onClick={() => {
-                                        addToWatched(movie);
-                                    }}>Watched</button>
+                                        <button className="movie-btn" onClick={() => {
+                                            addToWatched(movie);
+                                        }}>Watched</button>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    }) : null}
-            </div>
-        </div >
+                            );
+                        }) : null}
+                </div>
+            </div >
+        </div>
     );
 }

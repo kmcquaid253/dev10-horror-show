@@ -26,10 +26,10 @@ export default function Detail() {
                     />
                     <div className='movie-overview'>
                         <h3>Overview:</h3>
-                        <p>{selectedMovieDetails.overiew}</p>
+                        <p>{selectedMovieDetails.overview}</p>
                         <h3>Genres:</h3>
                         {selectedMovieDetails.genres
-                            ? selectedMovieDetails.map((genre) => (
+                            ? selectedMovieDetails.genres.map((genre) => (
                                 <span>{genre.name},</span>
                             ))
                             : null}

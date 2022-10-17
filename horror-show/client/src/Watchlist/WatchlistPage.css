@@ -28,6 +28,24 @@ body {
     border: none;
 }
 
+.movies-cnt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+.movie-title {
+    font-size: 16px;
+}
+
+.movies-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .movie-poster {
     transition: 0.3 ease;
     cursor: pointer;
@@ -40,9 +58,10 @@ body {
 
 }
 
-.movie-buttons {
+.watch-buttons {
     display: flex;
     margin: 10px 2px;
+    margin-left: 0rem;
 }
 
 .movie-btn {
