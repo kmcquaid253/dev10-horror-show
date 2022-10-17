@@ -15,16 +15,14 @@ function NavBar() {
           <li className="navbar-item navbar-link"><Link to="/">Home</Link></li>
           {auth.user ? (
             <li className="navbar-item navbar-link"><Link to="/review">Add Review</Link></li>
-
           ) : (
-
-            <>
+           <>
               <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
               <li className="navbar-item navbar-link"><Link to="/register">Register</Link></li>
             </>
           )}
-
-{auth.user ? (
+          
+        {auth.user ? (
             <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
 
           ) : ("")}
