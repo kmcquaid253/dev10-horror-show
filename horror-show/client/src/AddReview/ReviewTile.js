@@ -21,7 +21,7 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
         // <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
         <div className="card">
             <div className="card-body">
-            <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img>
+            <img className="card-img" src={getPosterUrl(matchesSelected.poster_path)} alt={movie.overview + " " + movie.id}></img>
                 <h2 className='title'>{movie.title}</h2>
                 <h6 className='userReview'>Review:<br/> {userReview}</h6>
                 <div className="card-header">
