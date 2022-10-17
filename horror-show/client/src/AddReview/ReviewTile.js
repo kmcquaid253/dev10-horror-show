@@ -8,7 +8,7 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
     const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
     const getPosterUrl = (posterpath) => {
-        return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`; // this link leads to correct movie poster
+        return `https://image.tmdb.org/t/p/w220_and_h330_face${posterpath}`; // this link leads to correct movie poster
     } // don't know how to connect the object to this though
 
 
