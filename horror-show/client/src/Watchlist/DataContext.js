@@ -1,8 +1,15 @@
 import React, { useState, createContext, useEffect } from 'react';
+import { useContext } from 'react';
+import AuthContext from '../AuthContext/AuthContext';
 
 export const DataContext = createContext()
 
+
+
 export const DataProvider = (props) => {
+
+    const auth = useContext(AuthContext);
+
     const [search, setSearch] = useState("");
     const [selectedMovie, setSelectedMovie] = useState();
     const [movies, setMovies] = useState([]);
@@ -41,12 +48,16 @@ export const DataProvider = (props) => {
             .then((data) => setMovies(data));
     };
 
+    //page changing
+
     const handlePageChange = (page) => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=1&include_adult=false&query=${search}`
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&include_adult=false&query=${search}`
         )
             .then((response) => response.json())
             .then((data) => setMovies(data));
     };
+
+    //adding to watched list
 
     const addToWatched = (movie) => {
         const check = watched.every((item) => {
@@ -59,8 +70,15 @@ export const DataProvider = (props) => {
         }
     };
 
+    // grabs movie
+
     const getMovie = (id) => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`,
+        {
+            headers: {
+                Authorization: `Bearer ${auth.user.token}`,
+            },
+        })
         .then((response) => response.json())
         .then ((data) => setSelectedMovieDetails(data));
     };
