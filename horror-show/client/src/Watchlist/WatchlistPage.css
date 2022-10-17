@@ -35,7 +35,9 @@ body {
 }
 
 .movie-title {
-    font-size: 16px;
+    font-size: 25px;
+    font-family: Nosifer;
+    margin-top: 10px;
 }
 
 .movies-item {
@@ -65,7 +67,7 @@ body {
 
 .movie-btn {
     padding: 0px;
-    width: 120px;
+    width: 160px;
     margin: 0 10px;
     outline: none;
     border: none;

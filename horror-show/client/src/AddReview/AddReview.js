@@ -1,7 +1,7 @@
 import FormInput from "../FormInput/FormInput";
 import Error from "../Error/Error";
-import { useParams, Link, useHistory } from "react-router-dom";
-import { useEffect, useState, useContext } from 'react';
+import { Link, useHistory } from "react-router-dom";
+import { useState, useContext } from 'react';
 import './AddReview.css';
 import AddReviewTile from "./AddReviewTile";
 import AuthContext from "../AuthContext/AuthContext";
@@ -121,7 +121,7 @@ function AddReview() {
         console.log("Searching");
         try {
             //const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`; 
-            const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`; // this URL is for overall searching, includes even non horror movies
+            const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);

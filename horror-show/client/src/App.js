@@ -39,7 +39,7 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-  const login = (token) => { //do something to ensure token is valid
+  const login = (token) => { 
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
     const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
