@@ -6,14 +6,14 @@ function loadFriends() {
     const [friends, setFriends] = useState([]);
 
     function loadAllFriends() {
-        fetch("http://localhost:8080/api/friends")
+        fetch("http://localhost:8080/api/friend")
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
                 } else (console.log(response))
             })
             .then(friendList => {
-                friendList.sort((a, b) => a.friendAId - b.friendAId, a.friendBId - b.friendBId)
+                friendList.sort((a, b) => a.friendAId - b.friendAId, a.friendAId - b.friendBId)
                 setFriends(friendList);
             });
     }
@@ -27,6 +27,7 @@ function loadFriends() {
         <>
             {friends.map( a => <Friends key={(a.friendAId, b.friendBId)} friendData={(a, b)} />) }
         </>
+
     );
 
 }

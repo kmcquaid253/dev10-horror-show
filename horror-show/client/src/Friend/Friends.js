@@ -1,8 +1,8 @@
 import './Friends.css';
 
-function Friends(){
+function Friends({ userA, userB }){
 
-    const friendURL = "";
+    const friendURL = "http://localhost:8080/friend/" + userA;
 
     return(
 
@@ -11,10 +11,11 @@ function Friends(){
 
         <div className="friendCard">
             <div className="card-header">
-                <h5 className='name'>Username goes here</h5>
+                <h5 className='name'>{userA}</h5>
+                <h5 className='name'>{userB}</h5>
             </div>
             <div className="card-body">
-                <button onClick={friendURL} className="button">See Reviews</button>
+                <button className="button">See Reviews</button>
             </div>
         </div>
         </div>
