@@ -66,7 +66,7 @@ public class WatchlistJdbcTemplateRepositoryTests {
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
 
-        AppUser appUser = new AppUser(0, "kevin1234", "q1w2e3r4!", false, List.of("User"));
+        AppUser appUser = new AppUser(1, "kevin1234", "q1w2e3r4!", false, List.of("User"));
 
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
