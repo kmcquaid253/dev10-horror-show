@@ -74,6 +74,7 @@
 .reviewTile-delete {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
+    margin-right: .5em;
 }
 
 .btn {
@@ -86,12 +87,16 @@
 
 .reviewTile-delete:hover {
     background-color: red;
-    margin-right: 1em;
+    margin-right: 2em;
 }
 
 .reviewTile-edit:hover{
     background-color: yellow;
     margin-left: 1em;
+}
+
+.reviewTile-edit {
+    background-color: rgba(208, 208, 31, 0.806);
 }
 
 img{

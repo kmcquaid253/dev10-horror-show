@@ -66,12 +66,12 @@ function DeleteReview(){
                 <h6 className='del-war'>CAUTION: Deletion is permanent</h6>
             </div>
 
-            
+            <div className='button-container-div'>
                 <form onSubmit={handleSubmit}>
-
                 <button className='btn delete-deleteButton'>Delete</button>
                 <button className="btn delete-cancelButton"><Link to="/reviewlist"  id="cancelButton">Cancel</Link></button>
                 </form> 
+            </div>
         </div>
         
     );

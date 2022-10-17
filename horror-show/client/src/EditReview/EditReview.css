@@ -9,9 +9,13 @@
 .editReview-edit {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
+    margin-right: .5em;
 }
 
 .editReview-edit:hover {
     background-color: green;
-    margin-right: 1em;
+}
+
+.review-cancelButton {
+    margin-right: 3em;
 }

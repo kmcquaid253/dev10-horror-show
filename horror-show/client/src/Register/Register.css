@@ -22,3 +22,16 @@ h2 {
 input {
     width: 400px;
 }
+
+.register-edit {
+    margin-right: .5em;
+    background-color: #AF3A08;
+}
+
+.register-cancelButton:hover {
+    background-color: yellow;
+}
+
+.register-edit:hover {
+    background-color: green;
+}
