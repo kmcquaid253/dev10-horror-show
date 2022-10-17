@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import { DataContext } from './DataContext';
 import { useHistory } from 'react-router-dom';
 import WatchLater from './WatchLater';
-import "./MainPage.css";
+import "./WatchlistPage.css";
 
-export default function MainPage() {
+export default function WatchlistPage() {
 
     const { handleSearch,
         movies,
@@ -30,6 +30,8 @@ export default function MainPage() {
             alert("This movie is already in your watch list! :D");
         }
     }
+
+    
 
     const goToPage = (movie) => {
         setSelectedMovie(movie.id);

@@ -2,7 +2,7 @@ import React, { useState, createContext, useEffect } from 'react';
 import { useContext } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
 
-export const DataContext = createContext()
+export const DataContext = createContext();
 
 
 

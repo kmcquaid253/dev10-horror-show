@@ -19,23 +19,18 @@ public class FriendJdbcRepository implements FriendRepository {
 
 
     @Override
-    public List<Friend> findAll() {
+    public List<Friend> findFriendsById(int id) throws DataAccessException {
+        final String sql = "select appA.app_user_id as AId,\n" +
+                "appB.app_user_id as BId,\n" +
+                "appA.username as Auser,\n" +
+                "appB.username as Buser\n" +
+                "\n" +
+                "from friend\n" +
+                "inner join app_user as appA on friend.friendAId = appA.app_user_id \n" +
+                "inner join app_user as appB on friend.friendBId = appB.app_user_id\n" +
+                "where friendAId = ?\n" +
+                "or friendBId = ?;";
 
-        final String sql = "select friendAId, friendBId, name, friend.app_user_id "
-                + "from friend "
-                + "inner join app_user on app_user.app_user_id = friend.app_user_id ";
-
-        return jdbcTemplate.query(sql, new FriendMapper());
-    }
-
-    @Override
-    public Friend findFriendById(int id) throws DataAccessException {
-        final String sql = "select friendAId, friendBId, name, friend.app_user_id "
-        + "from friend "
-        + "inner join app_user on app_user.app_user_id = friend.app_user_id "
-        + "where friend.app_user_id = ?;";
-
-        return jdbcTemplate.query(sql, new FriendMapper(), id).stream()
-                .findFirst().orElse(null);
+        return jdbcTemplate.query(sql, new FriendMapper(), id, id);
     }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Friends from "./Friends";
+import Friends from "../Friends";
 
 function loadFriends() {
 

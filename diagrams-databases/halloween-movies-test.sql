@@ -99,9 +99,6 @@ insert into app_user_role
     (2,2),
     (3,1);
 
-insert into friend (friendAId, friendBId, name, app_user_id)
-	values
-	(1, 2, "Kevin", 3);
     
 create table review (
   reviewId int primary key auto_increment,
@@ -119,7 +116,7 @@ constraint fk_review_movieId
 create table watchlist_movie (
     movieId int not null,
     app_user_id int not null,
-constraint pk_watchlist_movie_id
+constraint pk_watchlist_movie
 	primary key (movieId, app_user_id),
 constraint fk_watchlist_movie_app_user_id
 	foreign key (app_user_id)

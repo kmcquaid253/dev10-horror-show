@@ -16,7 +16,7 @@ import MovieReviews from './ReviewList/MovieReviews';
 import Friends from './Friend/Friends';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
-import MainPage from './Watchlist/MainPage';
+import WatchlistPage from './Watchlist/WatchlistPage';
 import WatchLater from './Watchlist/WatchLater';
 import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
@@ -27,9 +27,6 @@ import DeleteReview from './DeleteReview/DeleteReview';
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken";
 
 function App() {
-
-  const history = useHistory();
-
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -114,42 +111,52 @@ function App() {
           </Route>
 
           <Route path="/reviewlist">
-            <MovieReviews />
+            {user ? <MovieReviews />
+              : <Redirect to="/" />}
           </Route>
 
           <Route path="/review">
-            <AddReview />
+          {user ? <AddReview />
+              : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/edit/:reviewId">
-            <EditReview/>
+          {user ? <EditReview />
+              : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/delete/:reviewId">
-            <DeleteReview/>
+          {user ? <DeleteReview />
+              : <Redirect to="/" />}
           </Route>
 
           <Route path="/friends">
-            <Friends />
+          {user ? <Friends />
+              : <Redirect to="/" />}
+            
           </Route>
 
           <DataProvider>
             <WatchlistNavbar />
             {/* for watchlist */}
             <Route path="/watchlist">
-              <MainPage />
+            {user ? <WatchlistPage />
+              : <Redirect to="/" />}
             </Route>
 
             <Route path="/watchlater">
-              <WatchLater />
+            {user ? <WatchLater />
+              : <Redirect to="/" />}
             </Route>
 
             <Route path="/watched">
-              <Watched />
+            {user ? <Watched />
+              : <Redirect to="/" />}
             </Route>
 
-            <Route path="/detail">
-              <Detail />
+            <Route path="/details/:str">
+            {user ? <Detail />
+              : <Redirect to="/" />}
             </Route>
           </DataProvider>
 

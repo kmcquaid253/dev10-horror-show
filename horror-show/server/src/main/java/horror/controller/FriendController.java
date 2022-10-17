@@ -1,7 +1,10 @@
 package horror.controller;
 
 import horror.domain.FriendService;
+import horror.models.AppUser;
 import horror.models.Friend;
+import horror.security.AppUserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +20,24 @@ public class FriendController {
 
     private final FriendService service;
 
-    public FriendController(FriendService service) {
+    private final AppUserService appUserService;
+
+    public FriendController(FriendService service, AppUserService appUserService) {
         this.service = service;
+        this.appUserService = appUserService;
     }
 
-    @GetMapping
-    public List<Friend> findAll() { return service.findAll(); }
 
-    @GetMapping("/{friendId}")
-    public Friend findById(@PathVariable int friendId) {
-        return service.findById(friendId);
+    @GetMapping
+    public List<Friend> findById() {
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        AppUser appUser = (AppUser) appUserService.loadUserByUsername(username);
+        
+
+
+
+
+        return service.findById(appUser.getAppUserId());
     }
 }
