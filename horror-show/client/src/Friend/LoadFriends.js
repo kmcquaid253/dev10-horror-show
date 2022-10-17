@@ -13,11 +13,7 @@ function loadFriends() {
                 } else (console.log(response))
             })
             .then(friendList => {
-<<<<<<< HEAD
                 friendList.sort((f) => f.friendBId)
-=======
-                //friendList.sort((a, b) => a.friendAId - b.friendAId, a.friendAId - b.friendBId)
->>>>>>> 15bb5d711f02f9c1dd800e7aef3749bcb7d68353
                 setFriends(friendList);
             });
     }
@@ -29,13 +25,9 @@ function loadFriends() {
 
     return (
         <>
-<<<<<<< HEAD
-            {friends.map( f => <Friends key={f.friendBId} />) }
-=======
-            {friends.map( a => 
-                <Friends key={a.friendAId} friendData={a} />) } 
+            {friends.map( f => 
+                <Friends key={f.friendAId} friendData={f} />) } 
                     
->>>>>>> 15bb5d711f02f9c1dd800e7aef3749bcb7d68353
         </>
 
     );
