@@ -2,43 +2,23 @@ package horror.models;
 
 public class Friend {
 
-    private int friendAId;
+    private AppUser userA;
 
-    private int friendBId;
+    private AppUser userB;
 
-    private String name;
-
-    private int AppUserId;
-
-    public int getFriendAId() {
-        return friendAId;
+    public AppUser getUserA() {
+        return userA;
     }
 
-    public void setFriendAId(int friendAId) {
-        this.friendAId = friendAId;
+    public void setUserA(AppUser userA) {
+        this.userA = userA;
     }
 
-    public int getFriendBId() {
-        return friendBId;
+    public AppUser getUserB() {
+        return userB;
     }
 
-    public void setFriendBId(int friendBId) {
-        this.friendBId = friendBId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAppUserId() {
-        return AppUserId;
-    }
-
-    public void setAppUserId(int appUserId) {
-        AppUserId = appUserId;
+    public void setUserB(AppUser userB) {
+        this.userB = userB;
     }
 }

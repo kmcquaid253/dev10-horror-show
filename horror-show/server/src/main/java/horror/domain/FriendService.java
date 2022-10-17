@@ -15,9 +15,7 @@ public class FriendService {
         this.repository = repository;
     }
 
-
-    public List<Friend> findAll() { return repository.findAll(); }
-    public Friend findById(int friendId) {
-        return repository.findFriendById(friendId); //todo: validation?
+    public List<Friend> findById(int friendId) {
+        return repository.findFriendsById(friendId); //todo: validation?
     }
 }

@@ -1,6 +1,6 @@
 import './Friends.css';
 
-function Friends(){
+function Friends({ name }){
 
     const friendURL = "";
 
@@ -11,7 +11,7 @@ function Friends(){
 
         <div className="friendCard">
             <div className="card-header">
-                <h5>Friend Name goes here</h5>
+                <h5 className='name'>{name}</h5>
             </div>
             <div className="card-body">
                 <button onClick={friendURL} className="button">See Reviews</button>

@@ -39,8 +39,8 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
     @Override
     public Watchlist create(Watchlist watchlist) throws DataAccessException {
 
-        final String sql = "insert into watchlist_movie (movieId, app_user_id) values "
-                + "(?,?);";
+        final String sql = "insert into watchlist_movie (movieId, app_user_id) "
+                + " values (?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {

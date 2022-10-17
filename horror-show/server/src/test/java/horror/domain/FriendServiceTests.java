@@ -30,7 +30,7 @@ public class FriendServiceTests {
     Friend makeFriend() {
         Friend friend = new Friend();
         friend.setFriendAId(2);
-        friend.setFriendBId(2);
+        friend.setFriendBId(3);
         friend.setName("Bob");
         friend.setAppUserId(3);
         return friend;
