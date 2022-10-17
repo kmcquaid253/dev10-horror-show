@@ -25,7 +25,7 @@ function DeleteReview(){
         .then(selectedReview => {//variable comes from the api
             setReview(selectedReview);
         });
-    }, [reviewId]); //sending an empty array so it doesnt re-run
+    }, []); //sending an empty array so it doesnt re-run
 
 
     function handleSubmit(event){//take in an event to prevent it from posting
@@ -65,11 +65,13 @@ function DeleteReview(){
                 <h6 className='del-war'>Are you sure you want to delete the following Review?</h6>
                 <h6 className='del-war'>CAUTION: Deletion is permanent</h6>
             </div>
+        
 
             <div className='button-container-div'>
                 <form onSubmit={handleSubmit}>
                 <button className='btn delete-deleteButton'>Delete</button>
-                <button className="btn delete-cancelButton"><Link to="/reviewlist"  id="cancelButton">Cancel</Link></button>
+                
+                <button className='deleteReview-cancel'><Link to="/"  id="cancelButton">Cancel</Link></button>
                 </form> 
             </div>
         </div>

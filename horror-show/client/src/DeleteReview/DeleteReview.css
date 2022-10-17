@@ -22,9 +22,10 @@
 
 }
 
-.delete-cancelButton:hover {
+.deleteReview-cancel {
     background-color: yellow;
-    margin-left: 1em;
+    font-family: 'Creepster', cursive;
+    font-size: 20px;
 }
 
 .delete-deleteButton {
@@ -35,7 +36,6 @@
 
 .delete-deleteButton:hover{
     background-color: red;
-    margin-right: 1em;
 }
 
 .button-container-div {
@@ -43,8 +43,4 @@
             display: flex;
             justify-content: center;
             align-items: center;
-}
-
-.delete-cancelButton {
-    margin-right: 3em;
 }
