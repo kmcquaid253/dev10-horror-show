@@ -2,7 +2,7 @@ import './Friends.css';
 
 function Friends({ userA, userB }){
 
-    const friendURL = "http://localhost:8080/friend/" + userA;
+    // const friendURL = "http://localhost:8080/friend/" + userB;
 
     return(
 
@@ -11,7 +11,7 @@ function Friends({ userA, userB }){
 
         <div className="friendCard">
             <div className="card-header">
-                <h5 className='name'>{userA}</h5>
+                {/* <h5 className='name'>{userA}</h5> */}
                 <h5 className='name'>{userB}</h5>
             </div>
             <div className="card-body">
