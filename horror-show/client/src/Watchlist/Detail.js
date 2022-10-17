@@ -28,11 +28,12 @@ export default function Detail() {
                         <h3>Overview:</h3>
                         <p>{selectedMovieDetails.overview}</p>
                         <h3>Genres:</h3>
-                        {selectedMovieDetails.genres
+                        <div className="subGenres"> {selectedMovieDetails.genres
                             ? selectedMovieDetails.genres.map((genre) => (
                                 <span>{genre.name},</span>
                             ))
                             : null}
+                            </div>
                     </div>
                 </div>
             </div>

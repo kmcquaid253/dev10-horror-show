@@ -4,34 +4,32 @@ import DeleteFormInput from '../DeleteFormInput/DeleteFormInput';
 
 function DeleteWatchlist(){
 
-    //'useParams' allows us to pull the id off of the URL
     const {movieId} = useParams();
     const[watchlist, setWatchlist] = useState(null);
     const [errors, setErrors] = useState([]);
     const history = useHistory();
 
-    useEffect( () => {//useEffect will only make the fetch happen once when the page first load up
+    useEffect( () => {
         fetch("http://localhost:8080/api/watchlist/" + movieId)
         .then(
             response => {
-                if(response.status === 200){//getting the single movie object
-                    return response.json(); //produces new 2nd promise
+                if(response.status === 200){
+                    return response.json(); 
                 } else{
                     //TODO: proper error handling
                     setErrors(["Could not find matching movie to delete."])
                 }
             }
         )
-        .then(selectedWatchlist => {//variable comes from the api
+        .then(selectedWatchlist => {
             setWatchlist(selectedWatchlist);
         });
-    }, [movieId]); //sending an empty array so it doesnt re-run
+    }, [movieId]); 
 
 
-    function handleSubmit(event){//take in an event to prevent it from posting
+    function handleSubmit(event){
         event.preventDefault();
 
-        //create  request
         fetch("http://localhost:8080/api/watchlist/" + movieId, {
             method: "DELETE",
             body: JSON.stringify(watchlist),
@@ -41,10 +39,7 @@ function DeleteWatchlist(){
         })
         .then(response => {
             if(response.status === 204){
-                //if successful delete movie from watchlist, bring them to home TEMPORARILY
 
-                //temporarily setting it to home until we create a watchlist path
-                //Same goes to cancel button
                 history.push("/home");
             
             } else{

@@ -4,34 +4,32 @@ import "./DeleteReview.css";
 
 function DeleteReview(){
 
-    //'useParams' allows us to pull the id off of the URL
     const {reviewId} = useParams();
     const[review, setReview] = useState(null);
     const history = useHistory();
     const [errors, setErrors] = useState([]);
 
-    useEffect( () => {//useEffect will only make the fetch happen once when the page first load up
+    useEffect( () => {
         fetch("http://localhost:8080/api/review/" + reviewId)
         .then(
             response => {
-                if(response.status === 200){//getting the single review object
-                    return response.json(); //produces new 2nd promise
+                if(response.status === 200){
+                    return response.json(); 
                 } else{
-                    //TODO: proper error handling
                     setErrors(["Could not find matching review to delete."])
                 }
             }
         )
-        .then(selectedReview => {//variable comes from the api
+        .then(selectedReview => {
             setReview(selectedReview);
         });
-    }, []); //sending an empty array so it doesnt re-run
+    }, []); 
 
 
-    function handleSubmit(event){//take in an event to prevent it from posting
+    function handleSubmit(event){
         event.preventDefault();
 
-        //create  request
+
         fetch("http://localhost:8080/api/review/" + reviewId, {
             method: "DELETE",
             body: JSON.stringify(review),
@@ -41,8 +39,7 @@ function DeleteReview(){
         })
         .then(response => {
             if(response.status === 204){
-                //if successful delete review, bring them to reviewlist
-                //redirect the user to the updated list of reviews
+
 
                 history.push("/reviewlist");
             

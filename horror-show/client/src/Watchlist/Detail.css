@@ -6,6 +6,17 @@
     height: 0px;
 }
 
+
+h3 {
+    color:darkred;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    color: darkred;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .movie-details {
     /* width: 70%; */
     margin: 0 auto;
@@ -19,6 +30,11 @@
     padding: 0 40px;
 }
 
+.subGenres {
+    color: darkred;
+    font-family: nosifer;
+}
+
 #backdrop {
     max-width: 100%;
     height: 100px;
@@ -29,7 +45,8 @@
 
 #runtime {
     margin-left: 40px;
-    color: black;
+    color: darkred;
+    font-family: nosifer;
 }
 
 #movie-title-h1 {

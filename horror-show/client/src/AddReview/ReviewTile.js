@@ -9,8 +9,8 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
     const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
     const getPosterUrl = (posterpath) => {
-        return `https://image.tmdb.org/t/p/w220_and_h330_face${posterpath}`; // this link leads to correct movie poster
-    } // don't know how to connect the object to this though
+        return `https://image.tmdb.org/t/p/w220_and_h330_face${posterpath}`; 
+    } 
 
 
     const grabById = () => {
@@ -19,7 +19,6 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
 
 
     return (
-        // <div className={'movies-container' + (matchesSelected ? ' movies-container-selected' : '')} onClick={grabById}>
         <div className="card">
             <div className="card-body">
             {/* <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img> */}

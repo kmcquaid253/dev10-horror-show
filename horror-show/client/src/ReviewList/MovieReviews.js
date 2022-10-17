@@ -13,7 +13,7 @@ function MovieReviews() {
     };
 
     const [movies, setMovies] = useState([]);
-    const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
+    const [review, setReview] = useState(DEFAULT_REVIEW);
 
 
     function handleMovieSelect(movieId) {

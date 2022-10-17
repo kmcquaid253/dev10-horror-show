@@ -6,8 +6,8 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
     const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
     const getPosterUrl = (posterpath) => {
-        return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`; // this link leads to correct movie poster
-    } // don't know how to connect the object to this though
+        return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`; 
+    } 
 
 
     const grabById = () => {
