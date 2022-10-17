@@ -55,7 +55,7 @@ create table friend (
   friendBId int not null,
   name varchar(50) not null,
   app_user_id int not null,
-constraint pk_watchlist_movie_id
+constraint pk_friend_id
 	primary key (friendAId, friendBId),
 constraint fk_friend_app_user
 	foreign key (app_user_id)
