@@ -55,9 +55,9 @@ create table friend (
   friendBId int not null,
   name varchar(50) not null,
   app_user_id int not null,
-constraint pk_friend_id
+constraint pk_friend
 	primary key (friendAId, friendBId),
-constraint fk_friend_app_user
+constraint fk_friend_app_user_id
 	foreign key (app_user_id)
 	references app_user(app_user_id)
 );
@@ -98,6 +98,10 @@ insert into app_user_role
 	(1,1),
     (2,2),
     (3,1);
+
+insert into friend (friendAId, friendBId, name, app_user_id)
+	values
+	(1, 2, "Kevin", 3);
     
 create table review (
   reviewId int primary key auto_increment,
@@ -170,9 +174,6 @@ begin
         ("I liked this movie.", 1, 1),
         ("This movie isn't the classic everyone thinks it is.", 2, 1);
         
--- 	insert into friend (friendAId, friendBId, name, app_user_id)
--- 		values
---         (1, 2, "Kevin", 3);
 	
 
 end //

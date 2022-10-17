@@ -23,7 +23,7 @@ public class FriendJdbcRepository implements FriendRepository {
 
         final String sql = "select friendAId, friendBId, name, friend.app_user_id "
                 + "from friend "
-                + "left outer join app_user on app_user.app_user_id = friend.app_user_id ";
+                + "inner join app_user on app_user.app_user_id = friend.app_user_id ";
 
         return jdbcTemplate.query(sql, new FriendMapper());
     }
