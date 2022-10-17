@@ -27,16 +27,11 @@ public class FriendController {
         this.appUserService = appUserService;
     }
 
-
     @GetMapping
     public List<Friend> findById() {
         String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         AppUser appUser = (AppUser) appUserService.loadUserByUsername(username);
-        
-
-
-
 
         return service.findById(appUser.getAppUserId());
     }
