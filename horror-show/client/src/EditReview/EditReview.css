@@ -1,0 +1,17 @@
+.btn {
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+    cursor: pointer;
+    transition: 0.8s;
+    border: 2px solid rgba(255, 0, 0, 0.485);
+}
+
+.editReview-edit {
+    color:rgb(237, 221, 225);
+    background-color: #AF3A08;
+}
+
+.editReview-edit:hover {
+    background-color: green;
+    margin-right: 1em;
+}
