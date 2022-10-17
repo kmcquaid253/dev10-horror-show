@@ -13,10 +13,10 @@ export default function Detail() {
     return selectedMovieDetails ? (
         <div className="details-cnt">
             <div className="movie-details-title">
-                <img
+                {/* <img
                     src={`https://image.tmdb.org/t/p/w500${selectedMovieDetails.backdrop_path}`}
                     id="backdrop"
-                />
+                /> */}
                 <h1 id="movie-title-h1">{selectedMovieDetails.title}</h1>
                 <p id="runtime">{selectedMovieDetails.runtime} min</p>
                 <div className='movie-details'>
