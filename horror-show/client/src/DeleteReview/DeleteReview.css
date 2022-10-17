@@ -3,6 +3,7 @@
     font-family: 'Creepster', cursive;
     color: rgba(255, 0, 0, 0.485);
     text-align: center;
+    
 }
 
 .del-war {
@@ -18,6 +19,7 @@
     cursor: pointer;
     transition: 0.8s;
     border: 2px solid rgba(255, 0, 0, 0.485);
+
 }
 
 .delete-cancelButton:hover {
@@ -28,9 +30,21 @@
 .delete-deleteButton {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
+    margin-right: .5em;
 }
 
 .delete-deleteButton:hover{
     background-color: red;
     margin-right: 1em;
+}
+
+.button-container-div {
+  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+
+.delete-cancelButton {
+    margin-right: 3em;
 }

@@ -114,8 +114,8 @@ function Register() {
                 />
             </div>
             <div>
-                <button type="submit">Register</button>
-                <button><Link to="/" className="btn" id="cancelButton">Cancel</Link></button>
+                <button className="btn register-edit" type="submit">Register</button>
+                <button className="btn register-cancelButton"><Link to="/" id="cancelButton">Cancel</Link></button>
             </div>
         </form>
     </div>
