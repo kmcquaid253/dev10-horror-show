@@ -5,15 +5,19 @@
     /* padding: 16px; */
     box-shadow: 0 9px 17px -6px rgba(0, 0, 0, 0.2);
     transition: all 400ms ease;
-    height: calc(100vh /2.2)
+    height: calc(100vh /2.2);
+}
+.description{
+    margin-bottom: 10rem;
 }
 
 .movies-container .card:hover {
     transform: scale(1.03);
+    padding-bottom: 10rem;
 }
 
 .movies-container-selected {
-    border: 6px solid #AF2708;
+    border: 7px dotted #AF2708;
     padding-bottom: 10px;
     padding-top: 10px;
     /* padding-right: 5px; */
@@ -34,7 +38,7 @@
 }
 
 .movies-container .card img{
-    margin: -16px;
+    margin: 1px;
     object-fit: cover;
 }
 
@@ -51,6 +55,7 @@
     margin: 0;
     line-height: 1.7;
     font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 10rem;
 }
 
 .movies-container .card h6.info{
@@ -58,6 +63,7 @@
     color: #333;
     margin-top: 10px;
     line-height: 1.7;
+    
 }
 
 .movie-title-list {
@@ -73,6 +79,7 @@
     max-width: 800px;
     margin: 20px auto;
     align-items: stretch;
+    padding-bottom: 10rem;
     
 }
 
