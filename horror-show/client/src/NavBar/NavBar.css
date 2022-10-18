@@ -7,9 +7,8 @@
 .navbar-spacer {
   display: block;
   width: 100%;
-  height: 20rem;
+  height: 12rem;
   background: #fff;
-  background-image: url(https://bloody-disgusting.com/wp-content/uploads/2016/11/horrorviallinsbanner.jpg);
   z-index: 99;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -70,13 +69,13 @@
   position: sticky;
   margin-left: 1.5rem;
   margin-top: 20px;
-  color: rgb(236, 229, 229);
+  color: rgb(154, 100, 100);
 }
 
 .welcomeMessage{
   padding-block-start: 1.2rem;
   margin-left: 1rem;
-  color: #ffffff;
+  color: #240303;
   text-shadow:
   0px 0px 5px #EB1037,
   0px 0px 7px #000000,
