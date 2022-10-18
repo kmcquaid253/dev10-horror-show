@@ -1,6 +1,8 @@
 import './Friend.css';
 
+
 function Friend({ friendData }){
+
 
     return(
 

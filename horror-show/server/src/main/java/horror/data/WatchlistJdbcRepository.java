@@ -28,7 +28,8 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id "
+        final String sql = "select movie.movieId, app_user.app_user_id, username, password_hash, disabled, movie.title, movie.runtime, movie.rating, "
+                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId  "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";

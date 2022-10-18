@@ -2,22 +2,20 @@ import FormInput from "../FormInput/FormInput";
 import Error from "../Error/Error";
 import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from 'react';
-import './AddReview.css';
-import AddReviewTile from "./AddReviewTile";
 import AuthContext from "../AuthContext/AuthContext";
+import AddWatchlistTile from "./AddWatchlistTile";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
 
-function AddReview() {
+function AddWatchlist() {
 
-    const DEFAULT_REVIEW = {
-        userReview: "",
+    const DEFAULT_Watchlist = {
         appUserId: "",
         movieId: ""
     };
 
-    const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
+    const [watchlist, setWatchlist] = useState(DEFAULT_Watchlist);//state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
     const [id, setId] = useState([]);
     const [query, setQuery] = useState('');
@@ -35,23 +33,23 @@ function AddReview() {
 
 
     function handleMovieSelect(movieId) {
-        const reviewCopy = { ...review };
-        reviewCopy.movieId = movieId;
-        setReview(reviewCopy);
+        const watchlistCopy = { ...watchlist };
+        watchlistCopy.movieId = movieId;
+        setWatchlist(watchlistCopy);
     }
     //can change styling based on if it matches on selected
 
-    function addReview() {
+    function add() {
 
          //Use fetch to POST to the service
-         fetch("http://localhost:8080/api/review", {
+         fetch("http://localhost:8080/api/watchlist", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 Authorization: `Bearer ${auth.user.token}`,
             },
-            body: JSON.stringify(review),
+            body: JSON.stringify(watchlist),
         })
             //fetch returns a response
             .then(async response => {
@@ -112,7 +110,7 @@ function AddReview() {
 
         reviewCopy[propertyName] = newValue;
 
-        setReview(reviewCopy);
+        setWatchlist(reviewCopy);
     }
 
 
@@ -144,7 +142,7 @@ function AddReview() {
             (
                 <Error key={i} msg={error} />
                 ))}
-            <h2 className="addReview">Add Review:</h2>
+            <h2>Add Review:</h2>
             <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
                 <form onSubmit={searchMovie}>
@@ -162,7 +160,7 @@ function AddReview() {
 
                     <div className="grid">
                         {movies.map((movie) =>
-                            <AddReviewTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
+                            <AddWatchlistTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
                     </div>
 
                 </form>
@@ -188,4 +186,4 @@ function AddReview() {
     );
 }
 
-export default AddReview;
+export default AddWatchlist;

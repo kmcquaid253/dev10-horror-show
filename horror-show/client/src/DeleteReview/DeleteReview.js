@@ -69,6 +69,7 @@ function DeleteReview(){
                 <button className='btn delete-deleteButton'>Delete</button>
                 
                 <Link to="/"  id="cancelButton"className="navbar-textdecoration delcan">Cancel</Link>
+
                 </form> 
             </div>
         </div>

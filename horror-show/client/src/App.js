@@ -13,17 +13,15 @@ import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReviews from './ReviewList/MovieReviews';
-import Friends from './Friend/Friend';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
 import WatchlistPage from './Watchlist/WatchlistPage';
 import WatchLater from './Watchlist/WatchLater';
 import { DataProvider } from './Watchlist/DataContext';
-import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 import FriendList from './Friend/FriendList';
-
+// import MovieWatchlist from './Watchlist2/MovieWatchlist';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
@@ -111,6 +109,10 @@ function App() {
             <Register />
           </Route>
 
+          <Route path="/friendreview/:userId">
+            <MovieReviews/>
+          </Route>
+
           <Route path="/reviewlist">
             {user ? <MovieReviews />
               : <Redirect to="/" />}
@@ -134,8 +136,13 @@ function App() {
           <Route path="/friends">
           {user ? <FriendList />
               : <Redirect to="/" />}
-            
           </Route>
+
+
+          {/* <Route path="/movieWatch">
+            {user ? <MovieWatchlist/>
+              : <Redirect to="/" />}
+          </Route> */}
 
           <DataProvider>
             {/* <WatchlistNavbar /> */}

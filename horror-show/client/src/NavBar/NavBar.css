@@ -48,7 +48,6 @@
   text-decoration: none;
   line-height: 6.5rem;
   color: rgb(81, 69, 69);
-
 }
 
 
@@ -142,6 +141,7 @@ nav ul li {
 
 /* Removed the links here */
 /* Change color of text here */
+
 .navbar-textdecoration{
   text-decoration: none;
   color:#500000;
