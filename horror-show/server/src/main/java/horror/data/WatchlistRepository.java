@@ -20,4 +20,8 @@ public interface WatchlistRepository {
     boolean update(Watchlist watchlist) throws DataAccessException;
 
     boolean deleteById(int id) throws DataAccessException;
+
+    Watchlist findWatchLaterById(int id);
+
+    Watchlist findWatchedById(int id);
 }

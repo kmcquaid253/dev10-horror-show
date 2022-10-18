@@ -11,12 +11,21 @@ public class WatchlistService {
 
     private final WatchlistRepository repository;
 
+
     public WatchlistService(WatchlistRepository repository) {
         this.repository = repository;
     }
 
     public List<Watchlist> findAll() {
         return repository.findAll();
+    }
+
+    public Watchlist findWatchLaterById(int id) {
+        return repository.findWatchLaterById(id);
+    }
+
+    public Watchlist findWatchedById(int id) {
+        return repository.findWatchedById(id);
     }
 
     public Result<Watchlist> createWatchLater(Watchlist watchlist){
@@ -41,7 +50,7 @@ public class WatchlistService {
             return result;
         }
 
-        if (watchlist.getAppUser().getAppUserId() <= 0) {
+        if (watchlist.getAppUserId() <= 0) {
             result.addMessage("Invalid user ID", ResultType.INVALID);
             return result;
         }
@@ -66,11 +75,14 @@ public class WatchlistService {
             return result;
         }
 
-        if (watchlist.getAppUser().getAppUserId() == 0){
+        if (watchlist.getAppUserId() == 0){
             result.addMessage("Invalid user ID", ResultType.INVALID);
             return result;
         }
 
         return result;
     }
+
+
+
 }

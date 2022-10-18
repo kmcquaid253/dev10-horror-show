@@ -32,7 +32,7 @@ export default function WatchLater() {
                                     />
                                 ) : (
                                     <div className="noimage">
-                                        <p>Poster unavailable</p>
+                                        <p>{movie.title} - Poster unavailable</p>
                                     </div>
                                 )}
                                 <div className="movie-buttons"></div>

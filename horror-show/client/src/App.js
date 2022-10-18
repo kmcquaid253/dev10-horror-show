@@ -25,7 +25,21 @@ import DeleteReview from './DeleteReview/DeleteReview';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
+
+
 function App() {
+
+
+
+  function showErrors(listOfErrorMessages) {
+    const messageContainer = document.getElementById("messages");
+
+    messageContainer.innerHTML = listOfErrorMessages.map(m => "<p>" + "💀 " + m + " 💀" + "</p>").reduce((prev, curr) => prev + curr);
+  }
+
+
+
+
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -39,8 +53,11 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-  const login = (token) => { 
+ 
+
+  const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+
     const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
@@ -60,8 +77,6 @@ function App() {
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
-    // localStorage.removeItem("watched"); //removes for every logout
-    // localStorage.removeItem("watchlater");
   };
 
   const auth = {
@@ -69,6 +84,15 @@ function App() {
     login,
     logout
   };
+
+  // const response = fetch("http://localhost:8080/refresh_token", {
+  //   Authorization: `Bearer${auth.user.token}`,
+  // })
+  //   .then(async response => {
+  //     if (response.status === 200) {
+  //       return response.json();
+  //     } else (console.log(response))
+  //   });
 
   if (!restoreLoginAttemptCompleted) {
     return null;
@@ -92,7 +116,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          
+
           <Route path="/register">
             <Register />
           </Route>
@@ -103,47 +127,47 @@ function App() {
           </Route>
 
           <Route path="/review">
-          {user ? <AddReview />
+            {user ? <AddReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/edit/:reviewId">
-          {user ? <EditReview />
+            {user ? <EditReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/delete/:reviewId">
-          {user ? <DeleteReview />
+            {user ? <DeleteReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/friends">
-          {user ? <Friends />
+            {user ? <Friends />
               : <Redirect to="/" />}
-            
+
           </Route>
 
           <DataProvider>
             <WatchlistNavbar />
             {/* for watchlist */}
             <Route path="/watchlist">
-            {user ? <WatchlistPage />
-              : <Redirect to="/" />}
+              {user ? <WatchlistPage />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/watchlater">
-            {user ? <WatchLater />
-              : <Redirect to="/" />}
+              {user ? <WatchLater />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/watched">
-            {user ? <Watched />
-              : <Redirect to="/" />}
+              {user ? <Watched />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/details/:str">
-            {user ? <Detail />
-              : <Redirect to="/" />}
+              {user ? <Detail />
+                : <Redirect to="/" />}
             </Route>
           </DataProvider>
 
