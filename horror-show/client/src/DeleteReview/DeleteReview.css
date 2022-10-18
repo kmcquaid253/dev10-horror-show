@@ -22,16 +22,13 @@
 
 }
 
-.deleteReview-cancel {
-    background-color: yellow;
-    font-family: 'Creepster', cursive;
-    font-size: 20px;
-}
+
 
 .delete-deleteButton {
     color:rgb(237, 221, 225);
     background-color: #AF3A08;
-    margin-right: .5em;
+    margin-right: 50px;
+
 }
 
 .delete-deleteButton:hover{
@@ -43,4 +40,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
+}
+
+.delcan {
+    font-family: 'Creepster', cursive;
+    font-size: 25px;
+    color: yellow;
+}
+
+.delcan:hover {
+    font-family: 'Creepster', cursive;
+    font-size: 25px;
+    color: greenyellow;
 }
