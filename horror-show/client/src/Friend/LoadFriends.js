@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Friends from "../Friends";
+import Friends from "../Friend/Friends";
 
 function loadFriends() {
 
@@ -13,7 +13,7 @@ function loadFriends() {
                 } else (console.log(response))
             })
             .then(friendList => {
-                friendList.sort((f) => f.friendBId)
+                friendList.sort((a, b) => a.friendBId - b.friendBId)
                 setFriends(friendList);
             });
     }
@@ -25,15 +25,10 @@ function loadFriends() {
 
     return (
         <>
-            {friends.map( f => 
-                <Friends key={f.friendBId} friendData={f} />) } 
-                    
+            {friends.map( a => 
+                <Friends key={a.friendBId} friendData={a} />) }                   
         </>
-
     );
-
-
-
 }
 
 export default loadFriends;

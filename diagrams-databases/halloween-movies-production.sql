@@ -102,7 +102,9 @@ insert into app_user_role
 insert into friend (friendAId, friendBId)
 	values
     (1,2),
-    (2,1);
+    (2,1),
+    (2,3),
+    (3,2);
 
     
 create table review (
