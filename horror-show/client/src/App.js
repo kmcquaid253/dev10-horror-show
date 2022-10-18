@@ -12,7 +12,7 @@ import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
 import MovieReviews from './ReviewList/MovieReviews';
-import Friends from './Friend/Friends';
+import Friends from './Friend/Friend';
 import Watched from './Watchlist/Watched';
 import Detail from './Watchlist/Detail';
 import WatchlistPage from './Watchlist/WatchlistPage';
@@ -21,7 +21,7 @@ import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
-import LoadFriends from './Friend/LoadFriends';
+import FriendList from './Friend/FriendList';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken1";
 
@@ -117,7 +117,7 @@ function App() {
           </Route>
 
           <Route path="/friends">
-            {user ? <LoadFriends />
+          {user ? <FriendList />
               : <Redirect to="/" />}
 
           </Route>
