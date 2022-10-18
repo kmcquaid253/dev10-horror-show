@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Friends from "../Friends";
+import Friends from "./Friends";
 
 function loadFriends() {
 
@@ -26,7 +26,7 @@ function loadFriends() {
     return (
         <>
             {friends.map( f => 
-                <Friends key={f.friendBId} friendData={f} />) } 
+                <Friends key={f.friendBId} friendData={f.userA.appUserId} />) } 
                     
         </>
 

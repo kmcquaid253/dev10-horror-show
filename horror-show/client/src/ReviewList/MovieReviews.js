@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import ReviewTile from '../AddReview/ReviewTile';
-import {Link} from 'react-router-dom';
-import Movie from '../Movie/Movie';
-import DeleteReview from '../DeleteReview/DeleteReview';
+import {useParams} from "react-router-dom";
+
 
 function MovieReviews() {
+
+    const{appUserId} = useParams();
 
     const DEFAULT_REVIEW = {
         userReview: "",

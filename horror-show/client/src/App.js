@@ -21,8 +21,9 @@ import { DataProvider } from './Watchlist/DataContext';
 import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
+import LoadFriends from './Friend/LoadFriends';
 
-const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
+const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken1";
 
 function App() {
 
@@ -67,15 +68,6 @@ function App() {
     login,
     logout
   };
-
-  // const response = fetch("http://localhost:8080/refresh_token", {
-  //   Authorization: `Bearer${auth.user.token}`,
-  // })
-  //   .then(async response => {
-  //     if (response.status === 200) {
-  //       return response.json();
-  //     } else (console.log(response))
-  //   });
 
   if (!restoreLoginAttemptCompleted) {
     return null;
@@ -125,7 +117,7 @@ function App() {
           </Route>
 
           <Route path="/friends">
-            {user ? <Friends />
+            {user ? <LoadFriends />
               : <Redirect to="/" />}
 
           </Route>
