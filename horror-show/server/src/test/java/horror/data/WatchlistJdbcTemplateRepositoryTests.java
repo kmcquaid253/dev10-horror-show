@@ -43,7 +43,7 @@ public class WatchlistJdbcTemplateRepositoryTests {
     }
 
     @Test
-    void shouldDelete() {
+    void willDelete() {
         assertTrue(repository.deleteById(11));
         assertFalse(repository.deleteById(11));
     }

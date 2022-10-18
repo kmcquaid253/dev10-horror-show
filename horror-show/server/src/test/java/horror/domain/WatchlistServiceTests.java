@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -27,13 +28,13 @@ public class WatchlistServiceTests {
     @Test
     void shouldAdd() {
         Watchlist watchlist = makeWatchlist();
-        Watchlist mockout = makeWatchlist();
+        Watchlist mockOut = makeWatchlist();
 
-        when(repository.create(watchlist)).thenReturn(mockout);
+        when(repository.create(watchlist)).thenReturn(mockOut);
 
         Result<Watchlist> actual = service.create(watchlist);
         assertEquals(ResultType.SUCCESS, actual.getType());
-        assertEquals(mockout, actual.getPayload());
+        assertEquals(mockOut, actual.getPayload());
     }
 
     @Test
@@ -41,9 +42,7 @@ public class WatchlistServiceTests {
         Watchlist watchlist = makeWatchlistWithNullMovieId();
 
         Result<Watchlist> actual = service.create(watchlist);
-        assertEquals(ResultType.INVALID, actual.getPayload());
-
-
+        assertNull(actual.getPayload());
     }
 
     private Watchlist makeWatchlist() {
