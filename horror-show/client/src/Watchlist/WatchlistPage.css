@@ -38,9 +38,8 @@ body {
     font-size: 18px;
     font-family: Nosifer;
     margin-top: 10px;
-    /* width: 25%;
-    text-align: center; */
-
+    width: 50%;
+    text-align: center; 
 }
 
 .movies-item {
@@ -59,7 +58,6 @@ body {
     transform: scale(1.03);
     box-shadow: 6px 6px 12px -1px rgb(0, 0, 0);
     transition: 2s ease;
-
 }
 
 .watch-buttons {
@@ -70,7 +68,7 @@ body {
 
 .movie-btn {
     padding: 0px;
-    width: 160px;
+    width: 120px;
     margin: 0 10px;
     outline: none;
     border: none;
