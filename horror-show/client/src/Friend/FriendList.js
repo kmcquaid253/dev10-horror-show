@@ -31,10 +31,15 @@ function FriendList() {
         }, []);
 
     return (
+        
+        <div className="heading">
+            <h1 className="heading-header">Friends</h1>
+
         <>
             {friends.map( (f, i) => 
                 <Friend key={i} friendData={f.userA.appUserId == auth.user.userId ? f.userB : f.userA} />) }                   
         </>
+        </div>
     );
 }
 

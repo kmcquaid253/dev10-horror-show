@@ -91,7 +91,9 @@ insert into app_user (username, password_hash, disabled)
     values
     ('dracula@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
     ('samara@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
-	('chucky@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
+	('chucky@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
+    ('m.myers@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
+    ('jason@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
     
 insert into app_user_role
 	values
@@ -102,8 +104,13 @@ insert into app_user_role
 insert into friend (friendAId, friendBId)
 	values
     (1,2),
-    (2,3);
-
+    (1,3),
+    (2,3),
+    (1,4),
+    (1,5),
+    (3,4),
+    (3,5),
+    (4,5);
     
 create table review (
   reviewId int primary key auto_increment,
