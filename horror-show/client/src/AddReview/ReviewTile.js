@@ -25,8 +25,8 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
                 <h2 className='title'>{movie.title}</h2>
                 <h6 className='userReview'>Review:<br/> {userReview}</h6>
                 <div className="card-header">
-                <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId}>Delete</Link></button>
-                    <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId}>Edit</Link></button>
+                <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId} className="navbar-textdecoration">Delete</Link></button>
+                    <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId} className="navbar-textdecoration">Edit</Link></button>
                 </div>
                 {/* <h6 className='info'>Movie Id: {id}</h6> */}
                 {/* <p>{overview}</p> */}
