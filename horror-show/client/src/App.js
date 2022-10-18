@@ -111,6 +111,10 @@ function App() {
             <Register />
           </Route>
 
+          <Route path="/friendreview/:userId">
+            <MovieReviews/>
+          </Route>
+
           <Route path="/reviewlist">
             {user ? <MovieReviews />
               : <Redirect to="/" />}
