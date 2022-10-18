@@ -17,6 +17,7 @@ body {
 .main-cnt {
     margin-top: 70px;
     text-align: center;
+
 }
 
 
@@ -36,8 +37,8 @@ body {
 
 .movie-title {
     font-size: 25px;
-    font-family: Nosifer;
-    margin-top: 10px;
+    font-family:'Times New Roman', Times, serif;
+    /* margin-top: 8px; */
     width: 50%;
     text-align: center; 
 }
@@ -64,11 +65,12 @@ body {
     display: flex;
     margin: 10px 2px;
     margin-left: 0rem;
+    margin-top: 20px;
 }
 
 .movie-btn {
     padding: 0px;
-    width: 120px;
+    width: 160px;
     margin: 0 10px;
     outline: none;
     border: none;
@@ -98,7 +100,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* margin-top: 100px; */
+    margin-top: 100px;
     height: 100%;
     margin: 0 10%;
 }
