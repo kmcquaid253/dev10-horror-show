@@ -15,8 +15,8 @@ function NavBar() {
             <li className="navbar-item navbar-link"><Link to="/review" className="navbar-textdecoration">Add Review</Link></li>
           ) : (
            <>
-              <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
-              <li className="navbar-item navbar-link"><Link to="/register">Register</Link></li>
+              <li className="u-pull-right navbar-link"><Link to="/login" className="navbar-textdecoration">Login</Link></li>
+              <li className="navbar-item navbar-link"><Link to="/register" className="navbar-textdecoration">Register</Link></li>
             </>
           )}
           
