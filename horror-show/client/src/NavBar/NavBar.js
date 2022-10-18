@@ -10,9 +10,9 @@ function NavBar() {
     <nav className="navbar nav">
       <div className="container">
         <ul className="navbar-list">
-          <li className="navbar-item navbar-link"><Link to="/">Home</Link></li>
+          <li className="navbar-item navbar-link"><Link to="/" className="navbar-textdecoration">Home</Link></li>
           {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/review">Add Review</Link></li>
+            <li className="navbar-item navbar-link"><Link to="/review" className="navbar-textdecoration">Add Review</Link></li>
           ) : (
            <>
               <li className="u-pull-right navbar-link"><Link to="/login">Login</Link></li>
@@ -21,12 +21,12 @@ function NavBar() {
           )}
           
         {auth.user ? (
-              <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
+              <li className="navbar-item navbar-link"><Link to="/reviewlist" className="navbar-textdecoration">Reviews</Link></li>
           ) : ("")}
 
           {auth.user ? (
             <ul className="watch-ul">
-              <li className="navbar-item navbar-link"><a href="#">WatchList</a></li>
+              <li className="navbar-item navbar-link"><a href="#" className="navbar-textdecoration">WatchList</a></li>
                 <ul className="watched-ul">
                   <li className="droplist"><Link className ="a" to="/watchlist">Search</Link></li>
                   <li className="droplist"><Link className ="a" to="/watchlater">Watch Later</Link></li>
@@ -36,7 +36,7 @@ function NavBar() {
           ) : ("")}
 
           {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/friends">Friends</Link></li>
+            <li className="navbar-item navbar-link"><Link to="/friends" className="navbar-textdecoration">Friends</Link></li>
 
           ) : ("")}
 
