@@ -26,7 +26,7 @@ function loadFriends() {
     return (
         <>
             {friends.map( f => 
-                <Friends key={f.friendAId} friendData={f} />) } 
+                <Friends key={f.friendBId} friendData={f} />) } 
                     
         </>
 
