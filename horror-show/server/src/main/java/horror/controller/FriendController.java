@@ -6,15 +6,12 @@ import horror.models.Friend;
 import horror.security.AppUserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
-@CrossOrigin(origins = {"http://localhost:8080"})
+@RestController
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/api/friend")
 public class FriendController {
 

@@ -1,6 +1,6 @@
-import './Friends.css';
+import './Friend.css';
 
-function Friends({ userA, userB }){
+function Friend({ friendData }){
 
     // const friendURL = "http://localhost:8080/friend/" + userB;
 
@@ -12,10 +12,10 @@ function Friends({ userA, userB }){
         <div className="friendCard">
             <div className="card-header">
                 {/* <h5 className='name'>{userA}</h5> */}
-                <h5 className='name'>{userB}</h5>
+                {/* <h5 className='name'>{userB}</h5> */}
+                <h5 className='name'>{friendData.username}</h5>
             </div>
             <div className="card-body">
-                <button className="button">See Reviews</button>
             </div>
         </div>
         </div>
@@ -23,4 +23,4 @@ function Friends({ userA, userB }){
 
 }
 
-export default Friends;
+export default Friend;
