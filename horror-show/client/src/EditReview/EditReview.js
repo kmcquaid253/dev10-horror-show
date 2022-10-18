@@ -86,7 +86,7 @@ function EditReview() {
     }
 
     return (
-        <div className="container">
+        <div className="editContainer">
             {/* {errors.length > 0 ? <Error error={error}/> : null} */}
             {errors.map((error, i) => 
             (

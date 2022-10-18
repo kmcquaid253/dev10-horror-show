@@ -14,7 +14,6 @@ function Friend({ friendData }){
                 <h5 className='name'>{friendData.username}</h5>
             </div>
             <div className="card-body">
-            {/* <button className="btn friendReview"><Link to={"/friendreview/" + friendData.userId} className="navbar-textdecoration">Reviews</Link></button> */}
             </div>
         </div>
     );
