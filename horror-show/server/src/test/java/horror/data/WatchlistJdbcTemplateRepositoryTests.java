@@ -11,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class WatchlistJdbcTemplateRepositoryTests {
@@ -44,20 +43,16 @@ public class WatchlistJdbcTemplateRepositoryTests {
     }
 
     @Test
-    void shouldUpdate() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Test
     void shouldDelete() {
-        throw new UnsupportedOperationException();
+        assertTrue(repository.deleteById(11));
+        assertFalse(repository.deleteById(11));
     }
 
     private Watchlist makeWatchlist() {
         LocalDate release = LocalDate.parse("2014-05-17");
 
         Movie movie = new Movie();
-        movie.setId(1);
+        movie.setId(11);
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
