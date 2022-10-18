@@ -33,6 +33,12 @@ h1{
     /* border: 1px solid #8F1C34; */
 }
 
+.card-img:hover {
+    transform: scale(1.03);
+    box-shadow: 6px 6px 12px -1px rgb(0, 0, 0);
+    transition: 2s ease;
+}
+
 p {
     margin-top:0;
     color: snow;
@@ -50,4 +56,11 @@ body{
 
 .viewMoreButton {
     color:#AF3A08;
+    transition: 2s ease;
+    cursor:grabbing;
+    width: 160px;
+}
+
+.viewMoreButton:hover {
+    background: rgb(87, 0, 0);
 }
