@@ -82,9 +82,6 @@ export const DataProvider = (props) => {
     //     }, [watched]);
 
 
-    
-
-
     const handleSearch = (e) => {
         setSearch(e.target.value);
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=1&include_adult=false&query=${e.target.value}`
@@ -107,7 +104,7 @@ export const DataProvider = (props) => {
     const addToWatched = (movie) => {
         const check = watched.every((item) => {
             return item.id !== movie.id;
-        });
+        })
         if (check) {
             setWatched([...watched, movie]);
         } else {

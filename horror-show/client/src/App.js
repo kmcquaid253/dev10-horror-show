@@ -30,17 +30,6 @@ const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 function App() {
 
 
-
-  function showErrors(listOfErrorMessages) {
-    const messageContainer = document.getElementById("messages");
-
-    messageContainer.innerHTML = listOfErrorMessages.map(m => "<p>" + "💀 " + m + " 💀" + "</p>").reduce((prev, curr) => prev + curr);
-  }
-
-
-
-
-
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
@@ -148,7 +137,7 @@ function App() {
           </Route>
 
           <DataProvider>
-            {/* <WatchlistNavbar /> */}
+            
             {/* for watchlist */}
             <Route path="/watchlist">
               {user ? <WatchlistPage />

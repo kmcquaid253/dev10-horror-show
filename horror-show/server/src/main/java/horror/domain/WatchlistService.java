@@ -39,6 +39,17 @@ public class WatchlistService {
         return result;
     }
 
+    public Result<Watchlist> createWatched(Watchlist watchlist) {
+        Result<Watchlist> result = validate(watchlist);
+        if (!result.isSuccess()) {
+            return result;
+        }
+
+        watchlist = repository.createWatched(watchlist);
+        result.setPayload(watchlist);
+        return result;
+    }
+
     public Result<Watchlist> update(Watchlist watchlist) {
         Result<Watchlist> result = validate(watchlist);
         if (!result.isSuccess()) {

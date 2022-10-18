@@ -55,7 +55,7 @@ public class WatchlistController {
     public ResponseEntity<Object> createWatched(@RequestBody Watchlist watchlist) {
         AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         watchlist.setAppUserId(appUser.getAppUserId());
-        Result<Watchlist> result = service.createWatchLater(watchlist);
+        Result<Watchlist> result = service.createWatched(watchlist);
 
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);

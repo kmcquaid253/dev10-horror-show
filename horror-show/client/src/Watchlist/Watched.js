@@ -31,7 +31,7 @@ export default function Watched() {
                                 />
                             ) : (
                                 <div className="noimage">
-                                    <p>Poster unavailable</p>
+                                    <p>{movie.title} - Poster unavailable</p>
                                 </div>
                             )}
                             <div className="movie-buttons"></div>
@@ -49,5 +49,4 @@ export default function Watched() {
         </div>
     </div>
     );
-
 }
