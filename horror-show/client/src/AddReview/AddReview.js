@@ -176,7 +176,7 @@ function AddReview() {
                 />
                 <div className="review-container">
                     <button type='submit' className="btn addButton">Add</button>
-                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>
+                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
                 </div>
             </form>
             </div>
