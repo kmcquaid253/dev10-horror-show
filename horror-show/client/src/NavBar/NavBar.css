@@ -50,9 +50,7 @@
   color: rgb(81, 69, 69);
 
 }
-.lol{
-  background-color: #000000;
-}
+
 
 .has-docked-nav .navbar {
   position: fixed;
@@ -130,6 +128,7 @@ nav ul li {
 
 .a {
   padding: 8px 18px;
+  text-decoration: none;
 }
 
 .a:hover {
@@ -139,4 +138,10 @@ nav ul li {
 .droplist {
   width: 180px;
   border-radius: 4px;
+}
+
+/* Removed the links here */
+/* Change color of text here */
+.navbar-textdecoration{
+  text-decoration: none;
 }
