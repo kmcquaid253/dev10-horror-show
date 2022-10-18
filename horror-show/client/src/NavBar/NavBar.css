@@ -49,6 +49,10 @@
   text-decoration: none;
   line-height: 6.5rem;
   color: rgb(81, 69, 69);
+
+}
+.lol{
+  background-color: #000000;
 }
 
 .has-docked-nav .navbar {

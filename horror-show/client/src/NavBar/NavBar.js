@@ -21,7 +21,7 @@ function NavBar() {
           )}
           
         {auth.user ? (
-              <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
+              <li className="navbar-item navbar-link"><Link to="/reviewlist" className="lol">Reviews</Link></li>
           ) : ("")}
 
           {auth.user ? (
