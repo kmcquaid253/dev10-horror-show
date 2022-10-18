@@ -60,6 +60,11 @@
     line-height: 1.7;
 }
 
+.movie-title-list {
+    font-family: nosifer;
+    margin-top: 20px;
+}
+
 .movies-container {
     display: inline-block;
     padding-left: 12px;
