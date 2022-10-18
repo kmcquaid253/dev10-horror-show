@@ -8,7 +8,7 @@ export default function WatchLater() {
         const updater = [...watchLater];
         updater.forEach((item, index) => {
             if (item.id === movie.id) {
-                updater.splice(index, 1);
+                updater.splice(index,1);
             }
         })
         setWatchLater(updater);
@@ -32,7 +32,7 @@ export default function WatchLater() {
                                     />
                                 ) : (
                                     <div className="noimage">
-                                        <p>{movie.title} - Poster unavailable</p>
+                                        <p>Poster unavailable</p>
                                     </div>
                                 )}
                                 <div className="movie-buttons"></div>
@@ -53,8 +53,8 @@ export default function WatchLater() {
                                 </button>
                             </div>
                         );
-                    })
-                    : null}
+                    }) 
+                : null}
             </div>
         </div>
     );

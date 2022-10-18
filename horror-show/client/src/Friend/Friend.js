@@ -13,6 +13,7 @@ function Friend({ friendData }){
             </div>
         </div>
     );
+
 }
 
 export default Friend;

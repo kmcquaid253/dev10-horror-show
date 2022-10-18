@@ -31,6 +31,8 @@ export default function WatchlistPage() {
         }
     }
 
+    
+
     const goToPage = (movie) => {
         setSelectedMovie(movie.id);
         let str = movie.title;

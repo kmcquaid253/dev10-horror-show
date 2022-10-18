@@ -4,12 +4,7 @@ public class Watchlist {
 
     private Movie movie;
 
-
-    private int appUserId;
-
-    private Boolean watchLater;
-
-    private Boolean watched;
+    private AppUser appUser;
 
     public Movie getMovie() {
         return movie;
@@ -19,27 +14,11 @@ public class Watchlist {
         this.movie = movie;
     }
 
-    public int getAppUserId() {
-        return appUserId;
+    public AppUser getAppUser() {
+        return appUser;
     }
 
-    public void setAppUserId(int appUserId) {
-        this.appUserId = appUserId;
-    }
-
-    public Boolean getWatchLater() {
-        return watchLater;
-    }
-
-    public void setWatchLater(Boolean watchLater) {
-        this.watchLater = watchLater;
-    }
-
-    public Boolean getWatched() {
-        return watched;
-    }
-
-    public void setWatched(Boolean watched) {
-        this.watched = watched;
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 }

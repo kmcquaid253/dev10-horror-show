@@ -1,6 +1,5 @@
 package horror.data;
 
-import horror.data.mappers.ReviewMapper;
 import horror.data.mappers.WatchlistMapper;
 import horror.models.Watchlist;
 import org.springframework.dao.DataAccessException;
@@ -29,74 +28,25 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id, title, watchLater, watched "
+        final String sql = "select movie.movieId, app_user.app_user_id "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
 
-        return jdbcTemplate.query(sql, new WatchlistMapper());
+        return jdbcTemplate.query(sql, new WatchlistMapper(roles));
     }
 
     @Override
-    public Watchlist findWatchLaterById(int id) throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id, title, watchLater "
-                + "from watchlist_movie "
-                + "inner join movie on movie.movieId = watchlist_movie.movieId "
-                + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id "
-                + "where app_user.app_user_id = ?";
+    public Watchlist create(Watchlist watchlist) throws DataAccessException {
 
-        return jdbcTemplate.query(sql, new WatchlistMapper(), id).stream()
-                .findFirst().orElse(null);
-    }
-
-    @Override
-    public Watchlist findWatchedById(int id) throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id, title, watched "
-                + "from watchlist_movie "
-                + "inner join movie on movie.movieId = watchlist_movie.movieId "
-                + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id "
-                + "where app_user.app_user_id = ?";
-
-        return jdbcTemplate.query(sql, new WatchlistMapper(), id).stream()
-                .findFirst().orElse(null);
-    }
-
-
-    @Override
-    public Watchlist createWatchLater(Watchlist watchlist) throws DataAccessException {
-        final String sql = "insert into watchlist_movie (movieId, app_user_id, title, watchLater) "
-                + " values (?,?,?)";
+        final String sql = "insert into watchlist_movie (movieId, app_user_id) "
+                + " values (?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, watchlist.getMovie().getId());
-            ps.setInt(2, watchlist.getAppUserId());
-            ps.setString(3, watchlist.getMovie().getTitle());
-            ps.setBoolean(3, watchlist.getWatchLater());
-            return ps;
-        }, keyHolder);
-
-        if (rowsAffected <= 0) {
-            return null;
-        }
-        return watchlist;
-    }
-
-    @Override
-    public Watchlist createWatched(Watchlist watchlist) throws DataAccessException {
-
-        final String sql = "insert into watchlist_movie (movieId, app_user_id, title, watched) "
-                + " values (?,?,?)";
-
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-        int rowsAffected = jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, watchlist.getMovie().getId());
-            ps.setInt(2, watchlist.getAppUserId());
-            ps.setString(3, watchlist.getMovie().getTitle());
-            ps.setBoolean(4, watchlist.getWatched());
-
+            ps.setInt(2, watchlist.getAppUser().getAppUserId());
             return ps;
         }, keyHolder);
 
@@ -115,7 +65,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
         return jdbcTemplate.update(sql,
                 watchlist.getMovie().getId() > 0,
-                watchlist.getAppUserId()) > 0;
+                watchlist.getAppUser().getAppUserId()) > 0;
     }
 
     @Override

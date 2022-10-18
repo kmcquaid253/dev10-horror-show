@@ -5,6 +5,7 @@ import horror.models.AppUser;
 import horror.models.Friend;
 import horror.security.AppUserService;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

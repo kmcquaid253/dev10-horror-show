@@ -2,12 +2,9 @@ package horror.controller;
 
 import horror.domain.Result;
 import horror.domain.WatchlistService;
-import horror.models.AppUser;
 import horror.models.Watchlist;
-import horror.security.AppUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,56 +17,31 @@ public class WatchlistController {
 
     private final WatchlistService service;
 
-    private final AppUserService appUserService;
-    public WatchlistController(WatchlistService service, AppUserService appUserService) {
+    public WatchlistController(WatchlistService service) {
         this.service = service;
-        this.appUserService = appUserService;
     }
-
 
     @GetMapping
     public List<Watchlist> findAll() {
         return service.findAll();
     }
 
-
-    @GetMapping("/watchLater")
-    public Watchlist findWatchLaterByUserId(@PathVariable int id) { return service.findWatchLaterById(id); }
-
-    @GetMapping("/watched")
-    public Watchlist findWatchedByUserId(@PathVariable int id) { return service.findWatchedById(id); }
-
-
-    @PostMapping("/watchLater")
-    public ResponseEntity<Object> createWatchLater(@RequestBody Watchlist watchlist) {
-        AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        watchlist.setAppUserId(appUser.getAppUserId());
-        Result<Watchlist> result = service.createWatchLater(watchlist);
+    @PostMapping
+    public ResponseEntity<Object> create(@RequestBody Watchlist watchlist) {
+        Result<Watchlist> result = service.create(watchlist);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
     }
 
-    @PostMapping("/watched")
-    public ResponseEntity<Object> createWatched(@RequestBody Watchlist watchlist) {
-        AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        watchlist.setAppUserId(appUser.getAppUserId());
-        Result<Watchlist> result = service.createWatched(watchlist);
-
-        if (result.isSuccess()) {
-            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
-        }
-        return ErrorResponse.build(result);
-    }
-
-    @PutMapping
+    @PutMapping("/api/watchlist")
     public ResponseEntity<Object> update(@PathVariable int movieId, @PathVariable int appUserId, @RequestBody Watchlist watchlist) {
         if (movieId != watchlist.getMovie().getId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
-        if (appUserId != watchlist.getAppUserId()) {
+        if (appUserId != watchlist.getAppUser().getAppUserId()) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
@@ -81,7 +53,7 @@ public class WatchlistController {
         return ErrorResponse.build(result);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/api/watchlist")
     public ResponseEntity<Void> deleteById(@PathVariable int movieId) {
         if (service.deleteById(movieId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

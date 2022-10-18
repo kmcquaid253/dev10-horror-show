@@ -12,6 +12,7 @@ function Register() {
     const [password, setPassword] = useState(null);
     const [passwordConfirm, setPasswordConfirm] = useState(null);
 
+
     const [errors, setErrors] = useState([]);
 
     const auth = useContext(AuthContext);
@@ -118,6 +119,8 @@ function Register() {
             </div>
         </form>
     </div>
+
     );
 }
+
 export default Register;

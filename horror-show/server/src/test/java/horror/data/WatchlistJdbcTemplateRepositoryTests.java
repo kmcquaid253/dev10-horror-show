@@ -39,7 +39,7 @@ public class WatchlistJdbcTemplateRepositoryTests {
     @Test
     void shouldAdd() {
         Watchlist watchlist = makeWatchlist();
-        Watchlist actual = repository.createWatchLater(watchlist);
+        Watchlist actual = repository.create(watchlist);
         assertNotNull(actual);
     }
 
@@ -70,7 +70,7 @@ public class WatchlistJdbcTemplateRepositoryTests {
 
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
-        watchlist.setAppUserId(appUser.getAppUserId());
+        watchlist.setAppUser(appUser);
 
         return watchlist;
     }

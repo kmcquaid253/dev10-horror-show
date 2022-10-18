@@ -5,6 +5,8 @@ import './Detail.css';
 
 export default function Detail() {
 
+
+
     const { selectedMovie, getMovie, selectedMovieDetails } = useContext(DataContext);
 
     useEffect(() => {

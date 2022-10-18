@@ -11,6 +11,7 @@ import NavBar from './NavBar/NavBar';
 import Error from './Error/Error';
 import Register from './Register/Register';
 import AddReview from './AddReview/AddReview';
+import MovieDisplay from './TMDBMoviePractice/MovieDisplay';
 import MovieReviews from './ReviewList/MovieReviews';
 import Friends from './Friend/Friend';
 import Watched from './Watchlist/Watched';
@@ -23,7 +24,8 @@ import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 import FriendList from './Friend/FriendList';
 
-const LOCAL_STORAGE_TOKEN_KEY = "horrorShowToken1";
+
+const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
 function App() {
 
@@ -39,9 +41,8 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-  const login = (token) => {
+  const login = (token) => { 
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
-
     const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
@@ -91,6 +92,20 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          {/* 
+          <Route>
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route> */}
+
+          {/* manually testing if login works via this path */}
+          <Route path="/login">
+            {!user ? <Login /> : <Redirect to="/" />}
+          </Route>
+
+          {/* separate movie display other than home */}
+          <Route path="/movieDisplay">
+            <MovieDisplay />
+          </Route>
 
           <Route path="/register">
             <Register />
@@ -102,47 +117,47 @@ function App() {
           </Route>
 
           <Route path="/review">
-            {user ? <AddReview />
+          {user ? <AddReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/edit/:reviewId">
-            {user ? <EditReview />
+          {user ? <EditReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/delete/:reviewId">
-            {user ? <DeleteReview />
+          {user ? <DeleteReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/friends">
           {user ? <FriendList />
               : <Redirect to="/" />}
-
+            
           </Route>
 
           <DataProvider>
-            
+            {/* <WatchlistNavbar /> */}
             {/* for watchlist */}
             <Route path="/watchlist">
-              {user ? <WatchlistPage />
-                : <Redirect to="/" />}
+            {user ? <WatchlistPage />
+              : <Redirect to="/" />}
             </Route>
 
             <Route path="/watchlater">
-              {user ? <WatchLater />
-                : <Redirect to="/" />}
+            {user ? <WatchLater />
+              : <Redirect to="/" />}
             </Route>
 
             <Route path="/watched">
-              {user ? <Watched />
-                : <Redirect to="/" />}
+            {user ? <Watched />
+              : <Redirect to="/" />}
             </Route>
 
             <Route path="/details/:str">
-              {user ? <Detail />
-                : <Redirect to="/" />}
+            {user ? <Detail />
+              : <Redirect to="/" />}
             </Route>
           </DataProvider>
 

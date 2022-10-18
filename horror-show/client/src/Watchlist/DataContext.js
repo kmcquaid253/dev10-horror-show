@@ -4,6 +4,8 @@ import AuthContext from '../AuthContext/AuthContext';
 
 export const DataContext = createContext();
 
+
+
 export const DataProvider = (props) => {
 
     const auth = useContext(AuthContext);

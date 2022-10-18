@@ -29,13 +29,13 @@ public class ReviewController {
     @GetMapping
     public List<Review> findAll() { return service.findAll(); }
 
-    @GetMapping("/{appUserId}")
-    public List<Review> findAllReviewsPerUserId(@PathVariable int appUserId) {return service.findAllReviewsPerUserId(appUserId); }
-
     @GetMapping("/{reviewId}")
     public Review findById(@PathVariable int reviewId) {
         return service.findById(reviewId);
     }
+
+//    @GetMapping("/{appUserId}")
+//    public List<Review> findAllReviewsPerUserId(@PathVariable int appUserId) {return service.findAllReviewsPerUserId(appUserId); }
 
 
     @PostMapping
