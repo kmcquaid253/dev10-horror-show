@@ -140,6 +140,10 @@ function AddReview() {
 
     return (
         <div className='container'>
+            {errors.map((error, i) => 
+            (
+                <Error key={i} msg={error} />
+                ))}
             <h2>Add Review:</h2>
             <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
