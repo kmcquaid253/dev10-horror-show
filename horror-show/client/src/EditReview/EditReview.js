@@ -103,7 +103,7 @@ function EditReview() {
                 onChangeHandler={inputChangeHandler}/>
 
                 <button className="btn editReview-edit" id="editButton">Edit</button>
-                <button className="btn review-cancelButton"><Link to="/reviewlist"  id="cancelButton">Cancel</Link></button>
+                <button className="btn review-cancelButton"><Link to="/reviewlist"  id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
             </form> : null}
         </div>
     )
