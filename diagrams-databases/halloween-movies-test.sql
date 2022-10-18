@@ -53,13 +53,14 @@ create table app_user_role (
 create table friend (
   friendAId int not null,
   friendBId int not null,
-  name varchar(50) not null,
-  app_user_id int not null,
-constraint pk_friend
+constraint pk_friend_id
 	primary key (friendAId, friendBId),
-constraint fk_friend_app_user_id
-	foreign key (app_user_id)
-	references app_user(app_user_id)
+constraint fk_friend_friendAId
+	foreign key (friendAId)
+    references app_user (app_user_id),
+constraint fk_friend_friendBId
+	foreign key (friendBId)
+    references app_user(app_user_id)
 );
 
 -- non-security
@@ -170,8 +171,6 @@ begin
 		values
         ("I liked this movie.", 1, 1),
         ("This movie isn't the classic everyone thinks it is.", 2, 1);
-        
-	
 
 end //
 delimiter ;
