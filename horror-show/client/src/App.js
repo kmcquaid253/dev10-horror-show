@@ -22,13 +22,9 @@ import WatchlistNavbar from './Watchlist/WatchlistNavbar';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 
-
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
-
-
 function App() {
-
 
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
@@ -41,8 +37,6 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
-
- 
 
   const login = (token) => {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);

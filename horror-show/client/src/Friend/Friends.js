@@ -5,7 +5,6 @@ function Friends( {userA, userB} ){
     // const friendURL = "http://localhost:8080/friend/" + userB;
 
     return(
-
         <div className="heading">
             <h1 className="heading-header">Friends</h1>
 
@@ -20,7 +19,5 @@ function Friends( {userA, userB} ){
         </div>
         </div>
     );
-
 }
-
 export default Friends;

@@ -17,22 +17,20 @@ function AddReview() {
         movieId: ""
     };
 
-    const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
+    const [review, setReview] = useState(DEFAULT_REVIEW); //state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
     const [id, setId] = useState([]);
-    const [query, setQuery] = useState('');
-    const auth = useContext(AuthContext);
     const [errors, setErrors] = useState([]);
+    const [query, setQuery] = useState('');
 
+    const auth = useContext(AuthContext);
     const history = useHistory();
-
 
     function showErrors( listOfErrorMessages ){
         const messageContainer = document.getElementById("messages");
         
         messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + "💀 " + m + " 💀" + "</p>" ).reduce( (prev, curr) => prev + curr );
     }
-
 
     function handleMovieSelect(movieId) {
         const reviewCopy = { ...review };
@@ -42,7 +40,6 @@ function AddReview() {
     //can change styling based on if it matches on selected
 
     function addReview() {
-
          //Use fetch to POST to the service
          fetch("http://localhost:8080/api/review", {
             method: "POST",
@@ -95,14 +92,12 @@ function AddReview() {
          
         });
     }
-    
 
     function handleSubmit(event) {//take in an event to prevent it from posting
         event.preventDefault();
 
         addMovieAndReview();
     };
-
 
     function inputChangeHandler(inputChangedEvent) {
         const propertyName = inputChangedEvent.target.name;//We are using the property name to update the value
@@ -114,7 +109,6 @@ function AddReview() {
 
         setReview(reviewCopy);
     }
-
 
     const searchMovie = async (e) => {
         e.preventDefault();
@@ -132,11 +126,9 @@ function AddReview() {
         }
     }
 
-
     const changeHandler = (e) => {
         setQuery(e.target.value);
     }
-    
 
     return (
         <div className='container'>
@@ -144,14 +136,13 @@ function AddReview() {
             <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
                 <form onSubmit={searchMovie}>
-                    <FormInput className="d-flex" onSubmit={searchMovie} autoComplete="off"
 
+                    <FormInput className="d-flex" onSubmit={searchMovie} autoComplete="off"
                         inputType={"search"}
                         identifier={"movieReview"}
                         labelText={"Movie Title Search"}
                         currVal={query}
                         onChangeHandler={changeHandler}
-
                     />
 
                     <button variant="secondary" className="searchButton" type="submit">Search</button>
@@ -163,7 +154,6 @@ function AddReview() {
 
                 </form>
             </div>
-
             <div className="inputDiv">
             <form onSubmit={handleSubmit}>
                 
@@ -174,6 +164,7 @@ function AddReview() {
                     currVal={review.userReview}
                     onChangeHandler={inputChangeHandler}
                 />
+
                 <div className="review-container">
                     <button type='submit' className="btn addButton">Add</button>
                     <button className="btn review-cancelButton"><Link to="/"  id="cancelButton">Cancel</Link></button>

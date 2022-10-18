@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { useContext, useHistory } from 'react';
+import { useContext } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
 
 export const DataContext = createContext();
@@ -10,27 +10,22 @@ export const DataProvider = (props) => {
 
     const [search, setSearch] = useState("");
     const [selectedMovie, setSelectedMovie] = useState();
-    const [watchlistMovies, setWatchlistMovies] = useState([]);
-
     const [movies, setMovies] = useState([]);
     const [sidebar, setSidebar] = useState(false);
     const [selectedMovieDetails, setSelectedMovieDetails] = useState();
 
-    const [watchLater, setWatchLater] = useState(localStorage.getItem("watchlater")
-        ? JSON.parse(localStorage.getItem("watchlater"))
+    const [watchLater, setWatchLater] = useState(localStorage.getItem("watchlater") 
+        ? JSON.parse(localStorage.getItem("watchlater")) 
         : []
     );
 
-    const [watched, setWatched] = useState([localStorage.getItem("watched")
-        ? JSON.parse(localStorage.getItem("watched"))
-        : []]
+    const [watched, setWatched] = useState(localStorage.getItem("watched") 
+        ? JSON.parse(localStorage.getItem("watched")) 
+        : []
     );
 
     const showSidebar = () => setSidebar(!sidebar);
     const openSidebar = () => setSidebar(true);
-
-
-    // front end only local storage
     
     useEffect(() => {
         localStorage.setItem("watchlater", 
@@ -41,45 +36,6 @@ export const DataProvider = (props) => {
         localStorage.setItem("watched", 
         JSON.stringify(watched));
     }, [watched]);
-
-    // useEffect(
-    //     () => {
-    //         fetch("http://localhost:8080/api/watchLater", {
-    //             headers: {
-    //                 Authorization: `Bearer ${auth.user.token}`
-    //             }
-    //         })
-    //             .then(response => {
-    //                 if (response.status === 200) {
-    //                     localStorage.setItem("watchLater",
-    //                         JSON.stringify(watchLater));
-    //                     return response.json();
-    //                 } else (console.log(response))
-    //             })
-    //             .then(watchlistMovies => {
-    //                 setWatchLater(watchlistMovies);
-    //             });
-    //     }, [watchLater]);
-
-    // useEffect(
-    //     () => {
-
-    //         fetch("http://localhost:8080/api/watched", {
-    //             headers: {
-    //                 Authorization: `Bearer ${auth.user.token}`
-    //             }
-    //         })
-    //             .then(response => {
-    //                 if (response.status === 200) {
-    //                     localStorage.setItem("watched",
-    //                         JSON.stringify(watched));
-    //                     return response.json();
-    //                 } else (console.log(response))
-    //             })
-    //             .then(watchlistMovies => {
-    //                 setWatched(watchlistMovies);
-    //             });
-    //     }, [watched]);
 
 
     const handleSearch = (e) => {
@@ -104,10 +60,10 @@ export const DataProvider = (props) => {
     const addToWatched = (movie) => {
         const check = watched.every((item) => {
             return item.id !== movie.id;
-        })
+        });
         if (check) {
             setWatched([...watched, movie]);
-        } else {
+        } else { 
             alert("You've already seen this movie! :D");
         }
     };
@@ -116,23 +72,22 @@ export const DataProvider = (props) => {
 
     const getMovie = (id) => {
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`,
-            {
-                headers: {
-                    Authorization: `Bearer ${auth.user.token}`,
-                },
-            })
-            .then((response) => response.json())
-            .then((data) => setSelectedMovieDetails(data));
+        {
+            headers: {
+                Authorization: `Bearer ${auth.user.token}`,
+            },
+        })
+        .then((response) => response.json())
+        .then ((data) => setSelectedMovieDetails(data));
     };
 
     return (
         <DataContext.Provider value={{
-            auth,
             handleSearch,
-            movies,
-            handlePageChange,
-            watchLater,
-            setWatchLater,
+            movies, 
+            handlePageChange, 
+            watchLater, 
+            setWatchLater, 
             addToWatched,
             watched,
             setWatched,
@@ -142,7 +97,6 @@ export const DataProvider = (props) => {
             selectedMovieDetails,
             openSidebar,
             showSidebar,
-            sidebar
-        }}>{props.children}</DataContext.Provider>
+            sidebar}}>{props.children}</DataContext.Provider>
     )
 }

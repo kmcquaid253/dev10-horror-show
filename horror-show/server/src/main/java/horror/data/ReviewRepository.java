@@ -9,6 +9,8 @@ public interface ReviewRepository {
 
     List<Review> findAll() throws DataAccessException;
 
+    List<Review> findAllReviewsPerUserId(int appUserId);
+
     Review findById(int id) throws DataAccessException;
 
     Review create(Review review) throws DataAccessException;

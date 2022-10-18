@@ -26,7 +26,6 @@ function DeleteWatchlist(){
         });
     }, [movieId]); 
 
-
     function handleSubmit(event){
         event.preventDefault();
 
@@ -52,7 +51,6 @@ function DeleteWatchlist(){
     }
 
     return(
-
         <>
         <div className='container'>
             
@@ -72,7 +70,5 @@ function DeleteWatchlist(){
         </div>
         </>
     );
-
 }
-
-    export default DeleteWatchlist;
+export default DeleteWatchlist;

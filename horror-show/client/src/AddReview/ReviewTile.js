@@ -12,11 +12,9 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
         return `https://image.tmdb.org/t/p/w220_and_h330_face${posterpath}`; 
     } 
 
-
     const grabById = () => {
         onMovieClick(id);
     }
-
 
     return (
         <div className="card">
@@ -28,12 +26,8 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
                 <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId}>Delete</Link></button>
                     <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId}>Edit</Link></button>
                 </div>
-                {/* <h6 className='info'>Movie Id: {id}</h6> */}
-                {/* <p>{overview}</p> */}
             </div>
         </div>
-        // </div>
-        
     )
 }
 

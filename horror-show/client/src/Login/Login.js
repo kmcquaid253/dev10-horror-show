@@ -4,7 +4,6 @@ import AuthContext from "../AuthContext/AuthContext";
 
 import Error from "../Error/Error";
 
-
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -72,5 +71,4 @@ function Login() {
         </div>
     );
 }
-
 export default Login;

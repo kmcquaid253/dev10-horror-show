@@ -2,5 +2,5 @@ body{
      /* background-image: url('.jpg');  */
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
 }

@@ -28,8 +28,6 @@ function Movie({ title, poster_path, release_date, overview}) {
         <button class="button button-primary close-modal">Cancel</button>
     };
 
-
-
     return (
         <div className="card">
             <div className="card-body">
@@ -41,13 +39,11 @@ function Movie({ title, poster_path, release_date, overview}) {
                         <h6>Release Date: {release_date}</h6>
                         <p>{overview}</p>
                             <div className="modal-card">
-
                             </div>
                         </div>
                     </div>
                     <button className="viewMoreButton" onClick={handleModalOpen}>View More</button>
             </div>
-        
         </div>
     )
 }

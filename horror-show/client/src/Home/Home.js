@@ -19,9 +19,7 @@ function Home() {
         })
     }, []);
 
-
-    return (
-        
+    return (        
         <main>
             <div className="container">
                 <h1>Welcome to Horror Show</h1>
@@ -36,5 +34,4 @@ function Home() {
       </main>
     );
 };
-
 export default Home;

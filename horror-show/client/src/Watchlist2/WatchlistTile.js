@@ -12,28 +12,21 @@ function WatchlistTile({ title, poster_path, id, overview, onMovieClick, matches
         return `https://image.tmdb.org/t/p/w220_and_h330_face${posterpath}`; 
     } 
 
-
     const grabById = () => {
         onMovieClick(id);
     }
 
-
     return (
         <div className="card">
             <div className="card-body">
-            {/* <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img> */}
                 <h2 className='title'>{movie.title}</h2>
                 <h6 className='userReview'>Watchlist:<br/> {userReview}</h6>
                 <div className="card-header">
                 <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId}>Delete</Link></button>
                     <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId}>Edit</Link></button>
                 </div>
-                {/* <h6 className='info'>Movie Id: {id}</h6> */}
-                {/* <p>{overview}</p> */}
             </div>
         </div>
-        // </div>
-        
     )
 }
 

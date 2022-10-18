@@ -9,7 +9,6 @@ function AddReviewTile({ title, poster_path, release_date, id, overview, onMovie
         return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterpath}`; 
     } 
 
-
     const grabById = () => {
         onMovieClick(id);
     }
