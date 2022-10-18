@@ -137,7 +137,7 @@ function App() {
           </Route>
 
           <DataProvider>
-            <WatchlistNavbar />
+            {/* <WatchlistNavbar /> */}
             {/* for watchlist */}
             <Route path="/watchlist">
             {user ? <WatchlistPage />

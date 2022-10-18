@@ -7,7 +7,7 @@ function NavBar() {
   const auth = useContext(AuthContext);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar nav">
       <div className="container">
         <ul className="navbar-list">
           <li className="navbar-item navbar-link"><Link to="/">Home</Link></li>
@@ -21,13 +21,18 @@ function NavBar() {
           )}
           
         {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
-
+              <li className="navbar-item navbar-link"><Link to="/reviewlist">Reviews</Link></li>
           ) : ("")}
 
           {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/watchlist">Watchlist</Link></li>
-
+            <ul className="watch-ul">
+              <li className="navbar-item navbar-link"><a href="#">WatchList</a></li>
+                <ul className="watched-ul">
+                  <li className="droplist"><Link className ="a" to="/watchlist">Search</Link></li>
+                  <li className="droplist"><Link className ="a" to="/watchlater">Watch Later</Link></li>
+                  <li className="droplist"><Link className ="a" to="/watched">Watched</Link></li>
+                </ul>  
+            </ul>
           ) : ("")}
 
           {auth.user ? (

@@ -88,3 +88,49 @@
   0px 22px 1px #C00000;
   
 }
+
+
+nav ul li {
+  float: left;
+  position: relative;
+  list-style: none;
+}
+
+.navbar .watch-ul .watchnav {
+  position: relative;
+}
+
+
+
+.watched-ul {
+  display: none;
+  position: absolute;
+  background-color: white;
+  margin-top: 90px;
+  margin-left: 270px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 0px 0px 4px 4px;
+  
+
+}
+
+
+.navbar-list .watch-ul:hover .watched-ul{
+  
+  display: block;
+
+}
+
+.a {
+  padding: 8px 18px;
+}
+
+.a:hover {
+  background-color: #f3f3f3;
+}
+
+.droplist {
+  width: 180px;
+  border-radius: 4px;
+}
