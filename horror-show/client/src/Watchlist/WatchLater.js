@@ -22,8 +22,8 @@ export default function WatchLater() {
                     watchLater.map((movie) => {
                         return (
                             <div className="movies-item">
-                                <h3 className="movie-title">
-                                    {movie.title}</h3>
+                                <h3 className="movie-title-list">
+                                {movie.title}</h3>
                                 {movie.poster_path ? (
                                     <img
                                         className="movie-poster"

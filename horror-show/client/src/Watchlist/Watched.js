@@ -21,7 +21,7 @@ export default function Watched() {
                 watched.map((movie) => {
                     return (
                         <div className="movies-item">
-                            <h3 className="movie-title">
+                            <h3 className="movie-title-list">
                                 {movie.title}</h3>
                             {movie.poster_path ? (
                                 <img
