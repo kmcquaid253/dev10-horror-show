@@ -22,6 +22,7 @@ import DeleteReview from './DeleteReview/DeleteReview';
 import FriendList from './Friend/FriendList';
 import MovieWatchlist from './SecondWatchlist/MovieWatchlist';
 import AddWatchlist from './SecondWatchlist/AddWatchlist';
+import FriendMovieList from './Friend/FriendMovieList';
 
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
@@ -105,7 +106,7 @@ function App() {
             <Register />
           </Route>
 
-          <Route path="/friendreview/:userId">
+          <Route path="/friendreview/:appUserId">
             <MovieReviews/>
           </Route>
 
@@ -165,6 +166,11 @@ function App() {
 
             <Route path="/watched">
             {user ? <Watched />
+              : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/friendwatched">
+            {user ? <FriendMovieList />
               : <Redirect to="/" />}
             </Route>
 
