@@ -17,7 +17,7 @@ function FriendMovieCard({ title, poster_path, overview}) {
             <div className="card-body">
 
                 <img className="card-img" src={getPosterUrl(poster_path)} alt={title + " " + overview}></img>
-                        <h5>{title}</h5>
+                        {/* <h5>{title}</h5> */}
                         </div>
                     
             </div>
