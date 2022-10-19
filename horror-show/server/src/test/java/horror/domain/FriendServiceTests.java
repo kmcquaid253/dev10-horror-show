@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -23,7 +24,6 @@ public class FriendServiceTests {
 
     @Test
     void shouldFindById() {
-
     }
 
     Friend makeFriend() {
