@@ -41,7 +41,7 @@ public class WatchlistService {
             return result;
         }
 
-        if (watchlist.getAppUser().getAppUserId() <= 0) {
+        if (watchlist.getAppUserId() <= 0) {
             result.addMessage("Invalid user ID", ResultType.INVALID);
             return result;
         }
@@ -55,18 +55,17 @@ public class WatchlistService {
 
     private Result<Watchlist> validate(Watchlist watchlist){
         Result<Watchlist> result = new Result<>();
-        //TODO Possibly come back to later. Can a Watchlist be null?
         if (watchlist == null) {
             result.addMessage("Watchlist cannot be null", ResultType.INVALID);
             return result;
         }
 
-        if (watchlist.getMovie().getId() == 0){
+        if (watchlist.getMovieId() < 0){
             result.addMessage("Invalid film selected.", ResultType.INVALID);
             return result;
         }
 
-        if (watchlist.getAppUser().getAppUserId() == 0){
+        if (watchlist.getAppUserId() == 0){
             result.addMessage("Invalid user ID", ResultType.INVALID);
             return result;
         }

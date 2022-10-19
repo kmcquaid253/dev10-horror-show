@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from 'react';
 import AuthContext from "../AuthContext/AuthContext";
 import AddWatchlistTile from "./AddWatchlistTile";
+import Messages from "../Messages/Messages";
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
@@ -25,10 +26,8 @@ function AddWatchlist() {
     const history = useHistory();
 
 
-    function showErrors( listOfErrorMessages ){
-        const messageContainer = document.getElementById("messages");
-        
-        messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + "💀 " + m + " 💀" + "</p>" ).reduce( (prev, curr) => prev + curr );
+    function showErrors(listOfErrorMessages) {
+        setErrors(listOfErrorMessages);
     }
 
 
@@ -41,8 +40,8 @@ function AddWatchlist() {
 
     function add() {
 
-         //Use fetch to POST to the service
-         fetch("http://localhost:8080/api/watchlist", {
+        //Use fetch to POST to the service
+        fetch("http://localhost:8080/api/watchlist", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -57,25 +56,25 @@ function AddWatchlist() {
 
                     //Invoking this hook returns an object
                     //if successful...
-                    history.push("/reviewlist");
+                    history.push("/watchlistList");
                     return response.json();
                 }
                 return Promise.reject(await response.json());
 
             })
-            .catch(error => {
-                if (error instanceof TypeError) {
+            .catch(errorRequest => {
+                if (errorRequest instanceof TypeError) {
                     showErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
                 } else {
-                    showErrors(error);
+                    showErrors(errorRequest);
                 }
             });
     }
 
-    function addMovieAndReview(){
-        const movie = movies.find((m) => m.id === review.movieId);
+    function addMovieAndWatchlist() {
+        const movie = movies.find((m) => m.id === watchlist.movieId);
 
-        fetch ("http://localhost:8080/api/movie", {
+        fetch("http://localhost:8080/api/movie", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -84,21 +83,18 @@ function AddWatchlist() {
             },
             body: JSON.stringify(movie),
         }).then(response => {
-            if (response.status === 201){
-                addReview();
-            } 
+            if (response.status === 201) {
+                add();
+            }
         }).catch(error => {
-            
-                showErrors(error);
-         
+            showErrors(error);
         });
     }
-    
 
     function handleSubmit(event) {//take in an event to prevent it from posting
         event.preventDefault();
 
-        addMovieAndReview();
+        addMovieAndWatchlist();
     };
 
 
@@ -106,11 +102,11 @@ function AddWatchlist() {
         const propertyName = inputChangedEvent.target.name;//We are using the property name to update the value
         const newValue = inputChangedEvent.target.value;
 
-        const reviewCopy = { ...review };
+        const watchlistCopy = { ...watchlist };
 
-        reviewCopy[propertyName] = newValue;
+        watchlistCopy[propertyName] = newValue;
 
-        setWatchlist(reviewCopy);
+        setWatchlist(watchlistCopy);
     }
 
 
@@ -119,7 +115,7 @@ function AddWatchlist() {
         console.log("Searching");
         try {
             //const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`; 
-            const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
@@ -130,26 +126,24 @@ function AddWatchlist() {
         }
     }
 
-
     const changeHandler = (e) => {
         setQuery(e.target.value);
     }
-    
 
     return (
         <div className='container'>
-            {errors.map((error, i) => 
+            {errors.map((error, i) =>
             (
                 <Error key={i} msg={error} />
-                ))}
-            <h2>Add Review:</h2>
-            <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
+            ))}
+            <h2 className="addWatchlist">Add To Watchlist:</h2>
+            <h6 className="add-watchlist-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
                 <form onSubmit={searchMovie}>
                     <FormInput className="d-flex" onSubmit={searchMovie} autoComplete="off"
 
                         inputType={"search"}
-                        identifier={"movieReview"}
+                        identifier={"movieWatchlist"}
                         labelText={"Movie Title Search"}
                         currVal={query}
                         onChangeHandler={changeHandler}
@@ -160,27 +154,36 @@ function AddWatchlist() {
 
                     <div className="grid">
                         {movies.map((movie) =>
-                            <AddWatchlistTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
+                            <AddWatchlistTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === watchlist.movieId} />)}
                     </div>
 
                 </form>
             </div>
 
             <div className="inputDiv">
-            <form onSubmit={handleSubmit}>
-                
-                <FormInput
-                    inputType={"textarea"}
-                    identifier={"userReview"}
-                    labelText={"User Review"}
-                    currVal={review.userReview}
-                    onChangeHandler={inputChangeHandler}
-                />
-                <div className="review-container">
-                    <button type='submit' className="btn addButton">Add</button>
-                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
-                </div>
-            </form>
+                <Messages errorMessages={errors} />
+                <form onSubmit={handleSubmit}>
+
+                    <FormInput
+                        inputType={"checkbox"}
+                        identifier={"watched"}
+                        labelText={"Watched"}
+                        currVal={watchlist.watched}
+                        onChangeHandler={inputChangeHandler}
+                    />
+
+                    <FormInput
+                        inputType={"checkbox"}
+                        identifier={"watchLater"}
+                        labelText={"Watch Later"}
+                        currVal={watchlist.watchLater}
+                        onChangeHandler={inputChangeHandler}
+                    />
+                    <div className="review-container">
+                        <button type='submit' className="btn addButton">Add</button>
+                        <button className="btn review-cancelButton"><Link to="/" id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
+                    </div>
+                </form>
             </div>
         </div>
     );

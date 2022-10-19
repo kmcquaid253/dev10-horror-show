@@ -7,11 +7,7 @@ import CartIcon from './ghost.png';
 
 function NotFound() {
 
-
     return (
-       
-    
-
       <main>
         <h1 id='titleOne'>404</h1>
         <h2 id='titleTwo'>Boooops!</h2>

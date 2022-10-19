@@ -53,19 +53,19 @@ create table app_user_role (
 create table friend (
   friendAId int not null,
   friendBId int not null,
-  name varchar(50) not null,
-  app_user_id int not null,
-constraint pk_friend
+constraint pk_friend_id
 	primary key (friendAId, friendBId),
-constraint fk_friend_app_user_id
-	foreign key (app_user_id)
-	references app_user(app_user_id)
+constraint fk_friend_friendAId
+	foreign key (friendAId)
+    references app_user (app_user_id),
+constraint fk_friend_friendBId
+	foreign key (friendBId)
+    references app_user(app_user_id)
 );
-
 -- non-security
 
 create table movie (
-  movieId int primary key auto_increment,
+  movieId int primary key,
   title varchar(50) not null,
   runtime varchar(50) null,
   rating varchar(50) null,
@@ -91,13 +91,26 @@ insert into app_user (username, password_hash, disabled)
     values
     ('dracula@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
     ('samara@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
-	('chucky@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
+	('chucky@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
+    ('m.myers@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0),
+    ('jason@scary.com', '$2a$12$b3gcHHnHcJ2Y02znwWkQoeQNvez18r5uNZxSewRnkjeHSoE5iSYii', 0);
     
 insert into app_user_role
 	values
 	(1,1),
     (2,2),
     (3,1);
+    
+insert into friend (friendAId, friendBId)
+	values
+    (1,2),
+    (1,3),
+    (2,3),
+    (1,4),
+    (1,5),
+    (3,4),
+    (3,5),
+    (4,5);
 
     
 create table review (
@@ -116,7 +129,10 @@ constraint fk_review_movieId
 create table watchlist_movie (
     movieId int not null,
     app_user_id int not null,
-constraint pk_watchlist_movie
+    watchlistId int null,
+    watchLater boolean null,
+    watched boolean null,
+constraint pk_watchlist_movie_id
 	primary key (movieId, app_user_id),
 constraint fk_watchlist_movie_app_user_id
 	foreign key (app_user_id)

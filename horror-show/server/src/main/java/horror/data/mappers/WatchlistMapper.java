@@ -1,5 +1,6 @@
 package horror.data.mappers;
 
+import horror.models.Review;
 import horror.models.Watchlist;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -20,13 +21,13 @@ public class WatchlistMapper implements RowMapper<Watchlist> {
 
         Watchlist watchlist = new Watchlist();
 
-
         MovieMapper movieMapper = new MovieMapper();
         watchlist.setMovie(movieMapper.mapRow(resultSet, i));
-
-        AppUserMapper appUserMapper = new AppUserMapper(roles);
-        watchlist.setAppUser(appUserMapper.mapRow(resultSet, i));
-
+        watchlist.setWatchlistId(resultSet.getInt("watchlistId"));
+        watchlist.setAppUserId(resultSet.getInt("app_user_id"));
+        watchlist.setMovieId(resultSet.getInt("movieId"));
+        watchlist.setWatched(resultSet.getBoolean("watched"));
+        watchlist.setWatchLater(resultSet.getBoolean("watchLater"));
         return watchlist;
     }
 }

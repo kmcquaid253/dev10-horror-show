@@ -5,6 +5,7 @@ import { useState, useContext } from 'react';
 import './AddReview.css';
 import AddReviewTile from "./AddReviewTile";
 import AuthContext from "../AuthContext/AuthContext";
+import Messages from "../Messages/Messages"
 
 const API_SEARCH = "https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query";
 
@@ -27,10 +28,8 @@ function AddReview() {
     const history = useHistory();
 
 
-    function showErrors( listOfErrorMessages ){
-        const messageContainer = document.getElementById("messages");
-        
-        messageContainer.innerHTML = listOfErrorMessages.map( m => "<p>" + "💀 " + m + " 💀" + "</p>" ).reduce( (prev, curr) => prev + curr );
+    function showErrors(listOfErrorMessages) {
+        setErrors(listOfErrorMessages);
     }
 
 
@@ -43,8 +42,8 @@ function AddReview() {
 
     function addReview() {
 
-         //Use fetch to POST to the service
-         fetch("http://localhost:8080/api/review", {
+        //Use fetch to POST to the service
+        fetch("http://localhost:8080/api/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -65,19 +64,19 @@ function AddReview() {
                 return Promise.reject(await response.json());
 
             })
-            .catch(error => {
-                if (error instanceof TypeError) {
+            .catch(errorRequest => {
+                if (errorRequest instanceof TypeError) {
                     showErrors(["Could not connect to the api."]);//put string into an array because it's handeling multiple error messages
                 } else {
-                    showErrors(error);
+                    showErrors(errorRequest);
                 }
             });
     }
 
-    function addMovieAndReview(){
+    function addMovieAndReview() {
         const movie = movies.find((m) => m.id === review.movieId);
 
-        fetch ("http://localhost:8080/api/movie", {
+        fetch("http://localhost:8080/api/movie", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -86,18 +85,18 @@ function AddReview() {
             },
             body: JSON.stringify(movie),
         }).then(response => {
-            if (response.status === 201){
+            if (response.status === 201) {
                 addReview();
-            } 
+            }
         }).catch(error => {
-            
-                showErrors(error);
-         
+
+            showErrors(error);
+
         });
     }
-    
 
-    function handleSubmit(event) {//take in an event to prevent it from posting
+
+    function handleSubmit(event) { //take in an event to prevent it from posting
         event.preventDefault();
 
         addMovieAndReview();
@@ -105,7 +104,7 @@ function AddReview() {
 
 
     function inputChangeHandler(inputChangedEvent) {
-        const propertyName = inputChangedEvent.target.name;//We are using the property name to update the value
+        const propertyName = inputChangedEvent.target.name; //We are using the property name to update the value
         const newValue = inputChangedEvent.target.value;
 
         const reviewCopy = { ...review };
@@ -121,7 +120,7 @@ function AddReview() {
         console.log("Searching");
         try {
             //const url = `https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate`; 
-            const url=`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${query}`;
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
@@ -136,14 +135,14 @@ function AddReview() {
     const changeHandler = (e) => {
         setQuery(e.target.value);
     }
-    
+
 
     return (
         <div className='container'>
-            {errors.map((error, i) => 
+            {errors.map((error, i) =>
             (
                 <Error key={i} msg={error} />
-                ))}
+            ))}
             <h2 className="addReview">Add Review:</h2>
             <h6 className="add-review-error-messages"><div id="messages" role="alert"></div></h6>
             <div className="searchDiv">
@@ -169,20 +168,21 @@ function AddReview() {
             </div>
 
             <div className="inputDiv">
-            <form onSubmit={handleSubmit}>
-                
-                <FormInput
-                    inputType={"textarea"}
-                    identifier={"userReview"}
-                    labelText={"User Review"}
-                    currVal={review.userReview}
-                    onChangeHandler={inputChangeHandler}
-                />
-                <div className="review-container">
-                    <button type='submit' className="btn addButton">Add</button>
-                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
-                </div>
-            </form>
+                <Messages errorMessages={errors} />
+                <form onSubmit={handleSubmit}>
+
+                    <FormInput
+                        inputType={"textarea"}
+                        identifier={"userReview"}
+                        labelText={"User Review"}
+                        currVal={review.userReview}
+                        onChangeHandler={inputChangeHandler}
+                    />
+                    <div className="review-container">
+                        <button type='submit' className="btn addButton">Add</button>
+                        <button className="btn review-cancelButton"><Link to="/" id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
+                    </div>
+                </form>
             </div>
         </div>
     );

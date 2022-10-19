@@ -2,7 +2,7 @@ import React from 'react';
 import "./AddReviewTile.css";
 import {Link} from "react-router-dom";
 
-function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, reviewId, movie }) {
+function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSelected, userReview, reviewId, movie, appUserId }) {
 
     const movieUrl = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US";
     
@@ -24,6 +24,7 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
             {/* <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img> */}
                 <h2 className='title'>{movie.title}</h2>
                 <h6 className='userReview'>Review:<br/> {userReview}</h6>
+                <h3 className='appUserId'>User: {appUserId}</h3>
                 <div className="card-header">
                 <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId} className="navbar-textdecoration">Delete</Link></button>
                     <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId} className="navbar-textdecoration">Edit</Link></button>

@@ -28,8 +28,10 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
     @Override
     public List<Watchlist> findAll() throws DataAccessException {
-        final String sql = "select movie.movieId, app_user.app_user_id, username, password_hash, disabled, movie.title, movie.runtime, movie.rating, "
-                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId  "
+        final String sql = "select movie.movieId, app_user.app_user_id, app_user.username, app_user.password_hash, "
+                + "app_user.disabled, movie.title, movie.runtime, movie.rating, "
+                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, watchlistId, title, watchLater, "
+                + "watchLater, watched "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
                 + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
@@ -40,14 +42,16 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
     @Override
     public Watchlist create(Watchlist watchlist) throws DataAccessException {
 
-        final String sql = "insert into watchlist_movie (movieId, app_user_id) "
-                + " values (?,?)";
+        final String sql = "insert into watchlist_movie (movieId, app_user_id, watched, watchLater) "
+                + " values (?,?,?,?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, watchlist.getMovie().getId());
-            ps.setInt(2, watchlist.getAppUser().getAppUserId());
+            ps.setInt(1, watchlist.getMovieId());
+            ps.setInt(2, watchlist.getAppUserId());
+            ps.setBoolean(3, watchlist.isWatched());
+            ps.setBoolean(4, watchlist.isWatchLater());
             return ps;
         }, keyHolder);
 
@@ -66,7 +70,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
         return jdbcTemplate.update(sql,
                 watchlist.getMovie().getId() > 0,
-                watchlist.getAppUser().getAppUserId()) > 0;
+                watchlist.getAppUserId()) > 0;
     }
 
     @Override
