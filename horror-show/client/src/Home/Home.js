@@ -23,8 +23,6 @@ function Home() {
     return (
         
         <main>
-            {/* <div class="lightining"></div>
-            <div class="rain"></div> */}
             <div className="container">
                 <h1>Welcome to Horror Show</h1>
                 <div className="grid">
