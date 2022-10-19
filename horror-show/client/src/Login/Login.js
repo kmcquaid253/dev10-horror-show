@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import AuthContext from "../AuthContext/AuthContext";
+import './Login.css';
 
 import Error from "../Error/Error";
 
@@ -41,35 +42,66 @@ function Login() {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
+        <>
+            <div className="login-container">
+                <h2 className="h2-login">
+                    Login
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                </h2>
+            <div className="box">
             {errors.map((error, i) => 
             (
                 <Error key={i} msg={error} />
             ))}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="inputBox">
                 
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username" className="username">Username:</label>
                     <input
                         type="text"
                         onChange={(event) => setUsername(event.target.value)}
                         id="username"
                     />
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
+                <div className="inputBox">
+                    <label htmlFor="password" className="password">Password:</label>
+                    <input className="inputBox"
                         type="password"
                         onChange={(event) => setPassword(event.target.value)}
                         id="password"
                     />
                 </div>
                 <div>
-                    <button type="submit">Login</button>
+                    <button type="submit" className="login-a">
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        Login</button>
                 </div>
             </form>
         </div>
+        </div>
+        </>
     );
 }
 

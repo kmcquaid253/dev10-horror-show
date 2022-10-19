@@ -66,6 +66,7 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
         WatchlistItem watchlistItem = new WatchlistItem();
         watchlistItem.setMovie(movie);
         watchlistItem.setAppUserId(appUser.getAppUserId());
+       
 
         return watchlistItem;
     }

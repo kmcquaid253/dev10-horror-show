@@ -18,6 +18,6 @@ public class SubgenreService {
 
     public List<Subgenre> findAll() { return repository.findAll(); }
     public Subgenre findById(int subgenreId) {
-        return repository.findSubgenreById(subgenreId); //todo: validation?
+        return repository.findSubgenreById(subgenreId);
     }
 }
