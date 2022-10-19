@@ -186,8 +186,6 @@ begin
 		values
         ("I liked this movie.", 1, 1),
         ("This movie isn't the classic everyone thinks it is.", 2, 1);
-        
-	
 
 end //
 delimiter ;

@@ -18,19 +18,19 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
     }
 
 
+
     return (
         <div className="card">
             <div className="card-body">
             {/* <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img> */}
                 <h2 className='title'>{movie.title}</h2>
+
                 <h6 className='userReview'>Review:<br/> {userReview}</h6>
                 <h3 className='appUserId'>User: {appUserId}</h3>
                 <div className="card-header">
                 <button className="btn reviewTile-delete" ><Link to={"/reviews/delete/" + reviewId} className="navbar-textdecoration">Delete</Link></button>
                     <button className="btn reviewTile-edit"><Link to={"/reviews/edit/" + reviewId} className="navbar-textdecoration">Edit</Link></button>
                 </div>
-                {/* <h6 className='info'>Movie Id: {id}</h6> */}
-                {/* <p>{overview}</p> */}
             </div>
         </div>
         // </div>

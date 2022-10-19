@@ -154,7 +154,6 @@ function AddReview() {
                         labelText={"Movie Title Search"}
                         currVal={query}
                         onChangeHandler={changeHandler}
-
                     />
 
                     <button variant="secondary" className="searchButton" type="submit">Search</button>
@@ -163,7 +162,6 @@ function AddReview() {
                         {movies.map((movie) =>
                             <AddReviewTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
                     </div>
-
                 </form>
             </div>
 
@@ -183,6 +181,19 @@ function AddReview() {
                         <button className="btn review-cancelButton"><Link to="/" id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
                     </div>
                 </form>
+            <form onSubmit={handleSubmit}>
+                <FormInput
+                    inputType={"textarea"}
+                    identifier={"userReview"}
+                    labelText={"User Review"}
+                    currVal={review.userReview}
+                    onChangeHandler={inputChangeHandler}
+                />
+                <div className="review-container">
+                    <button type='submit' className="btn addButton">Add</button>
+                    <button className="btn review-cancelButton"><Link to="/"  id="cancelButton" className="navbar-textdecoration">Cancel</Link></button>
+                </div>
+            </form>
             </div>
         </div>
     );
