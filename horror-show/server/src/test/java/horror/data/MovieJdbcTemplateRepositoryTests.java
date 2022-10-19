@@ -48,8 +48,6 @@ public class MovieJdbcTemplateRepositoryTests {
         assertEquals("R", movie.getRating());
         assertEquals(release, movie.getRelease_date());
         assertEquals(10, movie.getVote_average());
-        assertEquals(1, movie.getDirectorId());
-        assertEquals(1, movie.getSubgenreId());
     }
 
     @Test
@@ -62,7 +60,7 @@ public class MovieJdbcTemplateRepositoryTests {
     @Test
     void shouldUpdate() {
         Movie movie = makeMovie();
-        movie.setId(5);
+        movie.setRuntime(99);
         assertTrue(repository.update(movie));
     }
 

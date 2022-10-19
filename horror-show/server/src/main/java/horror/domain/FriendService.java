@@ -16,6 +16,6 @@ public class FriendService {
     }
 
     public List<Friend> findById(int friendId) {
-        return repository.findFriendsById(friendId); //todo: validation?
+        return repository.findFriendsById(friendId);
     }
 }

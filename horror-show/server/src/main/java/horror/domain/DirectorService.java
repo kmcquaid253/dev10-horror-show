@@ -18,6 +18,6 @@ public class DirectorService {
 
     public List<Director> findAll() { return repository.findAll(); }
     public Director findById(int directorId) {
-        return repository.findDirectorById(directorId); //todo: validation?
+        return repository.findDirectorById(directorId);
     }
 }

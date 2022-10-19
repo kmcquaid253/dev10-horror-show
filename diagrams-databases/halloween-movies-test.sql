@@ -112,6 +112,12 @@ insert into friend (friendAId, friendBId)
     (3,5),
     (4,5);
     
+insert into movie (movieId, title, runtime, rating, releaseDate, scoreNum)
+	values
+	(1, 'Carrie', 98, 'R', '1976-11-03', 10),
+	(2, 'Halloween', 95, 'R', '1978-10-27', 9),
+    (3, 'Rosemarys Baby', 136, 'R', '1968-06-12', 9); 
+    
 create table review (
   reviewId int primary key auto_increment,
   userReview varchar(750) null,
@@ -139,7 +145,7 @@ constraint fk_watchlist_movie_app_user_id
 constraint fk_watchlist_movie_movieId
 	foreign key (movieId)
     references movie(movieId)
-    );
+);
     
 create table actor_movie (
 	actorId int not null,
@@ -166,20 +172,11 @@ begin
 	insert into actor (firstName, lastName, nationality)
 		values
         ("Sissy", "Spacek", "American");
-    
-	insert into subgenre (name)
-		values
-        ("Horror");
 
 	insert into director (firstName, lastName, nationality)
 		values
 		("Brian", "De Palma", "American"),
         ("John", "Carpenter", "American");
-
-	insert into movie (title, runtime, rating, releaseDate, scoreNum, directorId, subgenreId)
-		values
-		('Carrie', 98, 'R', '1976-11-03', 10, 1, 1),
-        ('Halloween', 95, 'R', '1978-10-27', 9, 2, 1); 
         
 	insert into review (userReview, app_user_id, movieId)
 		values
