@@ -18,6 +18,6 @@ public class ActorService {
 
     public List<Actor> findAll() { return repository.findAll(); }
     public Actor findById(int actorId) {
-        return repository.findActorById(actorId); //todo: validation?
+        return repository.findActorById(actorId);
     }
 }

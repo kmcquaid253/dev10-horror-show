@@ -55,7 +55,6 @@ public class WatchlistService {
 
     private Result<Watchlist> validate(Watchlist watchlist){
         Result<Watchlist> result = new Result<>();
-        //TODO Possibly come back to later. Can a Watchlist be null?
         if (watchlist == null) {
             result.addMessage("Watchlist cannot be null", ResultType.INVALID);
             return result;
