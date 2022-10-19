@@ -155,7 +155,6 @@ function AddReview() {
                         labelText={"Movie Title Search"}
                         currVal={query}
                         onChangeHandler={changeHandler}
-
                     />
 
                     <button variant="secondary" className="searchButton" type="submit">Search</button>
@@ -164,13 +163,11 @@ function AddReview() {
                         {movies.map((movie) =>
                             <AddReviewTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
                     </div>
-
                 </form>
             </div>
 
             <div className="inputDiv">
             <form onSubmit={handleSubmit}>
-                
                 <FormInput
                     inputType={"textarea"}
                     identifier={"userReview"}
