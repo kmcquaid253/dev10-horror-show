@@ -111,7 +111,6 @@ insert into friend (friendAId, friendBId)
     (3,4),
     (3,5),
     (4,5);
-
     
 create table review (
   reviewId int primary key auto_increment,
