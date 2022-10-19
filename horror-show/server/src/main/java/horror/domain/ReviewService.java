@@ -26,7 +26,7 @@ public class ReviewService {
 
     public Review findById(int reviewId) { return repository.findById(reviewId);}
 
-    public Result<Review> add(Review review) {
+    public Result<Review> create(Review review) {
         //validate app user is not null
         Result<Review> result = validate(review);
         if (!result.isSuccess()) {

@@ -25,8 +25,8 @@ function MovieWatchlist() {
                     return response.json();
                 } else (console.log(response))
             })
-            .then(reviewList => {
-                setMovies(reviewList);
+            .then(watchlistList => {
+                setMovies(watchlistList);
             });
     }
 
@@ -36,15 +36,15 @@ function MovieWatchlist() {
         }, []);
     return (
         <>
-        <div className='card-body'>
-            { 
-            movies.map((movie) =>
-                <WatchlistTile
-                    key={movie.id}
-                    {...movie}
-                    onMovieClick={handleMovieSelect}
-                    matchesSelected={movie.id === watchlist.movieId}/>)}
-        </div>
+            <div className='card-body'>
+                {
+                    movies.map((movie) =>
+                        <WatchlistTile
+                            key={movie.id}
+                            {...movie}
+                            onMovieClick={handleMovieSelect}
+                            matchesSelected={movie.id === watchlist.movieId} />)}
+            </div>
         </>
     );
 };

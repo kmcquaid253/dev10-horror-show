@@ -40,10 +40,9 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Review review) {
-        //security checks for role in add, delete, and update: widget manager
         AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         review.setAppUserId(appUser.getAppUserId());
-        Result<Review> result = service.add(review);
+        Result<Review> result = service.create(review);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }

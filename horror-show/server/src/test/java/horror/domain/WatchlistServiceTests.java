@@ -62,7 +62,7 @@ public class WatchlistServiceTests {
 
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
-        watchlist.setAppUser(appUser);
+        watchlist.setAppUserId(appUser.getAppUserId());
 
         return watchlist;
     }
@@ -84,7 +84,7 @@ public class WatchlistServiceTests {
 
         Watchlist watchlist = new Watchlist();
         watchlist.setMovie(movie);
-        watchlist.setAppUser(appUser);
+        watchlist.setAppUserId(appUser.getAppUserId());
 
         return watchlist;
     }

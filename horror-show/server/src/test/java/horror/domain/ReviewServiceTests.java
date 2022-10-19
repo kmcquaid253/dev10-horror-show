@@ -36,7 +36,7 @@ public class ReviewServiceTests {
 
         when(repository.create(review)).thenReturn(mockOut);
 
-        Result<Review> actual = service.add(review);
+        Result<Review> actual = service.create(review);
         assertEquals(ResultType.SUCCESS, actual.getType());
         assertEquals(mockOut, actual.getPayload());
     }
@@ -46,12 +46,12 @@ public class ReviewServiceTests {
         Review review = makeReview();
         review.setUserReview("  ");
 
-        Result<Review> actual = service.add(review);
+        Result<Review> actual = service.create(review);
         assertEquals(ResultType.INVALID, actual.getType());
 
         review = makeReview();
         review.setUserReview(null);
-        actual = service.add(review);
+        actual = service.create(review);
         assertEquals(ResultType.INVALID, actual.getType());
     }
 
