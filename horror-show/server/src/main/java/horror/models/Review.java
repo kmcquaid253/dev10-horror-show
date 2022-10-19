@@ -22,7 +22,6 @@ public class Review {
 
     private Movie movie;
 
-
     public Movie getMovie() {
         return movie;
     }

@@ -1,10 +1,8 @@
 package horror.models;
 
-public class Watchlist {
+public class WatchlistItem {
 
-    private int watchlistId;
 
-    private int movieId;
 
     private Movie movie;
 
@@ -14,21 +12,7 @@ public class Watchlist {
 
     private boolean watched;
 
-    public int getWatchlistId() {
-        return watchlistId;
-    }
 
-    public void setWatchlistId(int watchlistId) {
-        this.watchlistId = watchlistId;
-    }
-
-    public int getMovieId() {
-        return movieId;
-    }
-
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
-    }
 
     public Movie getMovie() {
         return movie;

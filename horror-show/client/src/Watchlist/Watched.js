@@ -18,7 +18,7 @@ export default function Watched() {
         <h1 id='watched-header'>Movies you've watched:</h1>
         <div className="watched-movies-cnt">
             {watched ?
-                watched.map((movie) => {
+                watched.map(({movie}) => {
                     return (
                         <div className="movies-item">
                             <h3 className="movie-title-list">
