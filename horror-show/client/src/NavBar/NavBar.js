@@ -12,7 +12,14 @@ function NavBar() {
         <ul className="navbar-list">
           <li className="navbar-item navbar-link"><Link to="/" className="navbar-textdecoration">Home</Link></li>
           {auth.user ? (
-            <li className="navbar-item navbar-link"><Link to="/review" className="navbar-textdecoration">Add Review</Link></li>
+            // <li className="navbar-item navbar-link"><Link to="/review" className="navbar-textdecoration">Add Review</Link></li>
+            <ul className="review-ul">
+              <li className="navbar-item navbar-link"><a href="#" className="navbar-textdecoration">Reviews</a></li>
+                <ul className="reviews-ul">
+                <li className="droplist"><Link to="/review" className ="ab">Add Review</Link></li>
+                <li className="droplist"><Link to="/reviewlist" className="ab">View Reviews</Link></li>
+                </ul>  
+            </ul>
           ) : (
            <>
               <li className="u-pull-right navbar-link"><Link to="/login" className="navbar-textdecoration">Login</Link></li>
@@ -20,9 +27,9 @@ function NavBar() {
             </>
           )}
           
-        {auth.user ? (
+        {/* {auth.user ? (
               <li className="navbar-item navbar-link"><Link to="/reviewlist" className="navbar-textdecoration">Reviews</Link></li>
-          ) : ("")}
+          ) : ("")} */}
 
           {auth.user ? (
             <ul className="watch-ul">
