@@ -20,9 +20,7 @@ import { DataProvider } from './Watchlist/DataContext';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 import FriendList from './Friend/FriendList';
-import MovieWatchlist from './SecondWatchlist/MovieWatchlist';
-import AddWatchlist from './SecondWatchlist/AddWatchlist';
-
+import FriendMovieList from './Friend/FriendMovieList';
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
 function App() {
@@ -31,6 +29,7 @@ function App() {
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
   useEffect(() => {
+    
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     //const token = null;
     if (token) {
@@ -40,7 +39,14 @@ function App() {
   }, []);
 
   const login = (token) => { 
+    const watchLaterStorage = localStorage.getItem("watchLater");
+    const watchedStorage = localStorage.getItem("watched");
+
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+
+    localStorage.setItem(watchLaterStorage, "watchLater");
+    localStorage.setItem(watchedStorage, "watched");
+
     const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
@@ -60,6 +66,7 @@ function App() {
   const logout = () => {
     setUser(null);
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+    localStorage.removeItem("watchLater");
   };
 
   const auth = {
@@ -105,22 +112,12 @@ function App() {
             <Register />
           </Route>
 
-          <Route path="/friendreview/:userId">
+          <Route path="/friendreview/:appUserId">
             <MovieReviews/>
           </Route>
 
           <Route path="/reviewlist">
             {user ? <MovieReviews />
-              : <Redirect to="/" />}
-          </Route>
-
-          <Route path="/watchlistList">
-            {user ? <MovieWatchlist />
-              : <Redirect to="/" />}
-          </Route>
-
-          <Route path="/watchlistAdd">
-            {user ? <AddWatchlist />
               : <Redirect to="/" />}
           </Route>
 
@@ -165,6 +162,11 @@ function App() {
 
             <Route path="/watched">
             {user ? <Watched />
+              : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/friendwatched">
+            {user ? <FriendMovieList />
               : <Redirect to="/" />}
             </Route>
 

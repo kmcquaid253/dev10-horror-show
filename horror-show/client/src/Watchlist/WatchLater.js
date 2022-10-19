@@ -19,7 +19,7 @@ export default function WatchLater() {
             <h1 id="watch-list">Watch List</h1>
             <div className="watchLater-movies-cnt">
                 {watchLater ?
-                    watchLater.map((movie) => {
+                    watchLater.map(({movie}) => {
                         return (
                             <div className="movies-item">
                                 <h3 className="movie-title-list">

@@ -1,6 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { useContext } from 'react';
 import AuthContext from '../AuthContext/AuthContext';
+import { updateWatchlist } from '../apiService';
+
 
 export const DataContext = createContext();
 
@@ -10,15 +12,19 @@ export const DataProvider = (props) => {
 
     const auth = useContext(AuthContext);
 
+    function showErrors(listOfErrorMessages) {
+        setErrors(listOfErrorMessages);
+    }
+
     const [search, setSearch] = useState("");
     const [selectedMovie, setSelectedMovie] = useState();
     const [movies, setMovies] = useState([]);
+    const [errors, setErrors] = useState([]);
     const [sidebar, setSidebar] = useState(false);
     const [selectedMovieDetails, setSelectedMovieDetails] = useState();
 
-    const [watchLater, setWatchLater] = useState(localStorage.getItem("watchlater")
-        ? JSON.parse(localStorage.getItem("watchlater"))
-        : []
+    const [watchLater, setWatchLater] = useState
+    (localStorage.getItem("watchlater") ? JSON.parse(localStorage.getItem("watchlater")) : []
     );
 
     const [watched, setWatched] = useState(localStorage.getItem("watched")
@@ -46,7 +52,8 @@ export const DataProvider = (props) => {
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+        
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate&query=${e.target.value}`
         )
             .then((response) => response.json())
             .then((data) => setMovies(data));
@@ -55,7 +62,7 @@ export const DataProvider = (props) => {
     //page changing
 
     const handlePageChange = (page) => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&include_adult=false&query=${search}`
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=27&with_watch_monetization_types=flatrate&query=${search}`
         )
             .then((response) => response.json())
             .then((data) => setMovies(data));
@@ -68,11 +75,36 @@ export const DataProvider = (props) => {
             return item.id !== movie.id;
         });
         if (check) {
-            setWatched([...watched, movie]);
+            const wasWatchLater = watchLater.some((i) => {
+                return i.id == movie.id;
+            });
+            let watchlist = [];
+            let match = null;
+
+            if (wasWatchLater) {
+                for (let i = 0; i < watchLater.length; i++){
+                    if (movie.id == watchLater[i].movie.id){
+                        match = watchLater[i];
+                        watchLater[i].watched = true;
+                    }
+                    watchlist.push(watchLater[i]);
+                }
+            } else {
+                const watchlistItem = { movie, watched: true, watchLater: false };
+                match = watchlistItem;
+                watchlist = [...watchLater, watchlistItem]; 
+            }
+            for (let i = 0; i < watched.length; i++){
+                if (!watchlist.some((item) => item.movie.id == watched[i].movie.id)){
+                    watchlist.push(watched[i]);
+                }
+            }
+            updateWatchlist(watchlist, showErrors, auth);
+            setWatched([...watched, match]);
         } else {
-            alert("You've already seen this movie! :D");
+            alert("This movie is already in your watch list! :D");
         }
-    };
+    }
 
     // grabs movie
 
