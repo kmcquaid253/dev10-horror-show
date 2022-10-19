@@ -1,7 +1,7 @@
 package horror.data;
 
 import horror.data.mappers.WatchlistMapper;
-import horror.models.Watchlist;
+import horror.models.WatchlistItem;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -27,10 +27,10 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
 
     @Override
-    public List<Watchlist> findAll() throws DataAccessException {
+    public List<WatchlistItem> findAll() throws DataAccessException {
         final String sql = "select movie.movieId, app_user.app_user_id, app_user.username, app_user.password_hash, "
                 + "app_user.disabled, movie.title, movie.runtime, movie.rating, "
-                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, watchlistId, title, watchLater, "
+                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, watchlistId, title, "
                 + "watchLater, watched "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
@@ -40,7 +40,7 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
     }
 
     @Override
-    public Watchlist create(Watchlist watchlist) throws DataAccessException {
+    public WatchlistItem create(WatchlistItem watchlistItem) throws DataAccessException {
 
         final String sql = "insert into watchlist_movie (movieId, app_user_id, watched, watchLater) "
                 + " values (?,?,?,?)";
@@ -48,29 +48,34 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, watchlist.getMovieId());
-            ps.setInt(2, watchlist.getAppUserId());
-            ps.setBoolean(3, watchlist.isWatched());
-            ps.setBoolean(4, watchlist.isWatchLater());
+            ps.setInt(1, watchlistItem.getMovie().getId());
+            ps.setInt(2, watchlistItem.getAppUserId());
+            ps.setBoolean(3, watchlistItem.isWatched());
+            ps.setBoolean(4, watchlistItem.isWatchLater());
             return ps;
         }, keyHolder);
 
         if (rowsAffected <= 0) {
             return null;
         }
-        return watchlist;
+        return watchlistItem;
     }
 
     @Override
-    public boolean update(Watchlist watchlist) throws DataAccessException {
+    @Transactional
+    public boolean update(List<WatchlistItem> watchlist, int appUserId) throws DataAccessException {
 
-        final String sql = "update watchlist_movie set "
-                + "where movieId = ?, "
-                + "where app_user_id = ?";
+        jdbcTemplate.update("delete from watchlist_movie where app_user_id = ?;", appUserId);
 
-        return jdbcTemplate.update(sql,
-                watchlist.getMovie().getId() > 0,
-                watchlist.getAppUserId()) > 0;
+        for (WatchlistItem watchlistItem : watchlist) {
+            final String sql = "insert into watchlist_movie (movieId, app_user_id, watched, watchLater) "
+                    + " values (?,?,?,?)";
+
+            jdbcTemplate.update(sql,watchlistItem.getMovie().getId(), appUserId,
+                    watchlistItem.isWatched(),watchlistItem.isWatchLater());
+        }
+
+        return true;
     }
 
     @Override

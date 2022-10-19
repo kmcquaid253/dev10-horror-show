@@ -9,7 +9,6 @@ public class Movie {
 
     private String title;
 
-
     private String poster_path;
 
     private int runtime;

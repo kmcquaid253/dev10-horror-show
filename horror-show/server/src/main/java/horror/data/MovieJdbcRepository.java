@@ -46,6 +46,8 @@ public class MovieJdbcRepository implements MovieRepository {
                 .findFirst().orElse(null);
     }
 
+
+
     @Override
     public Movie create(Movie movie){
         final String sql = "insert into movie (movieId, title, runtime, rating, releaseDate, scoreNum) "
@@ -94,5 +96,14 @@ public class MovieJdbcRepository implements MovieRepository {
     @Transactional
     public boolean deleteById(int movieId) {
         return jdbcTemplate.update("delete from movie where movieId = ?", movieId) > 0;
+    }
+
+    @Override
+    public void addOrUpdate(Movie movie) {
+        if (jdbcTemplate.queryForObject("select count(*) from movie where movieId = ?",
+                (rs,i) -> rs.getInt(1), movie.getId()) < 1){
+            create(movie);
+        }
+
     }
 }

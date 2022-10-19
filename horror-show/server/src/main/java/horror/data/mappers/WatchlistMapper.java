@@ -1,14 +1,14 @@
 package horror.data.mappers;
 
-import horror.models.Review;
-import horror.models.Watchlist;
+import horror.models.Movie;
+import horror.models.WatchlistItem;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class WatchlistMapper implements RowMapper<Watchlist> {
+public class WatchlistMapper implements RowMapper<WatchlistItem> {
     private final List<String> roles;
 
     public WatchlistMapper(List<String> roles) {
@@ -17,17 +17,18 @@ public class WatchlistMapper implements RowMapper<Watchlist> {
 
 
     @Override
-    public Watchlist mapRow(ResultSet resultSet, int i) throws SQLException {
+    public WatchlistItem mapRow(ResultSet resultSet, int i) throws SQLException {
 
-        Watchlist watchlist = new Watchlist();
+        WatchlistItem watchlistItem = new WatchlistItem();
+        Movie movie = new Movie();
+        movie.setId(resultSet.getInt("movieId"));
 
         MovieMapper movieMapper = new MovieMapper();
-        watchlist.setMovie(movieMapper.mapRow(resultSet, i));
-        watchlist.setWatchlistId(resultSet.getInt("watchlistId"));
-        watchlist.setAppUserId(resultSet.getInt("app_user_id"));
-        watchlist.setMovieId(resultSet.getInt("movieId"));
-        watchlist.setWatched(resultSet.getBoolean("watched"));
-        watchlist.setWatchLater(resultSet.getBoolean("watchLater"));
-        return watchlist;
+        watchlistItem.setMovie(movieMapper.mapRow(resultSet, i));
+        watchlistItem.setAppUserId(resultSet.getInt("app_user_id"));
+        watchlistItem.setMovie(movie);
+        watchlistItem.setWatched(resultSet.getBoolean("watched"));
+        watchlistItem.setWatchLater(resultSet.getBoolean("watchLater"));
+        return watchlistItem;
     }
 }
