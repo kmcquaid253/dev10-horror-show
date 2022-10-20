@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from "react";
+import './Movie.css';
 
 
 function Movie({ title, poster_path, release_date, overview}) {
@@ -39,7 +40,7 @@ function Movie({ title, poster_path, release_date, overview}) {
                         <div className="modal-background" onClick={handleModalClose}>
                         <h5>{title}</h5>
                         <h6>Release Date: {release_date}</h6>
-                        <p>{overview}</p>
+                        <p className="overview">{overview}</p>
                             <div className="modal-card">
 
                             </div>
