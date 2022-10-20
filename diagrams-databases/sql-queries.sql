@@ -48,7 +48,8 @@ inner join movie on movie.movieId = review.movieId;
 			
 select * from review;
 
-select * from movie_watchlist;
+select * from watchlist_movie;
+select * from movie;
 
 delete from movie_watchlist where app_user_id = 1;
 
