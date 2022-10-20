@@ -1,11 +1,19 @@
-import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from './DataContext';
 import { useHistory } from 'react-router-dom';
 import WatchLater from './WatchLater';
 import "./WatchlistPage.css";
+import { updateWatchlist } from '../apiService';
+import AuthContext from '../AuthContext/AuthContext';
 
 export default function WatchlistPage() {
+
+    const auth = useContext(AuthContext);
+    const [errors, setErrors] = useState([]);
+
+    function showErrors(listOfErrorMessages) {
+        setErrors(listOfErrorMessages);
+    }
 
     const { handleSearch,
         movies,
@@ -13,6 +21,8 @@ export default function WatchlistPage() {
         watchLater,
         setWatchLater,
         addToWatched,
+        watched,
+        setWatched,
         setSelectedMovie,
         sidebar,
         openSidebar,
@@ -23,15 +33,39 @@ export default function WatchlistPage() {
     const addToWatchLater = (movie) => {
         const check = watchLater.every((item) => {
             return item.id !== movie.id;
-        })
+        });
         if (check) {
-            setWatchLater([...watchLater, movie]);
+            const wasWatched = watched.some((i) => {
+                return i.id == movie.id;
+            });
+            let watchlist = [];
+            let match = null;
+
+            if (wasWatched) {
+                for (let i = 0; i < watched.length; i++) {
+                    if (movie.id == watched[i].movie.id) {
+                        match = watched[i];
+                        watched[i].watchLater = true;
+                    }
+                    watchlist.push(watched[i]);
+                }
+            } else {
+                const watchlistItem = { movie, watched: false, watchLater: true };
+                match = watchlistItem;
+                watchlist = [...watched, watchlistItem];
+            }
+            for (let i = 0; i < watchLater.length; i++) {
+                if (!watchlist.some((item) => item.movie.id == watchLater[i].movie.id)) {
+                    watchlist.push(watchLater[i]);
+                }
+            }
+
+            updateWatchlist(watchlist, showErrors, auth, setWatched, setWatchLater);
+            
         } else {
             alert("This movie is already in your watch list! :D");
         }
     }
-
-    
 
     const goToPage = (movie) => {
         setSelectedMovie(movie.id);
@@ -50,12 +84,14 @@ export default function WatchlistPage() {
                 id="search-input"
                 onChange={handleSearch}
             />
+
             <div className={sidebar ? "side-menu active" : "side-menu"}>
                 <div className='close-siderbar-cnt'>
                     <p onClick={showSidebar}>X</p>
                 </div>
                 <WatchLater />
             </div>
+
             {movies.page ? (
                 <div>
                     <p id='pages-p'>

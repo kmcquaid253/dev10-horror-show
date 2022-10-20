@@ -71,6 +71,7 @@ create table movie (
   runtime varchar(50) null,
   rating varchar(50) null,
   releaseDate date null,
+  poster_path varchar(200) null,
   scoreNum int null,
   directorId int null,
   subgenreId int null,
@@ -128,7 +129,6 @@ constraint fk_review_movieId
 create table watchlist_movie (
     movieId int not null,
     app_user_id int not null,
-    watchlistId int null,
     watchLater boolean null,
     watched boolean null,
 constraint pk_watchlist_movie_id

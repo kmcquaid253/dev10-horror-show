@@ -60,65 +60,115 @@ function Register() {
     }
 
     return (
-        <div>
-        <h2>Register</h2>
+        <>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="fire1.mp4" type="video/mp4"/>
+        </video>
+        <div className="register-container">
+        <h2 className="h2-login">
+            Register
+            {/* <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span> */}
+        </h2>
+        <div className="box">
         {errors.map((error, i) => 
         (
             <Error key={i} msg={error} />
         ))}
         <form id="registerForm" onSubmit={handleSubmit}>
-        <div>
 
-        <h6 id="error-messages"><div id="messages" role="alert"></div></h6>
-            
-            <label htmlFor="firstName">First Name</label>
-            <input
-                type="text"
-                onChange={(event) => setFirstName(event.target.value)}
-                id="firstName"
-            />
+        <div className="inputBox">
+            <h6 id="error-messages"><div id="messages" role="alert"></div></h6>
+                <label htmlFor="firstName" className="registration-textfont">First Name:</label>
+                <input
+                    type="text"
+                    onChange={(event) => setFirstName(event.target.value)}
+                    id="firstName"
+                />
         </div>
-        <div>
-            
-                <label htmlFor="lastName">Last Name</label>
+
+        <div className="inputBox">
+                <label htmlFor="lastName" className="registration-textfont">Last Name:</label>
                 <input
                     type="text"
                     onChange={(event) => setLastName(event.target.value)}
                     id="lastName"
                 />
             </div>
-            <div>
-            
-                <label htmlFor="username">Username</label>
+
+            <div className="inputBox">
+                <label htmlFor="username" className="registration-textfont">Username:</label>
                 <input
                     type="text"
                     onChange={(event) => setUsername(event.target.value)}
                     id="username"
                 />
             </div>
-            <div>
-                <label htmlFor="password">Password:</label>
+
+            <div className="inputBox">
+                <label htmlFor="password" className="registration-textfont">Password:</label>
                 <input
                     type="password"
                     onChange={(event) => setPassword(event.target.value)}
                     id="password"
                 />
             </div>
-            <div>
-            
-                <label htmlFor="passwordConfirm">Confirm Password</label>
+
+            <div className="inputBox">
+                <label htmlFor="passwordConfirm" className="registration-textfont">Confirm Password:</label>
                 <input
                     type="password"
                     onChange={(event) => setPasswordConfirm(event.target.value)}
                     id="confirmPassword"
                 />
             </div>
+
             <div>
-                <button className="btn register-edit" type="submit">Register</button>
-                <button className="btn register-cancelButton"><Link to="/" id="cancelButton">Cancel</Link></button>
+                <button className="login-a" type="submit">
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                    Register</button>
+                <button className="cancel-a">
+                    <Link to="/" id="cancelButton" className="cancel-navbar-textdecoration">
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        <span className="span"></span>
+                        
+                         Cancel
+                    </Link>
+                </button>
             </div>
         </form>
+        </div>
     </div>
+    </>
 
     );
 }

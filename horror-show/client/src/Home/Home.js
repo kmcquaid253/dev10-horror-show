@@ -19,12 +19,14 @@ function Home() {
         })
     }, []);
 
-
     return (
-        
+        <>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="forest.mp4" type="video/mp4"/>
+        </video>
         <main>
             <div className="container">
-                <h1>Welcome to Horror Show</h1>
+                <h1 className='welcome-h1-message'>Welcome to Horror Show</h1>
                 <div className="grid">
                 <a className="movieLink" 
                 href={`/movieDisplay/${movies.id}`}></a>
@@ -34,6 +36,7 @@ function Home() {
                 </div>
             </div>
       </main>
+      </>
     );
 };
 

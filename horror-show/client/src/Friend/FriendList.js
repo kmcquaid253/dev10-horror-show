@@ -31,6 +31,10 @@ function FriendList() {
         }, []);
 
     return (
+        <>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="fire4.mp4" type="video/mp4"/>
+        </video>
         
         <div className="heading">
             <h1 className="heading-header">Friends</h1>
@@ -40,6 +44,7 @@ function FriendList() {
                 <Friend key={i} friendData={f.userA.appUserId == auth.user.userId ? f.userB : f.userA} />) }                   
         </>
         </div>
+        </>
     );
 }
 

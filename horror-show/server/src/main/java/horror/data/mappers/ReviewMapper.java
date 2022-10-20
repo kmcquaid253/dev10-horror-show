@@ -1,5 +1,6 @@
 package horror.data.mappers;
 
+import horror.models.AppUser;
 import horror.models.Review;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -19,6 +20,7 @@ public class ReviewMapper implements RowMapper<Review> {
 
        MovieMapper movieMapper = new MovieMapper();
        review.setMovie(movieMapper.mapRow(resultSet, i));
+
        review.setReviewId(resultSet.getInt("reviewId"));
        review.setUserReview(resultSet.getString("userReview"));
        review.setAppUserId(resultSet.getInt("app_user_id"));

@@ -22,6 +22,8 @@ function MovieReviews() {
         setReview(reviewCopy);
     }
 
+    
+
     function loadAllReviews() {
         fetch("http://localhost:8080/api/review")
             .then(response => {

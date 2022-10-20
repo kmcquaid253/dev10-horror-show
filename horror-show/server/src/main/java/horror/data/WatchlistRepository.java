@@ -1,7 +1,6 @@
 package horror.data;
 
-import horror.models.Review;
-import horror.models.Watchlist;
+import horror.models.WatchlistItem;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
@@ -11,11 +10,11 @@ import java.util.List;
 
 public interface WatchlistRepository {
 
-    List<Watchlist> findAll() throws DataAccessException;
-    Watchlist create(Watchlist watchlist) throws DataAccessException;
+    List<WatchlistItem> findAll(int appUserId) throws DataAccessException;
+    WatchlistItem create(WatchlistItem watchlistItem) throws DataAccessException;
 
 
-    boolean update(Watchlist watchlist) throws DataAccessException;
+    boolean update(List<WatchlistItem> watchlist, int appUserId) throws DataAccessException;
 
     boolean deleteById(int id) throws DataAccessException;
 }

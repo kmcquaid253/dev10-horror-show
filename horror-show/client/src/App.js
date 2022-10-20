@@ -20,27 +20,72 @@ import { DataProvider } from './Watchlist/DataContext';
 import EditReview from './EditReview/EditReview';
 import DeleteReview from './DeleteReview/DeleteReview';
 import FriendList from './Friend/FriendList';
-import MovieWatchlist from './SecondWatchlist/MovieWatchlist';
-import AddWatchlist from './SecondWatchlist/AddWatchlist';
-
+import FriendMovieList from './Friend/FriendMovieList';
 const LOCAL_STORAGE_TOKEN_KEY = "horrorShow";
 
 function App() {
 
+  const [watchLater, setWatchLater] = useState([]);
+  const [watched, setWatched] = useState([]);
+
   const [user, setUser] = useState(null);
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
+  
+
   useEffect(() => {
+
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
+
+    const laterList = localStorage.getItem("watchLater");
+    const soonerList = localStorage.getItem("watched");
+
     //const token = null;
-    if (token) {
+    if (!user && token) {
+
       login(token);
+    }
+
+    if (token && (!laterList || !soonerList)) {
+      storeWatchlist(token);
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-  const login = (token) => { 
+  function storeWatchlist(token){
+    fetch('http://localhost:8080/api/watchlist', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(response => {
+        if (response.status == 200) {
+          return response.json();
+        }
+        console.log(response);
+      })
+        .then(watchlistItems => {
+          const laterList = watchlistItems.filter((i) => i.watchLater);
+          localStorage.setItem("watchLater", laterList);
+          setWatchLater(laterList);
+
+          const soonerList = watchlistItems.filter((i) => i.watched);
+          localStorage.setItem("watched", soonerList);
+          setWatched(soonerList);
+        }).catch((e) => console.log(e))
+  }
+
+  const login = (token) => {
+
+    const laterList = localStorage.getItem("watchLater");
+    const soonerList = localStorage.getItem("watched");
+
+    if (!laterList || !soonerList) {
+      storeWatchlist(token);
+    }
+
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+
     const { sub: username, authorities: authoritiesString, jti: userId } = jwtDecode(token);
     const roles = authoritiesString.split(',');
     const user = {
@@ -59,7 +104,9 @@ function App() {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
+    setWatchLater([]);
+    setWatched([]);
+    localStorage.clear();
   };
 
   const auth = {
@@ -105,8 +152,8 @@ function App() {
             <Register />
           </Route>
 
-          <Route path="/friendreview/:userId">
-            <MovieReviews/>
+          <Route path="/friendreview/:appUserId">
+            <MovieReviews />
           </Route>
 
           <Route path="/reviewlist">
@@ -114,33 +161,23 @@ function App() {
               : <Redirect to="/" />}
           </Route>
 
-          <Route path="/watchlistList">
-            {user ? <MovieWatchlist />
-              : <Redirect to="/" />}
-          </Route>
-
-          <Route path="/watchlistAdd">
-            {user ? <AddWatchlist />
-              : <Redirect to="/" />}
-          </Route>
-
           <Route path="/review">
-          {user ? <AddReview />
+            {user ? <AddReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/edit/:reviewId">
-          {user ? <EditReview />
+            {user ? <EditReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/reviews/delete/:reviewId">
-          {user ? <DeleteReview />
+            {user ? <DeleteReview />
               : <Redirect to="/" />}
           </Route>
 
           <Route path="/friends">
-          {user ? <FriendList />
+            {user ? <FriendList />
               : <Redirect to="/" />}
           </Route>
 
@@ -150,27 +187,32 @@ function App() {
               : <Redirect to="/" />}
           </Route> */}
 
-          <DataProvider>
+          <DataProvider watched={watched} watchLater={watchLater} setWatched={setWatched} setWatchLater={setWatchLater}>
             {/* <WatchlistNavbar /> */}
             {/* for watchlist */}
             <Route path="/watchlist">
-            {user ? <WatchlistPage />
-              : <Redirect to="/" />}
+              {user ? <WatchlistPage />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/watchlater">
-            {user ? <WatchLater />
-              : <Redirect to="/" />}
+              {user ? <WatchLater />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/watched">
-            {user ? <Watched />
-              : <Redirect to="/" />}
+              {user ? <Watched />
+                : <Redirect to="/" />}
+            </Route>
+
+            <Route path="/friendwatched">
+              {user ? <FriendMovieList />
+                : <Redirect to="/" />}
             </Route>
 
             <Route path="/details/:str">
-            {user ? <Detail />
-              : <Redirect to="/" />}
+              {user ? <Detail />
+                : <Redirect to="/" />}
             </Route>
           </DataProvider>
 

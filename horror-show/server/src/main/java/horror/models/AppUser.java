@@ -29,7 +29,7 @@ public class AppUser extends User {
     public int getAppUserId() {
         return appUserId;
     }
-    
+
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;

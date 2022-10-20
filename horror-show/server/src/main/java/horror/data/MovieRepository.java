@@ -16,4 +16,6 @@ public interface MovieRepository {
 
     @Transactional
     boolean deleteById(int movieId);
+
+    void addOrUpdate(Movie movie);
 }

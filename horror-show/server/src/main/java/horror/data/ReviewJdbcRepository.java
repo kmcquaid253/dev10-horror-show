@@ -26,7 +26,7 @@ public class ReviewJdbcRepository implements ReviewRepository{
     @Override
     public List<Review> findAll() throws DataAccessException {
         final String sql = "select reviewId, userReview, app_user.app_user_id, movie.movieId, movie.title, movie.runtime, movie.rating, " +
-                " movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId "
+                " movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, movie.poster_path "
                 + "from review "
                 + "left outer join app_user on app_user.app_user_id = review.app_user_id "
                 + "left outer join movie on movie.movieId = review.movieId";
@@ -49,7 +49,7 @@ public class ReviewJdbcRepository implements ReviewRepository{
     @Override
     public Review findById(int id) throws DataAccessException {
         final String sql =  "select reviewId, userReview, app_user.app_user_id, movie.movieId, movie.title, "
-                + "movie.runtime, movie.rating, movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId "
+                + "movie.runtime, movie.rating, movie.releaseDate, movie.poster_path, movie.scoreNum, movie.directorId, movie.subgenreId "
                 + "from review "
                 + "left outer join app_user on app_user.app_user_id = review.app_user_id "
                 + "left outer join movie on movie.movieId = review.movieId "

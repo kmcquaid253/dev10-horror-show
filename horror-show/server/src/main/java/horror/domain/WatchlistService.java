@@ -1,7 +1,8 @@
 package horror.domain;
 
+import horror.data.MovieRepository;
 import horror.data.WatchlistRepository;
-import horror.models.Watchlist;
+import horror.models.WatchlistItem;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,41 +12,41 @@ public class WatchlistService {
 
     private final WatchlistRepository repository;
 
-    public WatchlistService(WatchlistRepository repository) {
+    private final MovieRepository movieRepository;
+
+    public WatchlistService(WatchlistRepository repository, MovieRepository movieRepository) {
         this.repository = repository;
+        this.movieRepository = movieRepository;
     }
 
-    public List<Watchlist> findAll() {
-        return repository.findAll();
+    public List<WatchlistItem> findAll(int appUserId) {
+        return repository.findAll(appUserId);
     }
 
-    public Result<Watchlist> create(Watchlist watchlist){
-        Result<Watchlist> result = validate(watchlist);
+//    public Result<WatchlistItem> create(WatchlistItem watchlistItem){
+//        Result<WatchlistItem> result = validate(watchlistItem);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//
+//        watchlistItem = repository.create(watchlistItem);
+//        result.setPayload(watchlistItem);
+//        return result;
+//    }
+
+    public Result update(List<WatchlistItem> watchlist, int appUserId) {
+        for (WatchlistItem watchlistItem : watchlist) {
+            movieRepository.addOrUpdate(watchlistItem.getMovie());
+            watchlistItem.setAppUserId(appUserId);
+        }
+
+        Result<WatchlistItem> result = validate(watchlist);
         if (!result.isSuccess()) {
             return result;
         }
 
-        watchlist = repository.create(watchlist);
-        result.setPayload(watchlist);
-        return result;
-    }
 
-    public Result<Watchlist> update(Watchlist watchlist) {
-        Result<Watchlist> result = validate(watchlist);
-        if (!result.isSuccess()) {
-            return result;
-        }
-
-        if (watchlist.getMovie().getId() <= 0) {
-            result.addMessage("movieId must be set for 'update' operation", ResultType.INVALID);
-            return result;
-        }
-
-        if (watchlist.getAppUserId() <= 0) {
-            result.addMessage("Invalid user ID", ResultType.INVALID);
-            return result;
-        }
-
+        repository.update(watchlist, appUserId);
         return result;
     }
 
@@ -53,21 +54,24 @@ public class WatchlistService {
         return repository.deleteById(movieId);
     }
 
-    private Result<Watchlist> validate(Watchlist watchlist){
-        Result<Watchlist> result = new Result<>();
-        if (watchlist == null) {
-            result.addMessage("Watchlist cannot be null", ResultType.INVALID);
-            return result;
-        }
+    private Result<WatchlistItem> validate(List<WatchlistItem> watchlist){
+        Result<WatchlistItem> result = new Result<>();
 
-        if (watchlist.getMovieId() < 0){
-            result.addMessage("Invalid film selected.", ResultType.INVALID);
-            return result;
-        }
+        for (WatchlistItem watchlistItem : watchlist) {
+            if (watchlistItem == null) {
+                result.addMessage("Watchlist cannot be null", ResultType.INVALID);
+                return result;
+            }
 
-        if (watchlist.getAppUserId() == 0){
-            result.addMessage("Invalid user ID", ResultType.INVALID);
-            return result;
+            if (watchlistItem.getMovie().getId() < 0) {
+                result.addMessage("Invalid film selected.", ResultType.INVALID);
+                return result;
+            }
+
+            if (watchlistItem.getAppUserId() == 0) {
+                result.addMessage("Invalid user ID", ResultType.INVALID);
+                return result;
+            }
         }
 
         return result;
