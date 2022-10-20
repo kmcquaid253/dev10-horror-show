@@ -4,7 +4,7 @@ import FriendMovieCard from './FriendMovieCard';
 
 function FriendMovieList() {
 
-    const url = "https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&with_genres=27&page=2";
+    const url = "https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&with_genres=27&page=27";
 
     const API_IMG = "https://image.tmdb.org/t/p/w500/"
 
