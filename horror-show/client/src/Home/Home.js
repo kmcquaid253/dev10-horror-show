@@ -4,7 +4,7 @@ import Movie from "../Movie/Movie";
 
 function Home() {
 
-    const url = "https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate";
+    const url = "https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&sort_by=popularity.desc&page=1&with_genres=27";
 
     const API_IMG = "https://image.tmdb.org/t/p/w500/"
 
