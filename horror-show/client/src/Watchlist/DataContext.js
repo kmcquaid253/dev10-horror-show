@@ -31,7 +31,7 @@ export const DataProvider = ({watched,watchLater, setWatched, setWatchLater, chi
     const handleSearch = (e) => {
         setSearch(e.target.value);
         
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&query=${e.target.value}`
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=27&with_watch_monetization_types=flatrate&query=${e.target.value}`
         )
             .then((response) => response.json())
             .then((data) => setMovies(data));
@@ -40,8 +40,7 @@ export const DataProvider = ({watched,watchLater, setWatched, setWatchLater, chi
     //page changing
 
     const handlePageChange = (page) => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&query=${search}`
-        )
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=27&with_watch_monetization_types=flatrate&query=${search}`)
             .then((response) => response.json())
             .then((data) => setMovies(data));
     };
