@@ -5,6 +5,7 @@ import WatchLater from './WatchLater';
 import "./WatchlistPage.css";
 import { updateWatchlist } from '../apiService';
 import AuthContext from '../AuthContext/AuthContext';
+import Error from '../Error/Error';
 
 export default function WatchlistPage() {
 
@@ -76,6 +77,10 @@ export default function WatchlistPage() {
 
     return (
         <div className="main-cnt">
+            {errors.map((error, i) =>
+            (
+                <Error key={i} msg={error} />
+            ))}
             <h1>Search for movies!</h1>
             <input
                 type="text"

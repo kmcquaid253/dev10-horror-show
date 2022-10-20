@@ -8,11 +8,10 @@
   display: block;
   width: 100%;
   height: 16.5rem;
-  /* background: black; */
+  background: rgb(145, 172, 111);
+  background-image: "https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/312184654_5674768352602998_8750117251744404674_n.png?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=UwaaUKr1O6MAX9CwyNT&_nc_ht=scontent-ord5-1.xx&oh=00_AT9POLgqNPS86mr2J-d2K074BNyEAS76dHvBSQfsWdAXUQ&oe=63561DB9";
   z-index: 99;
   background-color: black; opacity: 0.7; filter: alpha(opacity=50);
-  
-
 }
 
 .navbar-spacer {
@@ -77,7 +76,7 @@
 .welcomeMessage{
   padding-block-start: 1.2rem;
   margin-left: 1rem;
-  color: #ffffff;
+  color: #240303;
   text-shadow:
   0px 0px 5px #EB1037,
   0px 0px 7px #000000,
