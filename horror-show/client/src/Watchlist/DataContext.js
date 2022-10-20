@@ -87,12 +87,8 @@ export const DataProvider = ({watched,watchLater, setWatched, setWatchLater, chi
     // grabs movie
 
     const getMovie = (id) => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`,
-            {
-                headers: {
-                    Authorization: `Bearer ${auth.user.token}`,
-                },
-            })
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US`)
             .then((response) => response.json())
             .then((data) => setSelectedMovieDetails(data));
     };
