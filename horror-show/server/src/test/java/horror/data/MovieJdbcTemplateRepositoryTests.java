@@ -65,7 +65,7 @@ public class MovieJdbcTemplateRepositoryTests {
     }
 
     @Test
-    void shouldDelete() {
+    void willDelete() {
         assertTrue(repository.deleteById(3));
         assertFalse(repository.deleteById(3));
     }
@@ -77,6 +77,7 @@ public class MovieJdbcTemplateRepositoryTests {
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
+        movie.setPoster_path("Poster path");
         movie.setRelease_date(release);
         movie.setVote_average(10);
         movie.setDirectorId(1);

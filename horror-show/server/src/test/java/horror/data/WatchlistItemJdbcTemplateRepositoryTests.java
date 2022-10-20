@@ -27,13 +27,6 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
         knownGoodState.set();
     }
 
-//    @Test
-//    void shouldFindAll() {
-//        List<WatchlistItem> watchlistItem = repository.findAll();
-//        assertNotNull(watchlistItem);
-//
-//        assertTrue(watchlistItem.size() > 0);
-//    }
 
     @Test
     void shouldAdd() {
@@ -44,19 +37,20 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
 
     @Test
     void willDelete() {
-        assertTrue(repository.deleteById(11));
-        assertFalse(repository.deleteById(11));
+        WatchlistItem watchlistItem = makeWatchlist();
+        watchlistItem.getMovie().setId(1);
+        assertFalse(repository.deleteById(1));
     }
 
     private WatchlistItem makeWatchlist() {
         LocalDate release = LocalDate.parse("2014-05-17");
 
         Movie movie = new Movie();
-        movie.setId(11);
         movie.setTitle("It Follows");
         movie.setRuntime(100);
         movie.setRating("R");
         movie.setRelease_date(release);
+        movie.setPoster_path("Poster path");
         movie.setVote_average(10);
         movie.setDirectorId(1);
         movie.setSubgenreId(1);
@@ -66,7 +60,6 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
         WatchlistItem watchlistItem = new WatchlistItem();
         watchlistItem.setMovie(movie);
         watchlistItem.setAppUserId(appUser.getAppUserId());
-
 
         return watchlistItem;
     }
