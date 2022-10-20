@@ -1,16 +1,18 @@
 
+
 .box {
 
     margin-left: 38%;
 }
 
 .h2-login {
+    font-size: 50px;
     color: black;
     padding-top: 30px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 7px;
-    text-shadow: 1px 1px 15px red;
+    text-shadow: 1px 1px 30px red;
 }
 
 .drop {
@@ -217,7 +219,7 @@
 .inputBox input 
 {
 	padding: 20px 10px 10px;
-	background: transparent;
+	background: black;
 	outline: none;
 	box-shadow: none;
 	border-color: red;

@@ -125,3 +125,8 @@
 img{
     width: 160px;
 }
+
+.add-review-error-messages{
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+}

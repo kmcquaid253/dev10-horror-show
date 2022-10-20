@@ -149,6 +149,10 @@ function AddReview() {
 
 
     return (
+<>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="fire4.mp4" type="video/mp4"/>
+        </video>
         <div className='container'>
             {errors.map((error, i) =>
             (
@@ -227,6 +231,7 @@ function AddReview() {
                 </form>
             </div>
         </div>
+        </>
     );
 }
 

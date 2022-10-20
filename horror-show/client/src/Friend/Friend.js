@@ -6,7 +6,6 @@ function Friend({ friendData, appUserId }){
 
 
     return(
-
         <div className="friendCard">
             <div className="card-header">
 

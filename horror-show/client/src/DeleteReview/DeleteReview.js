@@ -54,9 +54,8 @@ function DeleteReview(){
 
     return(
 
-        
+        <>
         <div className='container'>
-            
             <div id="messages">
                 <h3 className='delete-review-h3'>WARNING</h3>
                 <h6 className='del-war'>Are you sure you want to delete the following Review?</h6>
@@ -73,7 +72,7 @@ function DeleteReview(){
                 </form> 
             </div>
         </div>
-        
+        </>
     );
 
 }

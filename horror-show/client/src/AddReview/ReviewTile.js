@@ -20,6 +20,10 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
 
 
     return (
+        <>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="fire4.mp4" type="video/mp4"/>
+        </video>
         <div className="card">
             <div className="card-body">
             {/* <img className="card-img" src={getPosterUrl(poster_path)} alt={movie.overview + " " + movie.id}></img> */}
@@ -33,7 +37,8 @@ function ReviewTile({ title, poster_path, id, overview, onMovieClick, matchesSel
                 </div>
             </div>
         </div>
-        // </div>
+        {/* // </div> */}
+        </>
         
     )
 }

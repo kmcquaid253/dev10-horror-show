@@ -30,6 +30,7 @@ function FriendMovieCard({ title, poster_path, overview}) {
 
 
     return (
+        
         <div className="card">
         <div className="card-body">
 
@@ -45,7 +46,6 @@ function FriendMovieCard({ title, poster_path, overview}) {
                 </div>
                 <button className="viewMoreButton" onClick={handleModalOpen}>View More</button>
         </div>
-    
     </div>
     )
 }

@@ -64,3 +64,34 @@ body{
 .viewMoreButton:hover {
     background: rgb(87, 0, 0);
 }
+
+.back-video{
+    position: fixed;
+    right:0;
+    bottom: 0;
+    z-index:-20;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+@media(min-aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+
+    }
+}
+
+@media(max-aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+
+.welcome-h1-message {
+    background-color: #0b0707;
+}
+
+

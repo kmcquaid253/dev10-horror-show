@@ -61,10 +61,13 @@ function Register() {
 
     return (
         <>
+        <video autoPlay loop muted play inline class="back-video">
+            <source src="fire1.mp4" type="video/mp4"/>
+        </video>
         <div className="register-container">
         <h2 className="h2-login">
             Register
-            <span className="drop"></span>
+            {/* <span className="drop"></span>
                     <span className="drop"></span>
                     <span className="drop"></span>
                     <span className="drop"></span>
@@ -89,7 +92,7 @@ function Register() {
                     <span className="drop"></span>
                     <span className="drop"></span>
                     <span className="drop"></span>
-                    <span className="drop"></span>
+                    <span className="drop"></span> */}
         </h2>
         <div className="box">
         {errors.map((error, i) => 
