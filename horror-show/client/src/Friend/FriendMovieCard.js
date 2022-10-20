@@ -25,7 +25,7 @@ function FriendMovieCard({ title, poster_path, overview}) {
 
     const handleModalOpen = () => {
         setShow(true);
-        <button class="button button-primary close-modal">Cancel</button>
+        <button className="button button-primary close-modal">Cancel</button>
     };
 
 
