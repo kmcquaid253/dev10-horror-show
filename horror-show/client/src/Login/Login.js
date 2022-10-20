@@ -66,6 +66,12 @@ function Login() {
                     <span className="drop"></span>
                     <span className="drop"></span>
                     <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
+                    <span className="drop"></span>
                 </h2>
             <div className="box">
             {errors.map((error, i) => 

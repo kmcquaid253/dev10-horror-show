@@ -38,14 +38,14 @@
 
 .drop:nth-child(3) {
     left: 55%;
-    animation-delay: -1.5s;
+    animation-delay: -.5s;
 }
 
 .drop:nth-child(4) {
     left: 88%;
     width: .16em;
     height: .16em;
-    animation-delay: -.10s;
+    animation-delay: -.30s;
 }
 
 .drop:nth-child(5) {
@@ -54,7 +54,7 @@
 }
 
 .drop:nth-child(6) {
-    left: 55%;
+    left: 52%;
     animation-delay: -1.5s;
     width: .17em;
     height: .17em;
@@ -120,7 +120,7 @@
 }
 
 .drop:nth-child(17) {
-    left: 55%;
+    left: 59%;
     animation-delay: -1s;
     width: .25em;
     height: .25em;
@@ -142,6 +142,46 @@
     left: 17%;
     animation-delay: -1s;
 }
+
+.drop:nth-child(21) {
+    left: 10%;
+    animation-delay: -.1s;
+    width: .30em;
+    height: .30em;
+}
+
+.drop:nth-child(22) {
+    left: 20%;
+    animation-delay: -.1s;
+}
+
+.drop:nth-child(23) {
+    left: 30%;
+    animation-delay: -1.5s;
+    width: .25em;
+    height: .25em;
+}
+
+
+.drop:nth-child(24) {
+    left: 66%;
+    animation-delay: -1s;
+    width: .20em;
+    height: .20em;
+}
+
+.drop:nth-child(25) {
+    left: 76%;
+    animation-delay: -1.5s;
+}
+
+.drop:nth-child(26) {
+    left: 84%;
+    animation-delay: -1s;
+    width: .30em;
+    height: .30em;
+}
+
 @keyframes drop {
     0%{
         transform: translateY(0) scaleX(0) rotate(45deg);
