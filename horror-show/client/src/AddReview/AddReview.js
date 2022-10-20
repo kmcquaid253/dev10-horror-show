@@ -18,6 +18,8 @@ function AddReview() {
         movieId: ""
     };
 
+
+    const [search, setSearch] = useState("");
     const [review, setReview] = useState(DEFAULT_REVIEW);//state that we track about the page, that way when it does update it will refresh the component
     const [movies, setMovies] = useState([]);
     const [id, setId] = useState([]);
@@ -102,6 +104,15 @@ function AddReview() {
         addMovieAndReview();
     };
 
+    //page changing
+
+    const handlePageChange = (page) => {
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=afceef8d4ccab842b5c75f90eb06de9f&language=en-US&page=${page}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=27&with_watch_monetization_types=flatrate&query=${search}`
+        )
+            .then((response) => response.json())
+            .then((data) => setMovies(data));
+    };
+
 
     function inputChangeHandler(inputChangedEvent) {
         const propertyName = inputChangedEvent.target.name; //We are using the property name to update the value
@@ -156,6 +167,36 @@ function AddReview() {
                         onChangeHandler={changeHandler}
                     />
 
+                    {movies.page ? (
+                        <div>
+                            <p id='pages-p'>
+                                Page {movies.page} of {movies.total_pages}
+                            </p>
+                            <p id="pages-p">{movies.total_results} results</p>
+                            <button
+                                className="movie-btn"
+                                onClick={() => {
+                                    if (movies.page !== 1) {
+                                        handlePageChange(movies.page - 1);
+                                    }
+                                }}
+                            >
+                                Previous page
+                            </button>
+                            <button
+                                className="movie-btn"
+                                onClick={() => {
+                                    if (movies.page !== movies.total_pages) {
+                                        handlePageChange(movies.page + 1);
+                                    }
+                                }}
+                            >
+                                Next page
+                            </button>
+                        </div>
+                    ) : null
+                    }
+
                     <button variant="secondary" className="searchButton" type="submit">Search</button>
 
                     <div className="grid">
@@ -163,6 +204,9 @@ function AddReview() {
                             <AddReviewTile key={movie.id} {...movie} onMovieClick={handleMovieSelect} matchesSelected={movie.id === review.movieId} />)}
                     </div>
                 </form>
+
+
+
             </div>
 
             <div className="inputDiv">

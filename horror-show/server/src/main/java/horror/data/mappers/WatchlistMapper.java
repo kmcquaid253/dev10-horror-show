@@ -20,10 +20,13 @@ public class WatchlistMapper implements RowMapper<WatchlistItem> {
     public WatchlistItem mapRow(ResultSet resultSet, int i) throws SQLException {
 
         WatchlistItem watchlistItem = new WatchlistItem();
-        Movie movie = new Movie();
-        movie.setId(resultSet.getInt("movieId"));
+
+
+
 
         MovieMapper movieMapper = new MovieMapper();
+        Movie movie = movieMapper.mapRow(resultSet,i);
+
         watchlistItem.setMovie(movieMapper.mapRow(resultSet, i));
         watchlistItem.setAppUserId(resultSet.getInt("app_user_id"));
         watchlistItem.setMovie(movie);

@@ -27,13 +27,13 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
         knownGoodState.set();
     }
 
-    @Test
-    void shouldFindAll() {
-        List<WatchlistItem> watchlistItem = repository.findAll();
-        assertNotNull(watchlistItem);
-
-        assertTrue(watchlistItem.size() > 0);
-    }
+//    @Test
+//    void shouldFindAll() {
+//        List<WatchlistItem> watchlistItem = repository.findAll();
+//        assertNotNull(watchlistItem);
+//
+//        assertTrue(watchlistItem.size() > 0);
+//    }
 
     @Test
     void shouldAdd() {
@@ -66,7 +66,7 @@ public class WatchlistItemJdbcTemplateRepositoryTests {
         WatchlistItem watchlistItem = new WatchlistItem();
         watchlistItem.setMovie(movie);
         watchlistItem.setAppUserId(appUser.getAppUserId());
-       
+
 
         return watchlistItem;
     }

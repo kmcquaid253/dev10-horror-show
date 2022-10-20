@@ -19,8 +19,8 @@ public class WatchlistService {
         this.movieRepository = movieRepository;
     }
 
-    public List<WatchlistItem> findAll() {
-        return repository.findAll();
+    public List<WatchlistItem> findAll(int appUserId) {
+        return repository.findAll(appUserId);
     }
 
 //    public Result<WatchlistItem> create(WatchlistItem watchlistItem){

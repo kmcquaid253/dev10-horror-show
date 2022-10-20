@@ -71,6 +71,17 @@
     margin-top: 20px;
 }
 
+.movies-cnt{
+    display: inline-block;
+    padding-left: 12px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    max-width: 800px;
+    margin: 20px auto;
+    align-items: stretch;
+    padding-bottom: 10rem;
+}
+
 .movies-container {
     display: inline-block;
     padding-left: 12px;

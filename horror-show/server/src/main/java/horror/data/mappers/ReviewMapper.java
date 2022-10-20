@@ -20,6 +20,7 @@ public class ReviewMapper implements RowMapper<Review> {
 
        MovieMapper movieMapper = new MovieMapper();
        review.setMovie(movieMapper.mapRow(resultSet, i));
+
        review.setReviewId(resultSet.getInt("reviewId"));
        review.setUserReview(resultSet.getString("userReview"));
        review.setAppUserId(resultSet.getInt("app_user_id"));

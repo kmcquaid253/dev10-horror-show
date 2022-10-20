@@ -40,10 +40,10 @@ export default function WatchlistPage() {
             });
             let watchlist = [];
             let match = null;
-            
+
             if (wasWatched) {
-                for (let i = 0; i < watched.length; i++){
-                    if (movie.id == watched[i].movie.id){
+                for (let i = 0; i < watched.length; i++) {
+                    if (movie.id == watched[i].movie.id) {
                         match = watched[i];
                         watched[i].watchLater = true;
                     }
@@ -52,16 +52,16 @@ export default function WatchlistPage() {
             } else {
                 const watchlistItem = { movie, watched: false, watchLater: true };
                 match = watchlistItem;
-                watchlist = [...watched, watchlistItem]; 
+                watchlist = [...watched, watchlistItem];
             }
-            for (let i = 0; i < watchLater.length; i++){
-                if (!watchlist.some((item) => item.movie.id == watchLater[i].movie.id)){
+            for (let i = 0; i < watchLater.length; i++) {
+                if (!watchlist.some((item) => item.movie.id == watchLater[i].movie.id)) {
                     watchlist.push(watchLater[i]);
                 }
             }
 
-            updateWatchlist(watchlist, showErrors, auth);
-            setWatchLater([...watchLater, match]);
+            updateWatchlist(watchlist, showErrors, auth, setWatched, setWatchLater);
+            
         } else {
             alert("This movie is already in your watch list! :D");
         }
@@ -84,12 +84,14 @@ export default function WatchlistPage() {
                 id="search-input"
                 onChange={handleSearch}
             />
+
             <div className={sidebar ? "side-menu active" : "side-menu"}>
                 <div className='close-siderbar-cnt'>
                     <p onClick={showSidebar}>X</p>
                 </div>
                 <WatchLater />
             </div>
+
             {movies.page ? (
                 <div>
                     <p id='pages-p'>

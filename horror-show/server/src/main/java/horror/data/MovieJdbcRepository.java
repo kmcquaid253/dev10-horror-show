@@ -26,7 +26,7 @@ public class MovieJdbcRepository implements MovieRepository {
     @Override
     public List<Movie> findAll() {
 
-            final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId "
+            final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, director.directorId, subgenre.subgenreId, poster_path "
                     + "from movie "
                     + "inner join director on director.directorId = movie.directorId "
                     + "inner join subgenre on subgenre.subgenreId = movie.subgenreId";
@@ -36,7 +36,7 @@ public class MovieJdbcRepository implements MovieRepository {
 
     @Override
     public Movie findById(int id) throws DataAccessException {
-        final String sql = "select movieId, title, runtime, rating, releaseDate, scoreNum, d.directorId, s.subgenreId, d.firstName, d.lastName, d.nationality, s.name " +
+        final String sql = "select movieId, title, runtime, rating, poster_path, releaseDate, scoreNum, d.directorId, s.subgenreId, d.firstName, d.lastName, d.nationality, s.name " +
                 "from movie " +
                 "left outer join director d on d.directorId = movie.directorId " +
                 "left outer join subgenre s on s.subgenreId = movie.subgenreId " +
@@ -50,14 +50,15 @@ public class MovieJdbcRepository implements MovieRepository {
 
     @Override
     public Movie create(Movie movie){
-        final String sql = "insert into movie (movieId, title, runtime, rating, releaseDate, scoreNum) "
-                + " values (?,?,?,?,?,?)";
+        final String sql = "insert into movie (movieId, title, runtime, rating, poster_path, releaseDate, scoreNum) "
+                + " values (?,?,?,?,?,?,?)";
 
         int rowsAffected = jdbcTemplate.update(sql,
             movie.getId(),
             movie.getTitle(),
             movie.getRuntime(),
             movie.getRating(),
+            movie.getPoster_path(),
             movie.getRelease_date() == null ? null : Date.valueOf(movie.getRelease_date()),
             movie.getVote_average());
 
@@ -75,6 +76,7 @@ public class MovieJdbcRepository implements MovieRepository {
                 + "title = ?, "
                 + "runtime = ?, "
                 + "rating = ?, "
+                + "poster_path = ?,"
                 + "releaseDate = ?, "
                 + "scoreNum = ?, "
                 + "directorId = ?, "
@@ -85,6 +87,7 @@ public class MovieJdbcRepository implements MovieRepository {
                 movie.getTitle(),
                 movie.getRuntime(),
                 movie.getRating(),
+                movie.getPoster_path(),
                 movie.getRelease_date(),
                 movie.getVote_average(),
                 movie.getDirectorId(),

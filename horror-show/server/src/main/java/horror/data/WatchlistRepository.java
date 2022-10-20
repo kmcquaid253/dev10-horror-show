@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface WatchlistRepository {
 
-    List<WatchlistItem> findAll() throws DataAccessException;
+    List<WatchlistItem> findAll(int appUserId) throws DataAccessException;
     WatchlistItem create(WatchlistItem watchlistItem) throws DataAccessException;
 
 

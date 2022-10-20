@@ -28,8 +28,12 @@ public class WatchlistController {
 
     @GetMapping
     public List<WatchlistItem> findAll() {
-        return service.findAll();
+        AppUser appUser = (AppUser) appUserService.loadUserByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+
+        return service.findAll(appUser.getAppUserId());
     }
+
+
 
 //    @PostMapping
 //    public ResponseEntity<Object> create(@RequestBody WatchlistItem watchlistItem) {

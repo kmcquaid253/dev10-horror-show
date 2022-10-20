@@ -1,4 +1,4 @@
-export function updateWatchlist(watchlist, showErrors, auth) {
+export function updateWatchlist(watchlist, showErrors, auth, setWatched, setWatchLater) {
 
     //Use fetch to POST to the service
     fetch("http://localhost:8080/api/watchlist", {
@@ -13,6 +13,8 @@ export function updateWatchlist(watchlist, showErrors, auth) {
         //fetch returns a response
         .then(async response => {
             if (response.status === 204) {
+                setWatchLater(watchlist.filter((e) => e.watchLater));
+                setWatched(watchlist.filter((i) => i.watched));
                 return;
             }
             return Promise.reject(await response.json());

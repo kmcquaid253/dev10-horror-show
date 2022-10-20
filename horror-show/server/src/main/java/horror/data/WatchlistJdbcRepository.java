@@ -27,16 +27,17 @@ public class WatchlistJdbcRepository implements WatchlistRepository{
 
 
     @Override
-    public List<WatchlistItem> findAll() throws DataAccessException {
+    public List<WatchlistItem> findAll(int appUserId) throws DataAccessException {
         final String sql = "select movie.movieId, app_user.app_user_id, app_user.username, app_user.password_hash, "
                 + "app_user.disabled, movie.title, movie.runtime, movie.rating, "
-                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, watchlistId, title, "
+                + "movie.releaseDate, movie.scoreNum, movie.directorId, movie.subgenreId, movie.poster_path, title, "
                 + "watchLater, watched "
                 + "from watchlist_movie "
                 + "inner join movie on movie.movieId = watchlist_movie.movieId "
-                + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id";
+                + "inner join app_user on app_user.app_user_id = watchlist_movie.app_user_id "
+                + "where app_user.app_user_id = ?";
 
-        return jdbcTemplate.query(sql, new WatchlistMapper(roles));
+        return jdbcTemplate.query(sql, new WatchlistMapper(roles), appUserId);
     }
 
     @Override

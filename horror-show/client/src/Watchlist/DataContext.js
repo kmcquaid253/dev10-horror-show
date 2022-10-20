@@ -6,9 +6,7 @@ import { updateWatchlist } from '../apiService';
 
 export const DataContext = createContext();
 
-
-
-export const DataProvider = (props) => {
+export const DataProvider = ({watched,watchLater, setWatched, setWatchLater, children}) => {
 
     const auth = useContext(AuthContext);
 
@@ -23,31 +21,11 @@ export const DataProvider = (props) => {
     const [sidebar, setSidebar] = useState(false);
     const [selectedMovieDetails, setSelectedMovieDetails] = useState();
 
-    const [watchLater, setWatchLater] = useState
-    (localStorage.getItem("watchlater") ? JSON.parse(localStorage.getItem("watchlater")) : []
-    );
-
-    const [watched, setWatched] = useState(localStorage.getItem("watched")
-        ? JSON.parse(localStorage.getItem("watched"))
-        : []
-    );
+    
 
     const showSidebar = () => setSidebar(!sidebar);
     const openSidebar = () => setSidebar(true);
 
-    useEffect(() => {
-        if (auth.user.token == localStorage.getItem(auth.token)) {
-            localStorage.setItem("watchlater",
-                JSON.stringify(watchLater));
-        }
-    }, [watchLater]);
-
-    useEffect(() => {
-        if (auth.user.userId == localStorage.getItem(auth.token)) {
-            localStorage.setItem("watched",
-                JSON.stringify(watched));
-        }
-    }, [watched]);
 
 
     const handleSearch = (e) => {
@@ -99,8 +77,7 @@ export const DataProvider = (props) => {
                     watchlist.push(watched[i]);
                 }
             }
-            updateWatchlist(watchlist, showErrors, auth);
-            setWatched([...watched, match]);
+            updateWatchlist(watchlist, showErrors, auth, setWatched, setWatchLater);
         } else {
             alert("This movie is already in your watch list! :D");
         }
@@ -136,6 +113,6 @@ export const DataProvider = (props) => {
             openSidebar,
             showSidebar,
             sidebar
-        }}>{props.children}</DataContext.Provider>
+        }}>{children}</DataContext.Provider>
     )
 }

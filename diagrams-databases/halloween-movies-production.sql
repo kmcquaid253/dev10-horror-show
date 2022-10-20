@@ -71,6 +71,7 @@ create table movie (
   runtime varchar(50) null,
   rating varchar(50) null,
   releaseDate date null,
+  poster_path varchar(200) null,
   scoreNum int null,
   directorId int null,
   subgenreId int null,

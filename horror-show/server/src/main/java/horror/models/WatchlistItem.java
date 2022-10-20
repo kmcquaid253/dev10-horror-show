@@ -2,8 +2,6 @@ package horror.models;
 
 public class WatchlistItem {
 
-
-
     private Movie movie;
 
     private int appUserId;
