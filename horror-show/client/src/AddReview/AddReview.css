@@ -3,9 +3,36 @@
 }
 
 .addButton {
-    color:rgb(237, 221, 225);
-    background-color: #AF3A08;
-    margin-right: .5em;
+    margin-top: 14px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 30px;
+    color:  rgb(127, 3, 3);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: 'Creepster', cursive;
+    overflow: hidden;
+    transition: 0.2s;
+    border-color: transparent;
+    margin-right: 1em;
+}
+
+.review-cancelButton {
+    margin-top: 14px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 30px;
+    color:  rgb(127, 3, 3);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: 'Creepster', cursive;
+    overflow: hidden;
+    transition: 0.2s;
+    border-color: transparent;
 }
 
 .searchButton {
@@ -24,11 +51,17 @@
 }
 
 .addButton:hover{
-    background-color: green;
+    color: white;
+    background: greenyellow;
+    box-shadow: 0 0 10px green, 0 0 40px rgb(1, 99, 1), 0 0 80px greenyellow;
+    border-color: transparent;
 }
 
 .review-cancelButton:hover{
-    background-color: yellow;
+    color: white;
+    background: yellow;
+    box-shadow: 0 0 10px yellow, 0 0 40px white, 0 0 80px rgb(255, 255, 48);
+    border-color: transparent;
 }
 
 .add-review-error-messages {

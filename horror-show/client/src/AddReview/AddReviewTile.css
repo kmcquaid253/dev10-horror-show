@@ -95,10 +95,23 @@
 }
 
 .reviewTile-delete {
-    color:rgb(237, 221, 225);
-    background-color: #AF3A08;
-    margin-right: .5em;
+    margin-top: 14px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 30px;
+    color:  rgb(127, 3, 3);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: 'Creepster', cursive;
+    overflow: hidden;
+    transition: 0.2s;
+    border-color: transparent;
+    margin-right: 1em;
 }
+
+
 
 .btn {
     font-size: 20px;
@@ -109,17 +122,33 @@
 }
 
 .reviewTile-delete:hover {
-    background-color: red;
-    margin-right: 2em;
+    color: white;
+    background: red;
+    box-shadow: 0 0 10px red, 0 0 40px rgb(127, 3, 3), 0 0 80px rgb(255, 0, 0);
+    border-color: transparent;
 }
 
 .reviewTile-edit:hover{
-    background-color: yellow;
-    margin-left: 1em;
+    color: white;
+    background: yellow;
+    box-shadow: 0 0 10px yellow, 0 0 40px white, 0 0 80px rgb(255, 255, 48);
+    border-color: transparent;
 }
 
 .reviewTile-edit {
-    background-color: rgba(208, 208, 31, 0.806);
+    margin-top: 14px;
+    position: relative;
+    display: inline-block;
+    padding: 2px 30px;
+    color:  rgb(127, 3, 3);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 26px;
+    font-family: 'Creepster', cursive;
+    overflow: hidden;
+    transition: 0.2s;
+    border-color: transparent;
 }
 
 img{
